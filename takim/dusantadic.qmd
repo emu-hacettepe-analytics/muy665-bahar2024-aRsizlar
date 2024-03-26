@@ -1,38 +1,19 @@
 ---
-title: "Dusan Tadic"
+title: "Şule Sayman"
 ---
 
 ![](/assets/images/vesikalik.jpeg){fig-align="center"}
 
 # Eğitim
 
--   Lisans, ................................., .................................... Üniversitesi, Türkiye, 20xx - 20xx.
--   Yüksek Lisans, Endüstri Mühendisliği, Hacettepe Üniversitesi, Türkiye, 20xx - devam ediyor.
-
-# İş Deneyimi
-
-## İşler
-
-1.  Firma xxx, pozisyon xx, yıl xxx
-
-2.  Firma yyy, pozisyon yyy, yıl yyy
+-   Lisans, Gıda Mühendisliği, Hacettepe Üniversitesi, Türkiye, 2015 - 2021.
+-   Yüksek Lisans, Endüstri Mühendisliği, Hacettepe Üniversitesi, Türkiye, 2023 - devam ediyor.
 
 ## Stajlar
 
-1.  Firma aaa, pozisyon xx, yıl xxx
-
-2.  Firma bbb, pozisyon yyy, yıl yyy
-
-# Projeler
-
-1.  TÜBİTAK 1001..........................
-
-# Yayınlar
-
-1.  Dasdemir, E., Batta, R., Koksalan, M., Tezcaner Öztürk, D. (2022) “İHA Yönlendirmesi için Keşif Misyonu: Zaman Bağımlı Ödülleri ve Çoklu Bağlantıları Olan Çok Amaçlı Oryantiring Problemi”, Computers & Operations Research, 145: 105882
+1.  Türk Standartları Enstitüsü, Ar-Ge Mühendisi, 2018
+2.  Ülker Ankara Bisküvi Fabrikası, Kalite Mühendisi, 2019
 
 # Yetkinlikler
 
-R, Quarto, Git, Python
-
-# Hobiler
+R, Quarto, Git
