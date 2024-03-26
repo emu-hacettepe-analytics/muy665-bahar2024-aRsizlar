@@ -1,5 +1,5 @@
 ---
-title: "Edin_Džeko"
+title: "İlkcan Öksüz"
 ---
 
 ![](/assets/images/vesikalik.jpeg){fig-align="center"}

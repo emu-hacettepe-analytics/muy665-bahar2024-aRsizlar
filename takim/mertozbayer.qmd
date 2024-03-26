@@ -1,5 +1,5 @@
 ---
-title: "Frederico Rodrigues"
+title: "Mert Özbayer"
 ---
 
 ![](/assets/images/vesikalik.jpeg){fig-align="center"}
