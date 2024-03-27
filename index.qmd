@@ -1,5 +1,5 @@
 ---
-title: "Takım: aRsızlar"
+title: "Takım: ARsızlar"
 sidebar: false 
 ---
 
