@@ -6,7 +6,7 @@ Takım Üyelerimizin detaylı özgemişlerinin yer aldığı kişisel sayfaları
 
 # Takım Üyeleri
 
-1.  [Edin_Džeko](/takim/edindzeko.qmd)
+1.  [Mert Özbayer](/takim/mertozbayer.qmd "Mert Özbayer")
 
 2.  [İlkcan Öksüz](/takim/ilkcanoksuz.qmd "İlkcan Öksüz")
 
