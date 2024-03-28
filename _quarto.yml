@@ -36,7 +36,7 @@ website:
       search: true
       contents:
         - takim.qmd
-        - takim/dusantadic.qmd
+        - takim/mertozbayer.qmd
         - takim/ilkcanoksuz.qmd
         - takim/fred.qmd  
         - takim/szymanski.qmd  
