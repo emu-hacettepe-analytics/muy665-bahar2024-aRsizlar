@@ -6,8 +6,8 @@ title: "Mert Özbayer"
 
 # Eğitim
 
--   Lisans, ................................., .................................... Üniversitesi, Türkiye, 20xx - 20xx.
--   Yüksek Lisans, Endüstri Mühendisliği, Hacettepe Üniversitesi, Türkiye, 20xx - devam ediyor.
+-   Lisans, Makine Mühendisliği, Bilkent Üniversitesi Türkiye, 2013 - 2021.
+-   Yüksek Lisans, Endüstri Mühendisliği, Hacettepe Üniversitesi, Türkiye, 2023 - devam ediyor.
 
 # İş Deneyimi
 
@@ -33,6 +33,6 @@ title: "Mert Özbayer"
 
 # Yetkinlikler
 
-R, Quarto, Git, Python
+R, Quarto, Git, Python, Matlab, Catia, SolidWorks
 
 # Hobiler
