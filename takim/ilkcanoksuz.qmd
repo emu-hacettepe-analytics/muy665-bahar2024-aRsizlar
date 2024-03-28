@@ -2,7 +2,9 @@
 title: "İlkcan Öksüz"
 ---
 
-![](/assets/images/vesikalik.jpeg){fig-align="center"}
+![](/docs/assets/images/ilkcanoksuz_vesikalık.jpg){fig-alt="İlkcan Öksüz-Fotoğraf" fig-align="left" width="263"}
+
+[Buradan detaylı özgeçmişime ulaşabilirsiniz](https://drive.google.com/file/d/1rQ56aos2xDeCy-efsSiS6GEu3KN418rS/view?usp=sharing)
 
 # Eğitim
 
