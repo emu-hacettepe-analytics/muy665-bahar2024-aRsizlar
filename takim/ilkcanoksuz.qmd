@@ -2,9 +2,11 @@
 title: "İlkcan Öksüz"
 ---
 
-![](/docs/assets/images/ilkcanoksuz_vesikalık.jpg){fig-alt="İlkcan Öksüz-Fotoğraf" fig-align="left" width="263"}
+![](/docs/assets/images/ilkcanoksuz_vesikalık.jpg){fig-alt="İlkcan Öksüz-Fotoğraf" fig-align="left" width="282"}
 
 [Buradan detaylı özgeçmişime ulaşabilirsiniz](https://drive.google.com/file/d/1rQ56aos2xDeCy-efsSiS6GEu3KN418rS/view?usp=sharing)
+
+[Detaylı Özgeçmiş](docs/CV_Ilkcann_Oksuzz.pdf)
 
 # Eğitim
 
@@ -27,7 +29,7 @@ title: "İlkcan Öksüz"
 
 2.  Sigun Bilgi Teknolojileri, Stajyer, 2019
 
-3.  Gültaş Yazılım, Stajyer, 2018
+3.  Gültaş Yazılım, Stajyer, 2017
 
 # Projeler
 
