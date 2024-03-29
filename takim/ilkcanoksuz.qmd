@@ -6,7 +6,7 @@ title: "İlkcan Öksüz"
 
 [Buradan detaylı özgeçmişime ulaşabilirsiniz](https://drive.google.com/file/d/1rQ56aos2xDeCy-efsSiS6GEu3KN418rS/view?usp=sharing)
 
-[Detaylı ](docs/CV_Ilkcann_Oksuzz.pdf)[Özgeçmiş](docs/CV_Ilkcann_Oksuzz.pdf)
+[DetaylıÖzgeçmiş](docs/CV_Ilkcann_Oksuzz.pdf)
 
 # Eğitim
 
@@ -41,5 +41,4 @@ R, Quarto, Git, Java, Selenium
 
 # Hobiler
 
-Müzik,tiyatro,tenis,dans,resim,edebiyat
-Müzik,tiyatro,tenis,dans,resim,edebiyat,koro
+Müzik,tiyatro,tenis,dans,resim
