@@ -5,12 +5,14 @@ title: "Çalışma 1"
 \
 (Aşağıdakiler örnek olarak verilmiştir.)
 
-Bu çalışmada 3 görevimiz var. Bu görevler..... Bunlara sırayla aşağıda cevap arıyoruz.
+Bu çalışmada 3 görevimiz var.
+
+İlk olarak belirtilen kaynaklardan bir video seçip özetini açıklıyoruz.
 
 ## (a)
 
-```{r}
-1 + 1
+```{ndefinedr}ndefin}
 ```
 
-## (b)
+## ed
+1 + 1(b)
