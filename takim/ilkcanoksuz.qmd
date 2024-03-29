@@ -6,7 +6,7 @@ title: "İlkcan Öksüz"
 
 [Buradan detaylı özgeçmişime ulaşabilirsiniz](https://drive.google.com/file/d/1rQ56aos2xDeCy-efsSiS6GEu3KN418rS/view?usp=sharing)
 
-[Detaylı Özgeçmiş](docs/CV_Ilkcann_Oksuzz.pdf)
+[Detaylı ](docs/CV_Ilkcann_Oksuzz.pdf)[Özgeçmiş](docs/CV_Ilkcann_Oksuzz.pdf)
 
 # Eğitim
 
