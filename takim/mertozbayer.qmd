@@ -37,4 +37,4 @@ R, Quarto, Git, Python, Matlab, Catia, SolidWorks
 
 # Hobiler
 
-Halk Dansları, 
+Halk Dansları, Lego yapmak
