@@ -2,7 +2,7 @@
 title: "Mehmet Akif Emirosman"
 ---
 
-![](/docs/assets/images/MAE_picture.jpg){fig-align="left" width="350"}
+![](/docs/assets/images/Mehmet Akif Emirosman.JPG){fig-align="left"}
 
 [Buradan detaylı özgeçmişime ulaşabilirsiniz](https://drive.google.com/file/d/1rQ56aos2xDeCy-efsSiS6GEu3KN418rS/view?usp=sharing)
 
