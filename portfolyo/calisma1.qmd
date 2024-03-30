@@ -5,44 +5,6 @@ editor:
     wrap: 72
 ---
 
-
-
-library('dslabs') data(mtcars)
-
-custom_summary \<- function(data) { \# Boş bir liste oluştur
-statistics_with_values \<- list()
-
-\# Her bir sütun için for (col in names(data)) { \# İstatistikleri
-hesapla mean_value \<- mean(data\[\[col\]\]) median_value \<-
-median(data\[\[col\]\]) sd_value \<- sd(data\[\[col\]\]) min_value \<-
-min(data\[\[col\]\]) max_value \<- max(data\[\[col\]\])
-
-```         
-# Sütun adını kullanarak istatistikleri liste olarak ekleyin
-statistics_with_values[[col]] <- list(
-  Mean = mean_value,
-  Median = median_value,
-  Standard_Deviation = sd_value,
-  Minimum = min_value,
-  Maximum = max_value,
-  Values = data[[col]]
-)
-```
-
-}
-
-return(statistics_with_values) }
-
-# Fonksiyonu çağırarak istatistikleri al
-
-mtcars_statistics_with_values \<- custom_summary(mtcars)
-
-# Sonuçları yazdır
-
-for (col_name in names(mtcars_statistics_with_values)) { cat("Column:",
-col_name, "\n") print(mtcars_statistics_with_values\[\[col_name\]\])
-cat("\n") }
-
 ## Bu bölümde toplam 3 görevimiz bulunmaktadır.
 
 ## a)Seçtiğimiz video ismi yazılacak
@@ -105,8 +67,9 @@ nmrc_columns <- sapply(mtcars, is.numeric)   ##veri setinin sayısal sütunları
 print(nmrc_columns)
 ```
 
+```{r}
 
-
+```
 
 ## 3)Apply ile Alternatif bir Yaklaşım
 

@@ -192,17 +192,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#fonksiyonu-çağırarak-istatistikleri-al" id="toc-fonksiyonu-çağırarak-istatistikleri-al" class="nav-link active" data-scroll-target="#fonksiyonu-çağırarak-istatistikleri-al">Fonksiyonu çağırarak istatistikleri al</a></li>
-  <li><a href="#sonuçları-yazdır" id="toc-sonuçları-yazdır" class="nav-link" data-scroll-target="#sonuçları-yazdır">Sonuçları yazdır</a>
-  <ul class="collapse">
-  <li><a href="#bu-bölümde-toplam-3-görevimiz-bulunmaktadır." id="toc-bu-bölümde-toplam-3-görevimiz-bulunmaktadır." class="nav-link" data-scroll-target="#bu-bölümde-toplam-3-görevimiz-bulunmaktadır.">Bu bölümde toplam 3 görevimiz bulunmaktadır.</a></li>
+  <li><a href="#bu-bölümde-toplam-3-görevimiz-bulunmaktadır." id="toc-bu-bölümde-toplam-3-görevimiz-bulunmaktadır." class="nav-link active" data-scroll-target="#bu-bölümde-toplam-3-görevimiz-bulunmaktadır.">Bu bölümde toplam 3 görevimiz bulunmaktadır.</a></li>
   <li><a href="#aseçtiğimiz-video-ismi-yazılacak" id="toc-aseçtiğimiz-video-ismi-yazılacak" class="nav-link" data-scroll-target="#aseçtiğimiz-video-ismi-yazılacak">a)Seçtiğimiz video ismi yazılacak</a></li>
   <li><a href="#b" id="toc-b" class="nav-link" data-scroll-target="#b">b)</a></li>
   <li><a href="#özel-özet-fonksiyonu-yazma" id="toc-özel-özet-fonksiyonu-yazma" class="nav-link" data-scroll-target="#özel-özet-fonksiyonu-yazma">1)Özel Özet Fonksiyonu Yazma</a></li>
   <li><a href="#fonksiyonu-döngü-kullanarak-uygulama" id="toc-fonksiyonu-döngü-kullanarak-uygulama" class="nav-link" data-scroll-target="#fonksiyonu-döngü-kullanarak-uygulama">2)Fonksiyonu Döngü Kullanarak Uygulama</a></li>
   <li><a href="#apply-ile-alternatif-bir-yaklaşım" id="toc-apply-ile-alternatif-bir-yaklaşım" class="nav-link" data-scroll-target="#apply-ile-alternatif-bir-yaklaşım">3)Apply ile Alternatif bir Yaklaşım</a></li>
   <li><a href="#c" id="toc-c" class="nav-link" data-scroll-target="#c">c)</a></li>
-  </ul></li>
   </ul>
 </nav>
 </nav>
@@ -230,27 +226,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>library(‘dslabs’) data(mtcars)</p>
-<p>custom_summary &lt;- function(data) { # Boş bir liste oluştur statistics_with_values &lt;- list()</p>
-<p># Her bir sütun için for (col in names(data)) { # İstatistikleri hesapla mean_value &lt;- mean(data[[col]]) median_value &lt;- median(data[[col]]) sd_value &lt;- sd(data[[col]]) min_value &lt;- min(data[[col]]) max_value &lt;- max(data[[col]])</p>
-<pre><code># Sütun adını kullanarak istatistikleri liste olarak ekleyin
-statistics_with_values[[col]] &lt;- list(
-  Mean = mean_value,
-  Median = median_value,
-  Standard_Deviation = sd_value,
-  Minimum = min_value,
-  Maximum = max_value,
-  Values = data[[col]]
-)</code></pre>
-<p>}</p>
-<p>return(statistics_with_values) }</p>
-<section id="fonksiyonu-çağırarak-istatistikleri-al" class="level1">
-<h1>Fonksiyonu çağırarak istatistikleri al</h1>
-<p>mtcars_statistics_with_values &lt;- custom_summary(mtcars)</p>
-</section>
-<section id="sonuçları-yazdır" class="level1">
-<h1>Sonuçları yazdır</h1>
-<p>for (col_name in names(mtcars_statistics_with_values)) { cat(“Column:”, col_name, “”) print(mtcars_statistics_with_values[[col_name]]) cat(“”) }</p>
 <section id="bu-bölümde-toplam-3-görevimiz-bulunmaktadır." class="level2">
 <h2 class="anchored" data-anchor-id="bu-bölümde-toplam-3-görevimiz-bulunmaktadır.">Bu bölümde toplam 3 görevimiz bulunmaktadır.</h2>
 </section>
@@ -263,11 +238,11 @@ statistics_with_values[[col]] &lt;- list(
 <section id="özel-özet-fonksiyonu-yazma" class="level2">
 <h2 class="anchored" data-anchor-id="özel-özet-fonksiyonu-yazma">1)Özel Özet Fonksiyonu Yazma</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dslabs)  <span class="do">## dslabs pkaeti yükleme</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(mtcars)  <span class="do">## mtcars veri setini çağırma</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dslabs)  <span class="do">## dslabs pkaeti yükleme</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(mtcars)  <span class="do">## mtcars veri setini çağırma</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars)   <span class="do">## veri setinin ilk bir kaç gözlemi</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars)   <span class="do">## veri setinin ilk bir kaç gözlemi</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                   mpg cyl disp  hp drat    wt  qsec vs am gear carb
 Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
@@ -279,7 +254,7 @@ Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mtcars)  <span class="do">## veri setinin yapısını inceleme</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mtcars)  <span class="do">## veri setinin yapısını inceleme</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   32 obs. of  11 variables:
  $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
@@ -296,7 +271,7 @@ Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                     mpg cyl  disp  hp drat    wt  qsec vs am gear carb
 Mazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
@@ -334,21 +309,21 @@ Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</code></
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="do">## girdi olarak vector tanımlama ve ve bu vector ün ortamalasını , medyanını , standart sapmasını ,minimumunu ve maksimumunu içeren liste döndürme</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>custom_summary <span class="ot">&lt;-</span> <span class="cf">function</span>(vec) {   </span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    updated_list <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">mean=</span><span class="fu">mean</span>(vec),</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">median=</span><span class="fu">median</span>(vec),</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">standard_deviation=</span><span class="fu">sd</span>(vec),</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">minimum_value=</span><span class="fu">min</span>(vec),</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">maximum_vaule=</span><span class="fu">max</span>(vec)</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>      <span class="fu">return</span>(updated_list)</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>     <span class="do">##custom_summary fonksiyonunu kullanarak veri setindeki mpg değişkeninin özet istatistiğini hesaplama</span></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>     mpg_summary <span class="ot">&lt;-</span> <span class="fu">custom_summary</span>(mtcars<span class="sc">$</span>mpg)</span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>     <span class="fu">print</span>(mpg_summary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="do">## girdi olarak vector tanımlama ve ve bu vector ün ortamalasını , medyanını , standart sapmasını ,minimumunu ve maksimumunu içeren liste döndürme</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>custom_summary <span class="ot">&lt;-</span> <span class="cf">function</span>(vec) {   </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    updated_list <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">mean=</span><span class="fu">mean</span>(vec),</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">median=</span><span class="fu">median</span>(vec),</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">standard_deviation=</span><span class="fu">sd</span>(vec),</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">minimum_value=</span><span class="fu">min</span>(vec),</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">maximum_vaule=</span><span class="fu">max</span>(vec)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>      <span class="fu">return</span>(updated_list)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>     <span class="do">##custom_summary fonksiyonunu kullanarak veri setindeki mpg değişkeninin özet istatistiğini hesaplama</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>     mpg_summary <span class="ot">&lt;-</span> <span class="fu">custom_summary</span>(mtcars<span class="sc">$</span>mpg)</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>     <span class="fu">print</span>(mpg_summary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$mean
 [1] 20.09062
@@ -365,16 +340,16 @@ $minimum_value
 $maximum_vaule
 [1] 33.9</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>     <span class="do">##custom_summary fonksiyonunu kullanarak veri setindeki hp değişkeninin özet istatistiğini hesaplasaydk aşağıdaki gibi olurdu</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>     <span class="do">##hp_summary &lt;- custom_summary(mtcars$hp)</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>     <span class="do">##print(hp)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>     <span class="do">##custom_summary fonksiyonunu kullanarak veri setindeki hp değişkeninin özet istatistiğini hesaplasaydk aşağıdaki gibi olurdu</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>     <span class="do">##hp_summary &lt;- custom_summary(mtcars$hp)</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>     <span class="do">##print(hp)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="fonksiyonu-döngü-kullanarak-uygulama" class="level2">
 <h2 class="anchored" data-anchor-id="fonksiyonu-döngü-kullanarak-uygulama">2)Fonksiyonu Döngü Kullanarak Uygulama</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>nmrc_columns <span class="ot">&lt;-</span> <span class="fu">sapply</span>(mtcars, is.numeric)   <span class="do">##veri setinin sayısal sütunlarını belirleme</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(nmrc_columns)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>nmrc_columns <span class="ot">&lt;-</span> <span class="fu">sapply</span>(mtcars, is.numeric)   <span class="do">##veri setinin sayısal sütunlarını belirleme</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(nmrc_columns)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> mpg  cyl disp   hp drat   wt qsec   vs   am gear carb 
 TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE </code></pre>
@@ -384,8 +359,8 @@ TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE </code></pre>
 <section id="apply-ile-alternatif-bir-yaklaşım" class="level2">
 <h2 class="anchored" data-anchor-id="apply-ile-alternatif-bir-yaklaşım">3)Apply ile Alternatif bir Yaklaşım</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">apply</span>(mtcars, <span class="dv">2</span>, custom_summary)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">apply</span>(mtcars, <span class="dv">2</span>, custom_summary)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$mpg
 $mpg$mean
@@ -578,9 +553,9 @@ $carb$maximum_vaule
 <section id="c" class="level2">
 <h2 class="anchored" data-anchor-id="c">c)</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dslabs)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(na_example)   <span class="do">## na_example veri setini çağır</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(na_example)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dslabs)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(na_example)   <span class="do">## na_example veri setini çağır</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(na_example)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   [1]  2  1  3  2  1  3  1  4  3  2  2 NA  2  2  1  4 NA  1  1  2  1  2  2  1
   [25]  2  5 NA  2  2  3  1  2  4  1  1  1  4  5  2  3  4  1  2  4  1  1  2  1
@@ -627,15 +602,14 @@ $carb$maximum_vaule
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>sum_na <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(na_example))</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(sum_na)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>sum_na <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(na_example))</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(sum_na)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 145</code></pre>
 </div>
 </div>
 
 
-</section>
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
