@@ -1,39 +1,48 @@
 ---
-title: "Gizem Gül"
+title: "Gizem Gül Yatarkalkmaz"
 ---
 
+![](images/gizemyatarkalkmaz_img.JPG){fig-align="center"}
 
-![](/assets/images/vesikalik.jpeg){fig-align="center"}
+[Buradan detaylı özgeçmişime ulaşabilirsiniz](https://www.linkedin.com/in/gizem-gul-y/)
+
+[DetaylıÖzgeçmiş](docs/gizemyatarkalkmaz_cv.pdf)
 
 # Eğitim
 
--   Lisans, ................................., .................................... Üniversitesi, Türkiye, 20xx - 20xx.
--   Yüksek Lisans, Endüstri Mühendisliği, Hacettepe Üniversitesi, Türkiye, 20xx - devam ediyor.
+-   Lisans, Mekatronik Mühendisliği,Atılım Üniversitesi, Türkiye, 2015 - 2019.
+-   Yüksek Lisans, Mühendislik Yönetimi, Hacettepe Üniversitesi, Türkiye, 2024 - devam ediyor.
 
 # İş Deneyimi
 
 ## İşler
 
-1.  Firma xxx, pozisyon xx, yıl xxx
+1.  BMC Otomotiv, Kıdemli Proje Uzman Mühendisi, 2023 - Halen
 
-2.  Firma yyy, pozisyon yyy, yıl yyy
+2.  BMC Otomotiv, Proje Mühendisi, 2022-2023
+
+3.  Mitaş Endüstri, Proje Yönetim Mühendisi, 2020 - 2022
+
+4.  Mitaş Endüstri, İmalat Mühendisi, 2019 - 2020
 
 ## Stajlar
 
-1.  Firma aaa, pozisyon xx, yıl xxx
+1.  Getinge, Stajyer, 2018
 
-2.  Firma bbb, pozisyon yyy, yıl yyy
+2.  İntecro Robotiks, Stajyer, 2017
+
+3.  FNSS, Stajyer, 2017
 
 # Projeler
 
-1.  TÜBİTAK 1001..........................
-
-# Yayınlar
-
-1.  Dasdemir, E., Batta, R., Koksalan, M., Tezcaner Öztürk, D. (2022) “İHA Yönlendirmesi için Keşif Misyonu: Zaman Bağımlı Ödülleri ve Çoklu Bağlantıları Olan Çok Amaçlı Oryantiring Problemi”, Computers & Operations Research, 145: 105882
+1.  Mekatronik Tasarım Projesi - Environmentally Recyclable Garbage Collector Robot, 2019
+2.  Lisans Araştırma Projesi - PAth Planning for Mobile Robots with SLAM Algorithms, 2019
+3.  Competition Project - 6x6 Spider type, RC off-road vehicle, 2018
 
 # Yetkinlikler
 
-R, Quarto, Git, Python
+R, Quarto, Git, Ms Project, SAP, Jira
 
 # Hobiler
+
+Müzik, dans, gitar, şarkı söylemek, voleybol, futbol, film izlemek, yürüyüş yapmak

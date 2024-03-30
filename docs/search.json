@@ -544,16 +544,24 @@
   {
     "objectID": "takim/gizemgul.html#işler",
     "href": "takim/gizemgul.html#işler",
-    "title": "Gizem Gül",
+    "title": "Gizem Gül Yatarkalkmaz",
     "section": "İşler",
-    "text": "İşler\n\nFirma xxx, pozisyon xx, yıl xxx\nFirma yyy, pozisyon yyy, yıl yyy"
+    "text": "İşler\n\nBMC Otomotiv, Kıdemli Proje Uzman Mühendisi, 2023 - Halen\nBMC Otomotiv, Proje Mühendisi, 2022-2023\nMitaş Endüstri, Proje Yönetim Mühendisi, 2020 - 2022\nMitaş Endüstri, İmalat Mühendisi, 2019 - 2020",
+    "crumbs": [
+      "Takım Üyeleri",
+      "Gizem Gül Yatarkalkmaz"
+    ]
   },
   {
     "objectID": "takim/gizemgul.html#stajlar",
     "href": "takim/gizemgul.html#stajlar",
-    "title": "Gizem Gül",
+    "title": "Gizem Gül Yatarkalkmaz",
     "section": "Stajlar",
-    "text": "Stajlar\n\nFirma aaa, pozisyon xx, yıl xxx\nFirma bbb, pozisyon yyy, yıl yyy"
+    "text": "Stajlar\n\nGetinge, Stajyer, 2018\nİntecro Robotiks, Stajyer, 2017\nFNSS, Stajyer, 2017",
+    "crumbs": [
+      "Takım Üyeleri",
+      "Gizem Gül Yatarkalkmaz"
+    ]
   },
   {
     "objectID": "takim/ilkcanoksuz.html#işler",
@@ -631,6 +639,17 @@
     "crumbs": [
       "Takım Üyeleri",
       "Ahmet Çaylak"
+    ]
+  },
+  {
+    "objectID": "takim/gizemgul.html",
+    "href": "takim/gizemgul.html",
+    "title": "Gizem Gül Yatarkalkmaz",
+    "section": "",
+    "text": "Buradan detaylı özgeçmişime ulaşabilirsiniz\nDetaylıÖzgeçmiş",
+    "crumbs": [
+      "Takım Üyeleri",
+      "Gizem Gül Yatarkalkmaz"
     ]
   }
 ]
