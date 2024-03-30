@@ -2,14 +2,14 @@
 title: "Mehmet Akif Emirosman"
 ---
 
-[Buradan detaylı özgeçmişime ulaşabilirsiniz](https://drive.google.com/file/d/1rQ56aos2xDeCy-efsSiS6GEu3KN418rS/view?usp=sharing)
+![](/docs/assets/images/Mehmet%20Akif%20Emirosman.JPG){fig-align="left"}
 
-[DetaylıÖzgeçmiş](docs/CV_Ilkcann_Oksuzz.pdf)
+[DetaylıÖzgeçmiş](docs/MAE_CV.pdf)
 
 # Eğitim
 
 -   Lisans, Makine Mühendisliği, TOBB ETU, Türkiye, 2010 - 2016.
--   Yüksek Lisans, Endüstri Mühendisliği, Hacettepe Üniversitesi, Türkiye, 2023 - devam ediyor.
+-   Yüksek Lisans, Endüstri Mühendisliği, Hacettepe Üniversitesi, Türkiye, 2023 - Devam ediyor.
 
 # İş Deneyimi
 

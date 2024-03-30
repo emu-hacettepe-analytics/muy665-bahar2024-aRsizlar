@@ -582,14 +582,22 @@
     "href": "takim/sulesayman.html#işler",
     "title": "Şule Sayman",
     "section": "İşler",
-    "text": "İşler\n\nM&S Bros Dış Tic. Ltd. Şti., Quality Engineer, 2021 - devam ediyor"
+    "text": "İşler\n\nM&S Bros Dış Tic. Ltd. Şti., Quality Engineer, 2021 - devam ediyor",
+    "crumbs": [
+      "Takım Üyeleri",
+      "Şule Sayman"
+    ]
   },
   {
     "objectID": "takim/sulesayman.html#stajlar",
     "href": "takim/sulesayman.html#stajlar",
     "title": "Şule Sayman",
     "section": "Stajlar",
-    "text": "Stajlar\n\nTürk Standartları Enstitüsü, Ar-Ge Mühendisi, 2018\nÜlker Ankara Bisküvi Fabrikası, Kalite Mühendisi, 2019"
+    "text": "Stajlar\n\nTürk Standartları Enstitüsü, Ar-Ge Mühendisi, 2018\nÜlker Ankara Bisküvi Fabrikası, Kalite Mühendisi, 2019",
+    "crumbs": [
+      "Takım Üyeleri",
+      "Şule Sayman"
+    ]
   },
   {
     "objectID": "takim/ilkcanoksuz.html",
@@ -642,6 +650,7 @@
     ]
   },
   {
+<<<<<<< HEAD
     "objectID": "takim/gizemgul.html",
     "href": "takim/gizemgul.html",
     "title": "Gizem Gül Yatarkalkmaz",
@@ -650,6 +659,38 @@
     "crumbs": [
       "Takım Üyeleri",
       "Gizem Gül Yatarkalkmaz"
+=======
+    "objectID": "takim/akifemirosman.html",
+    "href": "takim/akifemirosman.html",
+    "title": "Mehmet Akif Emirosman",
+    "section": "",
+    "text": "DetaylıÖzgeçmiş",
+    "crumbs": [
+      "Takım Üyeleri",
+      "Mehmet Akif Emirosman"
+    ]
+  },
+  {
+    "objectID": "takim/akifemirosman.html#işler",
+    "href": "takim/akifemirosman.html#işler",
+    "title": "Mehmet Akif Emirosman",
+    "section": "İşler",
+    "text": "İşler\n\nNurol Makina ve Savunma A.Ş. 2018-Halen\nBMC Otomotiv ve Sanayi A.Ş. 2017-2018",
+    "crumbs": [
+      "Takım Üyeleri",
+      "Mehmet Akif Emirosman"
+    ]
+  },
+  {
+    "objectID": "takim/akifemirosman.html#stajlar",
+    "href": "takim/akifemirosman.html#stajlar",
+    "title": "Mehmet Akif Emirosman",
+    "section": "Stajlar",
+    "text": "Stajlar\n\nFNSS 2016\nSun Paradise 2014\nEstap 2014",
+    "crumbs": [
+      "Takım Üyeleri",
+      "Mehmet Akif Emirosman"
+>>>>>>> c29aba4450651734e1e63305c00561e02a95622a
     ]
   }
 ]
