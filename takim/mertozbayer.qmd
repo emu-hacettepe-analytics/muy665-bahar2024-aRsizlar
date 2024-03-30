@@ -6,6 +6,8 @@ title: "Mert Özbayer"
 
 [Detaylı özgeçmişe buradan ulaşabilirsiniz.](/assets/mertozbayer_CV.pdf "Mert Özbayer")
 
+[![](/assets/linkedin_sembol.jpg){fig-align="left" width="50"}](https://www.linkedin.com/in/mert-özbayer-3545191b0/)
+
 # Eğitim
 
 -   Lisans, Makine Mühendisliği, Bilkent Üniversitesi Türkiye, 2013 - 2021.
