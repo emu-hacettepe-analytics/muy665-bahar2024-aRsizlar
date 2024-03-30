@@ -2,7 +2,7 @@
 title: "Mert Özbayer"
 ---
 
-![](/docs/assets/images/mertozbayer_picture.jpg){fig-align="center"}
+![](/assets/images/mert.ozbayer_picture.jpg){fig-align="left" width="310"}
 
 # Eğitim
 
