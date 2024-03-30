@@ -194,7 +194,7 @@
     "href": "index.html#proje-adı",
     "title": "Takım: aRsızlar",
     "section": "Proje Adı",
-    "text": "Proje Adı\nMUY660-İş Analitiği iyileştirme çalışmaları (örnek)"
+    "text": "Proje Adı\nMUY660-İş Analitiği iyileştirme çalışmaları-abcdefffghhhhhhhhhh (örnek)"
   },
   {
     "objectID": "index.html#proje-konusu",
@@ -222,7 +222,7 @@
     "href": "index.html#takım-üyeleri",
     "title": "Takım: aRsızlar",
     "section": "Takım Üyeleri",
-    "text": "Takım Üyeleri\n\nMert Özbayer\nİlkcan Öksüz\nŞule Sayman\nSebastian Szymański"
+    "text": "Takım Üyeleri\n\nMert Özbayer\nİlkcan Öksüz\nŞule Sayman\nGöktuğ Özateş"
   },
   {
     "objectID": "portfolyo.html",
@@ -588,14 +588,22 @@
     "href": "takim/goktugozates.html#işler",
     "title": "Goktug Ozates",
     "section": "İşler",
-    "text": "İşler\n\nTUSAS, pozisyon Alt Sözleşme Mühendisi, yıl 2023-halen\nArçelik A.S., pozisyon bakım mühendisi, yıl 2022-2023\nErdemir, pozisyon mekanik bakım mühendisi, yıl 2019-2022"
+    "text": "İşler\n\nTUSAS, pozisyon Alt Sözleşme Mühendisi, yıl 2023-halen\nArçelik A.S., pozisyon bakım mühendisi, yıl 2022-2023\nErdemir, pozisyon mekanik bakım mühendisi, yıl 2019-2022",
+    "crumbs": [
+      "Takım Üyeleri",
+      "Goktug Ozates"
+    ]
   },
   {
     "objectID": "takim/goktugozates.html#stajlar",
     "href": "takim/goktugozates.html#stajlar",
     "title": "Goktug Ozates",
     "section": "Stajlar",
-    "text": "Stajlar\n\nTürk Traktör, Stajyer, yıl 2016\nSavronik Elektronik, Stajyer, yıl 2015"
+    "text": "Stajlar\n\nTürk Traktör, Stajyer, yıl 2016\nSavronik Elektronik, Stajyer, yıl 2015",
+    "crumbs": [
+      "Takım Üyeleri",
+      "Goktug Ozates"
+    ]
   },
   {
     "objectID": "takim/goktugozates.html",

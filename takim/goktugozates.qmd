@@ -4,7 +4,7 @@ title: "Goktug Ozates"
 
 ![](images/Vesikalık_Goktug.jpg){fig-align="center"}
 
-[DetaylıÖzgeçmiş](docs/CV-Goktug_Ozates.pdf)
+
 
 # Eğitim
 
@@ -41,4 +41,6 @@ R, Quarto, Git, Python
 
 # Hobiler
 
--Anime izlemek -Kokteyl tasarımı yapmak -Kayak yapmak
+-Anime izlemek 
+-Kokteyl tasarımı yapmak 
+-Kayak yapmak
