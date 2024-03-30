@@ -39,7 +39,10 @@ website:
         - takim/mertozbayer.qmd
         - takim/ilkcanoksuz.qmd
         - takim/sulesayman.qmd  
-        - takim/ahmetcaylak.qmd  
+        - takim/goktugozates.qmd  
+        - takim/gizemgul.qmd 
+        - takim/ahmetcaylak.qmd
+        - takim/akifemirosman.qmd 
         
         
   page-navigation: true

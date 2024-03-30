@@ -13,3 +13,9 @@ Takım Üyelerimizin detaylı özgemişlerinin yer aldığı kişisel sayfaları
 3.  [Şule Sayman](/takim/sulesayman.qmd "Şule Sayman")
 
 4.  [Göktuğ Özateş](/takim/goktugozates.qmd "Göktuğ Özateş")
+
+5.  [Gizem Gül Yatarkalkmaz](/takim/gizemgul.qmd "Gizem Gül Yatarkalkmaz")
+
+6.  [Ahmet Çaylak](/takim/ahmetcaylak.qmd "Ahmet Çaylak")
+
+7.  [Akif Emirosman](/takim/akifemirosman.qmd "Akif Emirosman")

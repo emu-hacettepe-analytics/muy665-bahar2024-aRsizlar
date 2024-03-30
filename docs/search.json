@@ -236,7 +236,7 @@
     "href": "takim.html",
     "title": "Takım Üyeleri",
     "section": "",
-    "text": "Takım Üyelerimizin detaylı özgemişlerinin yer aldığı kişisel sayfalarına gitmek için sol menüyü veya aşağıdaki linkleri kullanabilirsiniz.\n\nTakım Üyeleri\n\nMert Özbayer\nİlkcan Öksüz\nŞule Sayman\nGöktuğ Özateş\n\n\n\n\n\n Back to top",
+    "text": "Takım Üyelerimizin detaylı özgemişlerinin yer aldığı kişisel sayfalarına gitmek için sol menüyü veya aşağıdaki linkleri kullanabilirsiniz.\n\nTakım Üyeleri\n\nMert Özbayer\nİlkcan Öksüz\nŞule Sayman\nGöktuğ Özateş\nGizem Gül Yatarkalkmaz\nAhmet Çaylak\nAkif Emirosman\n\n\n\n\n\n Back to top",
     "crumbs": [
       "Takım Üyeleri"
     ]
@@ -316,7 +316,11 @@
     "href": "portfolyo/calisma1.html",
     "title": "Çalışma 1",
     "section": "",
-    "text": "(Aşağıdakiler örnek olarak verilmiştir.)\nBu çalışmada 3 görevimiz var. Bu görevler….. Bunlara sırayla aşağıda cevap arıyoruz."
+    "text": "library(‘dslabs’) data(mtcars)\ncustom_summary &lt;- function(data) { # Boş bir liste oluştur statistics_with_values &lt;- list()\n# Her bir sütun için for (col in names(data)) { # İstatistikleri hesapla mean_value &lt;- mean(data[[col]]) median_value &lt;- median(data[[col]]) sd_value &lt;- sd(data[[col]]) min_value &lt;- min(data[[col]]) max_value &lt;- max(data[[col]])\n# Sütun adını kullanarak istatistikleri liste olarak ekleyin\nstatistics_with_values[[col]] &lt;- list(\n  Mean = mean_value,\n  Median = median_value,\n  Standard_Deviation = sd_value,\n  Minimum = min_value,\n  Maximum = max_value,\n  Values = data[[col]]\n)\n}\nreturn(statistics_with_values) }\n\nFonksiyonu çağırarak istatistikleri al\nmtcars_statistics_with_values &lt;- custom_summary(mtcars)\n\n\nSonuçları yazdır\nfor (col_name in names(mtcars_statistics_with_values)) { cat(“Column:”, col_name, “”) print(mtcars_statistics_with_values[[col_name]]) cat(“”) }\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Porfolyo",
+      "Çalışma 1"
+    ]
   },
   {
     "objectID": "proje.html#veri-kaynağı",
@@ -591,22 +595,14 @@
     "href": "takim/goktugozates.html#işler",
     "title": "Goktug Ozates",
     "section": "İşler",
-    "text": "İşler\n\nTUSAS, pozisyon Alt Sözleşme Mühendisi, yıl 2023-halen\nArçelik A.S., pozisyon bakım mühendisi, yıl 2022-2023\nErdemir, pozisyon mekanik bakım mühendisi, yıl 2019-2022",
-    "crumbs": [
-      "Takım Üyeleri",
-      "Goktug Ozates"
-    ]
+    "text": "İşler\n\nTUSAS, pozisyon Alt Sözleşme Mühendisi, yıl 2023-halen\nArçelik A.S., pozisyon bakım mühendisi, yıl 2022-2023\nErdemir, pozisyon mekanik bakım mühendisi, yıl 2019-2022"
   },
   {
     "objectID": "takim/goktugozates.html#stajlar",
     "href": "takim/goktugozates.html#stajlar",
     "title": "Goktug Ozates",
     "section": "Stajlar",
-    "text": "Stajlar\n\nTürk Traktör, Stajyer, yıl 2016\nSavronik Elektronik, Stajyer, yıl 2015",
-    "crumbs": [
-      "Takım Üyeleri",
-      "Goktug Ozates"
-    ]
+    "text": "Stajlar\n\nTürk Traktör, Stajyer, yıl 2016\nSavronik Elektronik, Stajyer, yıl 2015"
   },
   {
     "objectID": "takim/goktugozates.html",
@@ -614,5 +610,27 @@
     "title": "Goktug Ozates",
     "section": "",
     "text": "DetaylıÖzgeçmiş"
+  },
+  {
+    "objectID": "takim/ahmetcaylak.html#işler",
+    "href": "takim/ahmetcaylak.html#işler",
+    "title": "Ahmet Çaylak",
+    "section": "İşler",
+    "text": "İşler\n\nMRC Turkey, Proje Mühendisi, 2021 - 2022\nEnerjisa, Arge Uzmanı, 2022 - Devam ediyor",
+    "crumbs": [
+      "Takım Üyeleri",
+      "Ahmet Çaylak"
+    ]
+  },
+  {
+    "objectID": "takim/ahmetcaylak.html#stajlar",
+    "href": "takim/ahmetcaylak.html#stajlar",
+    "title": "Ahmet Çaylak",
+    "section": "Stajlar",
+    "text": "Stajlar\n\nÇimsa Çimento San Tic AŞ, Stajyer, 2017\nErciyes Enerji Üretim San Tic AŞ, Stajyer, 2020",
+    "crumbs": [
+      "Takım Üyeleri",
+      "Ahmet Çaylak"
+    ]
   }
 ]

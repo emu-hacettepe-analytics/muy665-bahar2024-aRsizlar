@@ -4,8 +4,6 @@ title: "Goktug Ozates"
 
 ![](images/Vesikalık_Goktug.jpg){fig-align="center"}
 
-
-
 # Eğitim
 
 -   Lisans, Makine Mühendisliği, TOBB Üniversitesi, Türkiye, 2011 - 2017.
@@ -41,6 +39,4 @@ R, Quarto, Git, Python
 
 # Hobiler
 
--Anime izlemek 
--Kokteyl tasarımı yapmak 
--Kayak yapmak
+-Anime izlemek -Kokteyl tasarımı yapmak -Kayak yapmak

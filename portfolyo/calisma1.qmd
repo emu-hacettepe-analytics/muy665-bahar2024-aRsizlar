@@ -1,18 +1,46 @@
 ---
 title: "Çalışma 1"
+editor: 
+  markdown: 
+    wrap: 72
 ---
 
 \
-(Aşağıdakiler örnek olarak verilmiştir.)
 
-Bu çalışmada 3 görevimiz var.
+library('dslabs') data(mtcars)
 
-İlk olarak belirtilen kaynaklardan bir video seçip özetini açıklıyoruz.
+custom_summary \<- function(data) { \# Boş bir liste oluştur
+statistics_with_values \<- list()
 
-## (a)
+\# Her bir sütun için for (col in names(data)) { \# İstatistikleri
+hesapla mean_value \<- mean(data\[\[col\]\]) median_value \<-
+median(data\[\[col\]\]) sd_value \<- sd(data\[\[col\]\]) min_value \<-
+min(data\[\[col\]\]) max_value \<- max(data\[\[col\]\])
 
-```{ndefinedr}ndefin}
+```         
+# Sütun adını kullanarak istatistikleri liste olarak ekleyin
+statistics_with_values[[col]] <- list(
+  Mean = mean_value,
+  Median = median_value,
+  Standard_Deviation = sd_value,
+  Minimum = min_value,
+  Maximum = max_value,
+  Values = data[[col]]
+)
 ```
 
-## ed
-1 + 1(b)
+}
+
+return(statistics_with_values) }
+
+# Fonksiyonu çağırarak istatistikleri al
+
+mtcars_statistics_with_values \<- custom_summary(mtcars)
+
+# Sonuçları yazdır
+
+for (col_name in names(mtcars_statistics_with_values)) { cat("Column:",
+col_name, "\n") print(mtcars_statistics_with_values\[\[col_name\]\])
+cat("\n") }
+
+
