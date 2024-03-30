@@ -1,0 +1,28 @@
+---
+title: "Ahmet Çaylak"
+---
+
+![](/docs/assets/images/ahmetc.jpg){fig-alt="ahmetc" fig-align="center" width="282"}
+
+# Eğitim
+
+-   Lisans, Elektrik Mühendisliği, Kocaeli Üniversitesi, Türkiye, 2015 - 2020.
+-   Yüksek Lisans, Endüstri Mühendisliği, Hacettepe Üniversitesi, TÜrkiye, 2024 - Devam ediyor.
+
+# İş Deneyimi
+
+
+
+## İşler
+
+-   MRC Turkey, Proje Mühendisi, 2021 - 2022
+-   Enerjisa, Arge Uzmanı, 2022 - Devam ediyor
+
+## Stajlar
+
+1.  Çimsa Çimento San Tic AŞ, Stajyer, 2017
+2.  Erciyes Enerji Üretim San Tic AŞ, Stajyer, 2020
+
+# Yetkinlikler
+
+R, Quarto, Git, Autocad, Mapinfo, B-Pro
