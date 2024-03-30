@@ -23,3 +23,7 @@ title: "Şule Sayman"
 # Yetkinlikler
 
 R, Quarto, Git
+
+# Hobiler
+
+Binicilik, müzik, sinema
