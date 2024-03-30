@@ -5,7 +5,7 @@ editor:
     wrap: 72
 ---
 
-\
+
 
 library('dslabs') data(mtcars)
 
@@ -43,4 +43,91 @@ for (col_name in names(mtcars_statistics_with_values)) { cat("Column:",
 col_name, "\n") print(mtcars_statistics_with_values\[\[col_name\]\])
 cat("\n") }
 
+## Bu bölümde toplam 3 görevimiz bulunmaktadır.
 
+## a)Seçtiğimiz video ismi yazılacak
+
+## b)
+
+## 1)Özel Özet Fonksiyonu Yazma
+
+```{r}
+library(dslabs)  ## dslabs pkaeti yükleme
+data(mtcars)  ## mtcars veri setini çağırma
+
+
+```
+
+```{r}
+head(mtcars)   ## veri setinin ilk bir kaç gözlemi
+
+```
+
+```{r}
+str(mtcars)  ## veri setinin yapısını inceleme
+
+```
+
+```{r}
+print(mtcars)
+
+```
+
+```{r}
+## girdi olarak vector tanımlama ve ve bu vector ün ortamalasını , medyanını , standart sapmasını ,minimumunu ve maksimumunu içeren liste döndürme
+custom_summary <- function(vec) {   
+    updated_list <- list(
+      mean=mean(vec),
+      median=median(vec),
+      standard_deviation=sd(vec),
+      minimum_value=min(vec),
+      maximum_vaule=max(vec)
+    )
+      return(updated_list)
+  
+}
+     ##custom_summary fonksiyonunu kullanarak veri setindeki mpg değişkeninin özet istatistiğini hesaplama
+     mpg_summary <- custom_summary(mtcars$mpg)
+     print(mpg_summary)
+     ##custom_summary fonksiyonunu kullanarak veri setindeki hp değişkeninin özet istatistiğini hesaplasaydk aşağıdaki gibi olurdu
+     ##hp_summary <- custom_summary(mtcars$hp)
+     ##print(hp)
+     
+     
+     
+
+```
+
+## 2)Fonksiyonu Döngü Kullanarak Uygulama
+
+```{r}
+nmrc_columns <- sapply(mtcars, is.numeric)   ##veri setinin sayısal sütunlarını belirleme
+print(nmrc_columns)
+```
+
+
+
+
+## 3)Apply ile Alternatif bir Yaklaşım
+
+```{r}
+result <- apply(mtcars, 2, custom_summary)
+print(result)
+```
+
+## c)
+
+```{r}
+
+library(dslabs)
+data(na_example)   ## na_example veri setini çağır
+print(na_example)
+
+
+```
+
+```{r}
+sum_na <- sum(is.na(na_example))
+print(sum_na)
+
+```
