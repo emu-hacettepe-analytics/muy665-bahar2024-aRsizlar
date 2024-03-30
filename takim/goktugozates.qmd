@@ -1,0 +1,42 @@
+---
+title: "Goktug Ozates"
+---
+![](/assets/images/Vesikalik_Goktug.jpg){fig-align="center"}
+
+# Eğitim
+
+-   Lisans, Makine Mühendisliği, TOBB Üniversitesi, Türkiye, 2011 - 2017.
+-   Yüksek Lisans, Endüstri Mühendisliği, Hacettepe Üniversitesi, Türkiye, 2024 - devam ediyor.
+
+# İş Deneyimi
+
+## İşler
+
+1.  TUSAS, pozisyon Alt Sözleşme Mühendisi, yıl 2023-halen
+
+2.  Arçelik A.S., pozisyon bakım mühendisi, yıl 2022-2023
+
+3.  Erdemir, pozisyon mekanik bakım mühendisi, yıl 2019-2022
+
+## Stajlar
+
+1.  Türk Traktör, Stajyer, yıl 2016
+
+2.  Savronik Elektronik, Stajyer, yıl 2015
+
+# Projeler
+
+1.  Erdemir , Gaz Türbini OPEX Projesi
+
+# Yayınlar
+
+1.  ...
+
+# Yetkinlikler
+
+R, Quarto, Git, Python
+
+# Hobiler
+ -Anime izlemek
+ -Kokteyl tasarımı yapmak
+ -Kayak yapmak
