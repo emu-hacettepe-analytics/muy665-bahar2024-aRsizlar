@@ -2,7 +2,7 @@
 title: "Şule Sayman"
 ---
 
-![](/docs/assets/images/sulesayman_vesikalik.jpg){fig-alt="Şule Sayman Fotoğraf" fig-align="left" width="282"}
+![](images/sulesayman_vesikalik.jpg){fig-alt="Şule Sayman Fotoğraf" fig-align="left" width="219"}
 
 # Eğitim
 
