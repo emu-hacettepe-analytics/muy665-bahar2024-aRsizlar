@@ -1,29 +1,28 @@
 ---
-title: "Şule Sayman"
+title: "Ahmet Çaylak"
 ---
 
-![](/docs/assets/images/sulesayman_vesikalik.jpg){fig-alt="Şule Sayman Fotoğraf" fig-align="left" width="282"}
+![](/docs/assets/images/ahmetc.jpg){fig-alt="ahmetc" fig-align="center" width="282"}
 
 # Eğitim
 
--   Lisans, Gıda Mühendisliği, Hacettepe Üniversitesi, Türkiye, 2015 - 2021.
--   Yüksek Lisans, Endüstri Mühendisliği, Hacettepe Üniversitesi, Türkiye, 2023 - devam ediyor.
+-   Lisans, Elektrik Mühendisliği, Kocaeli Üniversitesi, Türkiye, 2015 - 2020.
+-   Yüksek Lisans, Endüstri Mühendisliği, Hacettepe Üniversitesi, TÜrkiye, 2024 - Devam ediyor.
 
 # İş Deneyimi
 
+
+
 ## İşler
 
--   M&S Bros Dış Tic. Ltd. Şti., Quality Engineer, 2021 - devam ediyor
+-   MRC Turkey, Proje Mühendisi, 2021 - 2022
+-   Enerjisa, Arge Uzmanı, 2022 - Devam ediyor
 
 ## Stajlar
 
-1.  Türk Standartları Enstitüsü, Ar-Ge Mühendisi, 2018
-2.  Ülker Ankara Bisküvi Fabrikası, Kalite Mühendisi, 2019
+1.  Çimsa Çimento San Tic AŞ, Stajyer, 2017
+2.  Erciyes Enerji Üretim San Tic AŞ, Stajyer, 2020
 
 # Yetkinlikler
 
-R, Quarto, Git
-
-# Hobiler
-
-Binicilik, müzik, sinema
+R, Quarto, Git, Autocad, Mapinfo, B-Pro
