@@ -10,6 +10,6 @@ Takım Üyelerimizin detaylı özgemişlerinin yer aldığı kişisel sayfaları
 
 2.  [İlkcan Öksüz](/takim/ilkcanoksuz.qmd "İlkcan Öksüz")
 
-3.  [Frederico Rodrigues de Paula Santos](/takim/fred.qmd)
+3.  [Şule Sayman](/takim/sulesayman.qmd "Şule Sayman")
 
 4.  [Sebastian Szymański](/takim/szymanski.qmd)
