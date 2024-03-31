@@ -7,9 +7,33 @@ editor:
 
 ## Bu bölümde toplam 3 görevimiz bulunmaktadır.
 
-## a)Seçtiğimiz video ismi yazılacak
+## a) **Veri Bilimi ve Endüstri Mühendisliği Üzerine Sohbetler - Baykal Hafızoğlu & Erdi Daşdemir**
 
-## b)
+Baysal Hafızoğlu, özgeçmişi üzerinden öğrencilere deneyimlerini
+aktararak çalıştığı şirketler ve çalışma alanları hakkında bilgi
+veriyor. Analitik (OR) dünyasında 4 adet metottan (descriptive,
+diagnostic, predictive, prescriptive) ve bu metotların içerikleri
+hakkında bilgi veriyor. Analitik çözümler başlığı altında kullanılan
+metotlar (diagnostic, predictive, prescriptive), kullanım sıklıkları
+(günde birkaç kez, hafta veya ayda birkaç kez ve yılda birkaç kez) ve
+müşteriye iletim metotlarından (software application, cosulting project)
+bahsediyor. Müşteriyi mutlu etmenin önemini vurguluyor ve son
+kullanıcının her zaman haklı olduğundan bahsediyor. Müşteri
+memnuniyetinin yolları başlığı altında aynı dili konuşmanın önemini,
+problem tanımlarının herkesin anlayacağı dilden olması gerektiğini,
+çözümlerin hızlı olması ve çabuk feedback alınması gerektiğini,
+açıklanabilir-mantıklı-kolay çözümler üretilmesi gerektiğini anlatıyor.
+Müşteriyi çekme yolu olarak müşterinin eski alışkanlıklarından kopması
+için yeni sisteme adaptasyon sürecinin kolay olması gerektiğini
+vurguluyor ve temiz-kullanılabilir olması gerektiğinden bahsediyor.
+Problem çözümlerinin matematiksel olarak gösterilmesi (zamanında teslim
+oranı vb.) gerektiğini, bu şekilde daha iyi anlaşılır olacağını
+anlatıyor. Ayrıca çözüm sonuçlarının karşılaştırmalı gösterilmesinin
+müşteri üzerinde iyi bir etki bırakacağından bahsediyor. Böylelikle
+müşteri hem mantığı görmüş hem de çözüm yolunu anlamış oluyor. Son
+bölümde ise user interface’in anlaşılabilir olması ve insanların zaman
+kaybetmemesi için basit ve temiz olması gerektiğini anlatıyor ve
+dinleyenlerin soruları alınıyor.
 
 ## 1)Özel Özet Fonksiyonu Yazma
 
