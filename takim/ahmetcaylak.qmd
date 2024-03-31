@@ -2,14 +2,14 @@
 title: "Ahmet Çaylak"
 ---
 
-![](/docs/assets/images/ahmetc.jpg){fig-alt="ahmetc" fig-align="center" width="282"}
+![](/docs/assets/images/ahmetc.jpg){fig-align="left" width="240"}
 
 [Detaylı özgeçmişe buradan ulaşabilirsiniz.](/assets/ahmetcv.pdf "Ahmet Çaylak")
 
 # Eğitim
 
 -   Lisans, Elektrik Mühendisliği, Kocaeli Üniversitesi, Türkiye, 2015 - 2020.
--   Yüksek Lisans, Endüstri Mühendisliği, Hacettepe Üniversitesi, TÜrkiye, 2024 - Devam ediyor.
+-   Yüksek Lisans, Endüstri Mühendisliği, Hacettepe Üniversitesi, Türkiye, 2024 - Devam ediyor.
 
 # İş Deneyimi
 
@@ -25,4 +25,9 @@ title: "Ahmet Çaylak"
 
 # Yetkinlikler
 
-R, Quarto, Git, Autocad, Mapinfo, B-Pro
+R, Quarto, Git, Jira, Autocad, Mapinfo, B-Pro, MS Office
+
+# Hobiler
+
+Sualtı Sporları, Kış Sporları, Netflix dizileri
+
