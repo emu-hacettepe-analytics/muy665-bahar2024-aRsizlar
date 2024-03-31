@@ -94,6 +94,8 @@ print(nmrc_columns)
 ```
 
 ```{r}
+
+##mtcars veri setindeki her değişken için istatistiklerin matris halinde döndürülmesi
 summary_list <- list()   
 for (i in names(mtcars)) {
   summary_list[[i]] <- unlist(custom_summary(mtcars[[i]]))
@@ -135,4 +137,19 @@ cat("Toplam NA değeri sayısı:", sum_na, "\n")
 na_example_update <- na_example
 na_example_update[is.na(na_example_update)] <- 665  ##na_example_update veri setindeki NA değerlerini 665 ile değiştiriyoruz
 print(na_example_update) 
+```
+
+```{r}
+write.csv(na_example_update, file = "na_example_updated.csv", row.names = FALSE)  ## yeni veri setini değişken olarak kaydetme
+
+```
+
+```{r}
+na_count_modified <- sum(is.na(na_example_update))
+cat("Yeni veri setindeki NA Değerlerinin Sayısı", na_count_modified)
+```
+
+```{r}
+count_665 <- sum(na_example_update == 665, na.rm=TRUE)
+cat("Yeni veri setindeki 665 lerin toplam sayısı" , count_665 )
 ```
