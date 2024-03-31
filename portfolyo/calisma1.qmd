@@ -68,6 +68,16 @@ print(nmrc_columns)
 ```
 
 ```{r}
+summary_list <- list()   
+for (i in names(mtcars)) {
+  summary_list[[i]] <- unlist(custom_summary(mtcars[[i]]))
+}
+
+summary_matrix <- do.call(cbind, summary_list)
+rownames(summary_matrix) <- c("mean", "median", "standard_deviation", "minimum_value", "maximum_value")
+
+print(summary_matrix)
+
 
 ```
 
