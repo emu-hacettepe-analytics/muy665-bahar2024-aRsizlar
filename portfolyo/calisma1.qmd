@@ -146,10 +146,10 @@ write.csv(na_example_update, file = "na_example_updated.csv", row.names = FALSE)
 
 ```{r}
 na_count_modified <- sum(is.na(na_example_update))
-cat("Yeni veri setindeki NA Değerlerinin Sayısı", na_count_modified)
+cat("Yeni veri setindeki NA Değerlerinin Toplam Sayısı", na_count_modified)
 ```
 
 ```{r}
 count_665 <- sum(na_example_update == 665, na.rm=TRUE)
-cat("Yeni veri setindeki 665 lerin toplam sayısı" , count_665 )
+cat("Yeni veri setindeki 665 lerin Toplam Sayısı" , count_665 )
 ```
