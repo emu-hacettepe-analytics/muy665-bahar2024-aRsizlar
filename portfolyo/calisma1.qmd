@@ -5,42 +5,128 @@ editor:
     wrap: 72
 ---
 
-\
+## Bu bölümde toplam 3 görevimiz bulunmaktadır.
 
-library('dslabs') data(mtcars)
+## a) **Veri Bilimi ve Endüstri Mühendisliği Üzerine Sohbetler - Baykal Hafızoğlu & Erdi Daşdemir**
 
-custom_summary \<- function(data) { \# Boş bir liste oluştur
-statistics_with_values \<- list()
+Baysal Hafızoğlu, özgeçmişi üzerinden öğrencilere deneyimlerini
+aktararak çalıştığı şirketler ve çalışma alanları hakkında bilgi
+veriyor. Analitik (OR) dünyasında 4 adet metottan (descriptive,
+diagnostic, predictive, prescriptive) ve bu metotların içerikleri
+hakkında bilgi veriyor. Analitik çözümler başlığı altında kullanılan
+metotlar (diagnostic, predictive, prescriptive), kullanım sıklıkları
+(günde birkaç kez, hafta veya ayda birkaç kez ve yılda birkaç kez) ve
+müşteriye iletim metotlarından (software application, cosulting project)
+bahsediyor. Müşteriyi mutlu etmenin önemini vurguluyor ve son
+kullanıcının her zaman haklı olduğundan bahsediyor. Müşteri
+memnuniyetinin yolları başlığı altında aynı dili konuşmanın önemini,
+problem tanımlarının herkesin anlayacağı dilden olması gerektiğini,
+çözümlerin hızlı olması ve çabuk feedback alınması gerektiğini,
+açıklanabilir-mantıklı-kolay çözümler üretilmesi gerektiğini anlatıyor.
+Müşteriyi çekme yolu olarak müşterinin eski alışkanlıklarından kopması
+için yeni sisteme adaptasyon sürecinin kolay olması gerektiğini
+vurguluyor ve temiz-kullanılabilir olması gerektiğinden bahsediyor.
+Problem çözümlerinin matematiksel olarak gösterilmesi (zamanında teslim
+oranı vb.) gerektiğini, bu şekilde daha iyi anlaşılır olacağını
+anlatıyor. Ayrıca çözüm sonuçlarının karşılaştırmalı gösterilmesinin
+müşteri üzerinde iyi bir etki bırakacağından bahsediyor. Böylelikle
+müşteri hem mantığı görmüş hem de çözüm yolunu anlamış oluyor. Son
+bölümde ise user interface’in anlaşılabilir olması ve insanların zaman
+kaybetmemesi için basit ve temiz olması gerektiğini anlatıyor ve
+dinleyenlerin soruları alınıyor.
 
-\# Her bir sütun için for (col in names(data)) { \# İstatistikleri
-hesapla mean_value \<- mean(data\[\[col\]\]) median_value \<-
-median(data\[\[col\]\]) sd_value \<- sd(data\[\[col\]\]) min_value \<-
-min(data\[\[col\]\]) max_value \<- max(data\[\[col\]\])
+## b)
 
-```         
-# Sütun adını kullanarak istatistikleri liste olarak ekleyin
-statistics_with_values[[col]] <- list(
-  Mean = mean_value,
-  Median = median_value,
-  Standard_Deviation = sd_value,
-  Minimum = min_value,
-  Maximum = max_value,
-  Values = data[[col]]
-)
+## 1)Özel Özet Fonksiyonu Yazma
+
+```{r}
+library(dslabs)  ## dslabs pkaeti yükleme
+data(mtcars)  ## mtcars veri setini çağırma
+
+
 ```
 
+```{r}
+head(mtcars)   ## veri setinin ilk bir kaç gözlemi
+
+```
+
+```{r}
+str(mtcars)  ## veri setinin yapısını inceleme
+
+```
+
+```{r}
+print(mtcars)
+
+```
+
+```{r}
+## girdi olarak vector tanımlama ve ve bu vector ün ortamalasını , medyanını , standart sapmasını ,minimumunu ve maksimumunu içeren liste döndürme
+custom_summary <- function(vec) {   
+    updated_list <- list(
+      mean=mean(vec),
+      median=median(vec),
+      standard_deviation=sd(vec),
+      minimum_value=min(vec),
+      maximum_vaule=max(vec)
+    )
+      return(updated_list)
+  
+}
+     ##custom_summary fonksiyonunu kullanarak veri setindeki mpg değişkeninin özet istatistiğini hesaplama
+     mpg_summary <- custom_summary(mtcars$mpg)
+     print(mpg_summary)
+     ##custom_summary fonksiyonunu kullanarak veri setindeki hp değişkeninin özet istatistiğini hesaplasaydk aşağıdaki gibi olurdu
+     ##hp_summary <- custom_summary(mtcars$hp)
+     ##print(hp)
+     
+     
+     
+
+```
+
+## 2)Fonksiyonu Döngü Kullanarak Uygulama
+
+```{r}
+nmrc_columns <- sapply(mtcars, is.numeric)   ##veri setinin sayısal sütunlarını belirleme
+print(nmrc_columns)
+```
+
+```{r}
+summary_list <- list()   
+for (i in names(mtcars)) {
+  summary_list[[i]] <- unlist(custom_summary(mtcars[[i]]))
 }
 
-return(statistics_with_values) }
+summary_matrix <- do.call(cbind, summary_list)
+rownames(summary_matrix) <- c("mean", "median", "standard_deviation", "minimum_value", "maximum_value")
 
-# Fonksiyonu çağırarak istatistikleri al
-
-mtcars_statistics_with_values \<- custom_summary(mtcars)
-
-# Sonuçları yazdır
-
-for (col_name in names(mtcars_statistics_with_values)) { cat("Column:",
-col_name, "\n") print(mtcars_statistics_with_values\[\[col_name\]\])
-cat("\n") }
+print(summary_matrix)
 
 
+```
+
+## 3)Apply ile Alternatif bir Yaklaşım
+
+```{r}
+result <- apply(mtcars, 2, custom_summary)
+print(result)
+```
+
+## c)na_example
+
+```{r}
+
+library(dslabs)
+data(na_example)   ## na_example veri setini çağır
+print(na_example)
+
+
+```
+
+```{r}
+sum_na <- sum(is.na(na_example))
+cat("Toplam NA değeri sayısı:", sum_na, "\n")
+
+```

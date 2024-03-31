@@ -4,9 +4,13 @@ title: "Mert Özbayer"
 
 ![](/assets/images/mert.ozbayer_picture.jpg){fig-align="left" width="350"}
 
+[Detaylı özgeçmişe buradan ulaşabilirsiniz.](/assets/mertozbayer_CV.pdf "Mert Özbayer")
+
+[![](/assets/linkedin_sembol.jpg){fig-align="left" width="50"}](https://www.linkedin.com/in/mert-özbayer-3545191b0/)
+
 # Eğitim
 
--   Lisans, Makine Mühendisliği, Bilkent Üniversitesi Türkiye, 2013 - 2021. 
+-   Lisans, Makine Mühendisliği, Bilkent Üniversitesi Türkiye, 2013 - 2021.
 
 -   Yüksek Lisans, Endüstri Mühendisliği, Hacettepe Üniversitesi, Türkiye, 2023 - devam ediyor
 
@@ -26,11 +30,11 @@ title: "Mert Özbayer"
 
 2.  Tosçelik Profil ve Saç Endüstri A.Ş., Osmaniye ERW Tesisi, Üretim Stajı, yıl 2020
 
-3.  Ülker Bizküvi Sanayi A.Ş., Ambalaj Paketleme Bakım ve Onarım, Üretim Stajı, yıl 2019 
+3.  Ülker Bizküvi Sanayi A.Ş., Ambalaj Paketleme Bakım ve Onarım, Üretim Stajı, yıl 2019
 
 # Yetkinlikler
 
-R, Quarto, Git, Python, Matlab, Catia V5, SolidWorks, Canias ERP, SAP, Jira, 
+R, Quarto, Git, Python, Matlab, Catia V5, SolidWorks, Canias ERP, SAP, Jira,
 
 # Hobiler
 

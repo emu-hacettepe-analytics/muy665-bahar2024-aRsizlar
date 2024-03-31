@@ -2,7 +2,11 @@
 title: "Goktug Ozates"
 ---
 
-![](images/Vesikalık_Goktug.jpg){fig-align="center"}
+![](images/Vesikalık_Goktug.jpg){fig-align="left"}
+
+[Buradan detaylı özgeçmişime ulaşabilirsiniz](/assets/CV_Goktug_Ozates.pdf "Göktuğ Özateş")
+
+[![](/assets/linkedin_sembol.jpg){fig-align="left" width="50"}](https://www.linkedin.com/in/goktug-ozates/)
 
 # Eğitim
 
@@ -28,10 +32,6 @@ title: "Goktug Ozates"
 # Projeler
 
 1.  Erdemir , Gaz Türbini OPEX Projesi
-
-# Yayınlar
-
-1.  ...
 
 # Yetkinlikler
 
