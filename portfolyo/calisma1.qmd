@@ -127,6 +127,6 @@ print(na_example)
 
 ```{r}
 sum_na <- sum(is.na(na_example))
-print(sum_na)
+cat("Toplam NA değeri sayısı:", sum_na, "\n")
 
 ```
