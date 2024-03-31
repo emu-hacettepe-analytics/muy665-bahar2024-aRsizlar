@@ -6,7 +6,7 @@ title: "Gizem Gül Yatarkalkmaz"
 
 [Buradan detaylı özgeçmişime ulaşabilirsiniz](/assets/gizemyatarkalkmaz_cv.pdf)
 
-[LinkedIn](https://www.linkedin.com/in/gizem-gul-y/)
+[![](/assets/linkedin_sembol.jpg){fig-align="left" width="50"}](https://www.linkedin.com/in/gizem-gul-y/)
 
 # Eğitim
 
