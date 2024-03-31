@@ -4,6 +4,8 @@ title: "Goktug Ozates"
 
 ![](images/Vesikalık_Goktug.jpg){fig-align="center"}
 
+[Buradan detaylı özgeçmişime ulaşabilirsiniz](https://www.linkedin.com/in/goktug-ozates/)
+
 # Eğitim
 
 -   Lisans, Makine Mühendisliği, TOBB Üniversitesi, Türkiye, 2011 - 2017.
@@ -29,9 +31,6 @@ title: "Goktug Ozates"
 
 1.  Erdemir , Gaz Türbini OPEX Projesi
 
-# Yayınlar
-
-1.  ...
 
 # Yetkinlikler
 
@@ -39,4 +38,6 @@ R, Quarto, Git, Python
 
 # Hobiler
 
--Anime izlemek -Kokteyl tasarımı yapmak -Kayak yapmak
+-Anime izlemek 
+-Kokteyl tasarımı yapmak 
+-Kayak yapmak
