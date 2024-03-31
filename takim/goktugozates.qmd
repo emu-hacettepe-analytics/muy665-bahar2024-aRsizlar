@@ -2,9 +2,11 @@
 title: "Goktug Ozates"
 ---
 
-![](images/Vesikalık_Goktug.jpg){fig-align="center"}
+![](images/Vesikalık_Goktug.jpg){fig-align="left"}
 
-[Buradan detaylı özgeçmişime ulaşabilirsiniz](https://www.linkedin.com/in/goktug-ozates/)
+[Buradan detaylı özgeçmişime ulaşabilirsiniz](/assets/CV_Goktug_Ozates.pdf "Göktuğ Özateş")
+
+[![](/assets/linkedin_sembol.jpg){fig-align="left" width="50"}](https://www.linkedin.com/in/goktug-ozates/)
 
 # Eğitim
 
@@ -31,13 +33,10 @@ title: "Goktug Ozates"
 
 1.  Erdemir , Gaz Türbini OPEX Projesi
 
-
 # Yetkinlikler
 
 R, Quarto, Git, Python
 
 # Hobiler
 
--Anime izlemek 
--Kokteyl tasarımı yapmak 
--Kayak yapmak
+-Anime izlemek -Kokteyl tasarımı yapmak -Kayak yapmak
