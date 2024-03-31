@@ -130,3 +130,9 @@ sum_na <- sum(is.na(na_example))
 cat("Toplam NA değeri sayısı:", sum_na, "\n")
 
 ```
+
+```{r}
+na_example_update <- na_example
+na_example_update[is.na(na_example_update)] <- 665  ##na_example_update veri setindeki NA değerlerini 665 ile değiştiriyoruz
+print(na_example_update) 
+```
