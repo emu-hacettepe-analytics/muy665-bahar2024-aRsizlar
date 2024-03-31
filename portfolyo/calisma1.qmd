@@ -78,7 +78,7 @@ result <- apply(mtcars, 2, custom_summary)
 print(result)
 ```
 
-## c)
+## c)na_example
 
 ```{r}
 
