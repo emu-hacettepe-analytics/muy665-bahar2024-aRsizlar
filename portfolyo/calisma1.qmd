@@ -35,6 +35,8 @@ bölümde ise user interface’in anlaşılabilir olması ve insanların zaman
 kaybetmemesi için basit ve temiz olması gerektiğini anlatıyor ve
 dinleyenlerin soruları alınıyor.
 
+## b)
+
 ## 1)Özel Özet Fonksiyonu Yazma
 
 ```{r}
