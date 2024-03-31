@@ -2,7 +2,7 @@
 title: "Gizem Gül Yatarkalkmaz"
 ---
 
-![](/docs/assets/images/gizemyatarkalkmaz_img.JPG){fig-align="center"}
+![](/docs/assets/images/gizemyatarkalkmaz_img.JPG){fig-align="left" width="240"}
 
 [Buradan detaylı özgeçmişime ulaşabilirsiniz](/assets/gizemyatarkalkmaz_cv.pdf)
 
