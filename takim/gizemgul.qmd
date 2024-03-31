@@ -29,15 +29,15 @@ title: "Gizem Gül Yatarkalkmaz"
 
 1.  Getinge, Stajyer, 2018
 
-2.  İntecro Robotiks, Stajyer, 2017
+2.  Intecro Robotics, Stajyer, 2017
 
 3.  FNSS, Stajyer, 2017
 
 # Projeler
 
 1.  Mekatronik Tasarım Projesi - Environmentally Recyclable Garbage Collector Robot, 2019
-2.  Lisans Araştırma Projesi - PAth Planning for Mobile Robots with SLAM Algorithms, 2019
-3.  Competition Project - 6x6 Spider type, RC off-road vehicle, 2018
+2.  Lisans Araştırma Projesi - Path Planning for Mobile Robots with SLAM Algorithms, 2019
+3.  Yarışma Projesi - 6x6 Spider type, RC off-road vehicle, 2018
 
 # Yetkinlikler
 
@@ -45,4 +45,4 @@ R, Quarto, Git, Ms Project, SAP, Jira
 
 # Hobiler
 
-Müzik, dans, gitar, şarkı söylemek, voleybol, futbol, film izlemek, yürüyüş yapmak
+Müzik, dans, gitar, voleybol, futbol, film izlemek, yürüyüş yapmak
