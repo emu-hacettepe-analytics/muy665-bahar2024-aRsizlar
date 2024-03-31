@@ -4,6 +4,8 @@ title: "Ahmet Çaylak"
 
 ![](/docs/assets/images/ahmetc.jpg){fig-alt="ahmetc" fig-align="center" width="282"}
 
+[Detaylı özgeçmişe buradan ulaşabilirsiniz.](/assets/ahmetcv.pdf "Ahmet Çaylak")
+
 # Eğitim
 
 -   Lisans, Elektrik Mühendisliği, Kocaeli Üniversitesi, Türkiye, 2015 - 2020.
