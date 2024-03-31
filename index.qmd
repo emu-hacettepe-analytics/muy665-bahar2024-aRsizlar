@@ -5,9 +5,9 @@ sidebar: false
 
 MUY665-İş Analitiği dersi takım sayfamıza hoş geldiniz.
 
-Bu analitik çalışmalarımızı paylaşıyoruz.
+Bu sayfada analitik çalışmalarımızı paylaşıyoruz.
 
-Lütfen faaliyetlerimizi görmek için için bizi takipte kalın.
+Lütfen faaliyetlerimizi görmek için bizi takipte kalın.
 
 ## Takım Üyeleri
 
