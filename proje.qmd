@@ -75,6 +75,30 @@ alinan_goc <- read_excel("goc_etme_nedenine_illerin_aldigi_goc.xlsx")
 head(alinan_goc)
 ```
 
+```{r}
+Sys.setlocale("LC_CTYPE", "turkish")
+# Adana ili verisini seçme
+adana_verisi <- subset(alinan_goc, il == "Adana")
+
+# Tayin sayılarını görselleştirme
+ggplot(data = adana_verisi, aes(x = yil, y = tayin)) +
+  geom_line() +
+  labs(x = "Yıl", y = "Tayin Nedeni ile Yapılan Göç Sayısı") +
+  ggtitle("Yıllara Göre Adana İline Tayin Nedeni ile Yapılan Göç Sayısı")
+```
+
+```{r}
+Sys.setlocale("LC_CTYPE", "turkish")
+# İstanbul ili verisini seçme
+istanbul_verisi <- subset(alinan_goc, il == "Istanbul")
+
+# sağlık nedeni ile istanbula göç edenlerinin grafiğini çizme
+ggplot(data = istanbul_verisi, aes(x = yil, y = saglik)) +
+  geom_line() +
+  labs(x = "Yıl", y = "Sağlık Nedeni İle Yapılan Göç Sayısı") +
+  ggtitle("Yıllara Göre Istanbul İline Sağlık Nedeni İle Yapılan Göç Sayısı")
+```
+
 -   **Göç Nedenleri Arasındaki Korelasyonu Hesaplama ve Görselleştirme**
 
 ```{r}
@@ -176,11 +200,25 @@ new_tidy_data %>% arrange(desc(gocSayisi)) %>% head()
 ```
 
 ```{r}
+Sys.setlocale("LC_CTYPE", "turkish")
+# İstanbul ili verisini seçme
+istanbul_verisi2 <- subset(alinan_goc, il == "Istanbul")
+
+# Tayin sayılarını görselleştirme
+ggplot(data = istanbul_verisi2, aes(x = yil, y = yasamKosullari)) +
+  geom_line() +
+  labs(x = "Yıl", y = "Yaşam Koşulları") +
+  ggtitle("İstanbul İline Yıllara Göre Yaşam Koşulları Nedeniyle Yapılan Göç Sayısı")
+```
+
+Grafikte de 2019 yılında yaşam koşulları nedeniyle 150000'den daha fazla kişinin İstanbul'a göç ettiğini görüyoruz.2020 yılından itibaren ise sayı düşmüştür.Bunun nedeni büyük ihtimalle pandemidir.
+
+```{r}
 ## new_tidy_data veri setindeki veriler arasından gocSayisi sütunundaki en yüksek 10 değerigösterme
 new_tidy_data %>% top_n(10, gocSayisi)
 ```
 
--   **Veri Setindeki Toplam Göç Sayısı**
+-   **Veri Setindeki Toplam Göç Sayısını Yazdıran Fonksiyon**
 
 ```{r}
 ##new_tidy_data veri setindeki toplam göç sayısını hesaplamak için bir fonksiyon tanımlar.
@@ -245,6 +283,8 @@ ggplot(new_tidy_data %>% filter(yil == 2022), aes(gocNedeni, gocSayisi, color = 
 ```
 
 ```{r}
+Sys.setlocale("LC_CTYPE", "turkish")
+##boxplot data görselleştirme
 new_tidy_data <- new_tidy_data %>%
   mutate(bolge = case_when(
     il %in% c("Istanbul", "Bursa", "Kocaeli", "Tekirdag","Balikesir","Canakkale","Bilecik","Edirne","Kirklareli","Sakarya","Yalova") ~ "Marmara",
@@ -260,14 +300,37 @@ new_tidy_data <- new_tidy_data %>%
   ))
 ggplot(new_tidy_data %>% filter(yil == 2022 , bolge != "Diger"), aes(x = gocNedeni, y = gocSayisi, fill = bolge)) +
   geom_boxplot() +
-  labs(title = "2022 Yılına Gore Goc Nedenleri ve Bolgelere Gore Dağılımı",
-       x = "gocNedeni",
-       y = "Goc Sayısı",
+  labs(title = "2022 Yılına Göre Göç Nedenleri ve Bölgelere Göre Dağılımı",
+       x = "Göç Nedeni",
+       y = "Göç Sayısı",
        fill = "Bolge") +
   theme_minimal() +
   theme(plot.title = element_text(hjust = 0.5),
         axis.text.x = element_text(angle = 45, hjust = 1))+
  scale_y_continuous(trans = 'log10', labels = function(x) format(x, scientific = FALSE))  # Y eksenini logaritmik ölçekleme yaparak ayarla
+```
+
+```{r}
+Sys.setlocale("LC_CTYPE", "turkish")
+library(dplyr)
+library(ggplot2)
+
+# Veri setindeki göç nedenlerini yıllara göre topla
+summarized_data <- new_tidy_data %>%
+  group_by(yil, gocNedeni) %>%
+  summarise(total_gocSayisi = sum(gocSayisi))
+
+# Bar plot oluştur
+ggplot(summarized_data, aes(x = factor(yil), y = total_gocSayisi, fill = gocNedeni)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(title = "Göç Nedenlerine Göre Yıllara Göre Dağılım",
+       x = "Yıl",
+       y = "Toplam Göç Sayısı",
+       fill = "Göç Nedeni") +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5),
+        axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_y_continuous(labels = scales::number_format())
 ```
 
 ```{r}
