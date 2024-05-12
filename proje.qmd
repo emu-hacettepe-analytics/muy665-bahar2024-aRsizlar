@@ -245,6 +245,7 @@ ggplot(new_tidy_data %>% filter(yil == 2022), aes(gocNedeni, gocSayisi, color = 
 ```
 
 ```{r}
+##boxplot data görsel
 new_tidy_data <- new_tidy_data %>%
   mutate(bolge = case_when(
     il %in% c("Istanbul", "Bursa", "Kocaeli", "Tekirdag","Balikesir","Canakkale","Bilecik","Edirne","Kirklareli","Sakarya","Yalova") ~ "Marmara",
@@ -260,7 +261,7 @@ new_tidy_data <- new_tidy_data %>%
   ))
 ggplot(new_tidy_data %>% filter(yil == 2022), aes(x = gocNedeni, y = gocSayisi, fill = bolge)) +
   geom_boxplot() +
-  labs(title = "2022 Yılına Göre Göç Nedenleri ve Bölgelere Göre Dağılımı",
+  labs(title = "2022 Yılına Gore Goc Nedenleri ve Bolgelere Gore Dagılımı",
        x = "gocNedeni",
        y = "Goc Sayısı",
        fill = "Bolge") +
@@ -294,31 +295,6 @@ ggplot(new_tidy_data %>% filter(yil == 2022), aes(gocNedeni, gocSayisi, color = 
   theme_minimal() +
   theme(plot.title = element_text(hjust = 0.10),
         axis.text.x = element_text(angle = 45, hjust = 1))  # X eksenindeki etiketleri 45 derece döndür
-```
-
-```{r}
-new_tidy_data <- new_tidy_data %>%
-  mutate(bolge = case_when(
-    il %in% c("Istanbul", "Bursa", "Kocaeli", "Tekirdag","Balikesir","Canakkale","Bilecik","Edirne","Kirklareli","Sakarya","Yalova") ~ "Marmara",
-    il %in% c("Izmir", "Aydin", "Manisa","Afyonkarahisar","Denizli","Kutahya","Manisa","Mugla","Usak") ~ "Ege",
-    il %in% c("Ankara", "Konya", "Eskisehir","Cankiri","Corum","Kayseri","Kirsehir
-","Konya","Nevsehir","Nigde","Sivas","Yozgat","Aksaray","Karaman","Kirikkale") ~ "Ic Anadolu",
-    il %in% c("Artvin", "Giresun", "Ordu","Rize","Sinop","Tokat","Trabzon","Zonguldak","Amasya","Bolu","Gumushane","Kastamonu","Samsun","Sinop","Bayburt
-","Bartin","Karabuk","Duzce") ~ "Karadeniz",
-    il %in% c("Adana", "Antalya","Burdur","Hatay","Isparta","Kahramanmaras","Osmaniye") ~ "Akdeniz",
-    il %in% c("Adiyaman","Diyarbakir","Gaziantep","Mardin","Siirt","Sanliurfa","Batman","Sirnak","Kilis") ~ "Guneydogu Anadolu",
-    il %in% c("Agri","Bingol","Bitlis","Elazig","Erzincan","Erzurum","Hakkari","Kars","Malatya","Muş","Tunceli","Van","Ardahan","Igdir") ~ "Dogu Anadolu",
-    TRUE ~ "Diger" # Diğer bölgelere dahil olan iller için bir kategori belirleyin
-  ))
-ggplot(new_tidy_data %>% filter(yil == 2022), aes(x = gocNedeni, y = gocSayisi, fill = bolge)) +
-  geom_boxplot() +
-  labs(title = "2022 Yılına Göre Göç Nedenleri ve Bölgelere Göre Dağılımı",
-       x = "gocNedeni",
-       y = "Goc Sayısı",
-       fill = "Bolge") +
-  theme_minimal() +
-  theme(plot.title = element_text(hjust = 0.5),
-        axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
 # Analiz
