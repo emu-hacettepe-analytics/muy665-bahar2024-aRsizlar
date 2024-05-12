@@ -5,10 +5,9 @@ number-sections: true
 
 **Proje sayfamıza hoş geldiniz.**
 
-_Projemizle ilgili güncellemelerden haberdar olmak için bu alanı takip edin._
+*Projemizle ilgili güncellemelerden haberdar olmak için bu alanı takip edin.*
 
 (Aşağıdaki başlıklar örnek olarak verilmiştir; lütfen gerektiği şekilde düzenlemekten çekinmeyin.)
-
 
 # Proje Genel Bakış ve Kapsamı
 
@@ -32,7 +31,197 @@ xxxxxx
 
 ## Ön İşleme
 
-xxxxxx
+```{r}
+
+library(readxl)
+library(ggplot2)
+library(tidyverse)
+library(dplyr)
+library(knitr)
+library(ggrepel)
+library(reshape2)
+library(gridExtra)
+```
+
+```{r}
+
+alinan_goc <- read_excel("goc_etme_nedenine_illerin_aldigi_goc.xlsx")
+```
+
+```{r}
+head(alinan_goc)
+```
+
+```{r}
+# Korelasyon matrisini hesapla
+correlation_matrix <- cor(alinan_goc[, c(3:11)], use = "complete.obs")
+
+# Korelasyon matrisini eritmek
+melted_corr_matrix <- melt(correlation_matrix)
+
+# Korelasyon matrisini görselleştir
+ggplot(melted_corr_matrix, aes(Var1, Var2, fill = value)) +
+  geom_tile() + 
+  labs(x = " ", y = " ") + 
+  guides(color = guide_legend(title = "Değer")) + 
+  scale_fill_gradient2(low = "yellow", high = "red", mid = "white", midpoint = 0.7) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 100, hjust = 1))
+```
+
+```{r}
+new_tidy_data <- alinan_goc %>%
+  pivot_longer(cols = -c(il, yil), names_to = "gocNedeni", values_to = "gocSayisi") %>%
+  mutate(gocNedeni = as.character(gocNedeni))
+head(new_tidy_data)
+```
+
+```{r}
+colSums(is.na(new_tidy_data))
+```
+
+```{r}
+any(is.na(new_tidy_data))
+```
+
+```{r}
+colnames(new_tidy_data)
+```
+
+```{r}
+str(new_tidy_data)
+```
+
+```{r}
+colSums(is.na(new_tidy_data))
+```
+
+```{r}
+sum(duplicated(new_tidy_data))
+```
+
+```{r}
+summary(new_tidy_data$gocSayisi)
+```
+
+```{r}
+new_tidy_data %>% arrange(gocSayisi) %>% head()
+```
+
+```{r}
+new_tidy_data %>% arrange(desc(gocSayisi)) %>% head()
+```
+
+```{r}
+new_tidy_data %>% top_n(10, gocSayisi)
+```
+
+```{r}
+toplam_goc_sayisi <- function(new_tidy_data, il, yil) {
+  toplam <- sum(new_tidy_data$gocSayisi[new_tidy_data$il == il & new_tidy_data$yil == yil])
+  return(toplam)
+}
+
+# Örneğin, Adana'daki 2022 yılındaki toplam göç sayısını bulmak için:
+print(paste("Adana'da 2022 yılındaki toplam goc sayısı:", toplam_goc_sayisi(new_tidy_data, "Adana", 2022)))
+print(paste("İstanbul'da 2022 yılındaki toplam goc sayısı:", toplam_goc_sayisi(new_tidy_data, "Istanbul", 2022)))
+```
+
+```{r}
+max_goc_2022 <- new_tidy_data %>% 
+  filter(yil == 2022) %>%
+  select(gocSayisi, gocNedeni) %>%
+  filter(gocSayisi == max(gocSayisi))
+
+print(max_goc_2022)
+```
+
+```{r}
+min_goc_2022 <- new_tidy_data %>% 
+  filter(yil == 2022) %>%
+  select(gocSayisi, gocNedeni) %>%
+  filter(gocSayisi == min(gocSayisi))
+
+print(min_goc_2022)
+```
+
+```{r}
+new_tidy_data <- new_tidy_data %>%
+  mutate(bolge = case_when(
+    il %in% c("Istanbul", "Bursa", "Kocaeli", "Tekirdag","Balikesir","Canakkale","Bilecik","Edirne","Kirklareli","Sakarya","Yalova") ~ "Marmara",
+    il %in% c("Izmir", "Aydin", "Manisa","Afyonkarahisar","Denizli","Kutahya","Manisa","Mugla","Usak") ~ "Ege",
+    il %in% c("Ankara", "Konya", "Eskisehir","Cankiri","Corum","Kayseri","Kirsehir
+","Konya","Nevsehir","Nigde","Sivas","Yozgat","Aksaray","Karaman","Kirikkale") ~ "Ic Anadolu",
+    il %in% c("Artvin", "Giresun", "Ordu","Rize","Sinop","Tokat","Trabzon","Zonguldak","Amasya","Bolu","Gumushane","Kastamonu","Samsun","Sinop","Bayburt
+","Bartin","Karabuk","Duzce") ~ "Karadeniz",
+    il %in% c("Adana", "Antalya","Burdur","Hatay","Isparta","Kahramanmaras","Osmaniye") ~ "Akdeniz",
+    il %in% c("Adiyaman","Diyarbakir","Gaziantep","Mardin","Siirt","Sanliurfa","Batman","Sirnak","Kilis") ~ "Guneydogu Anadolu",
+    il %in% c("Agri","Bingol","Bitlis","Elazig","Erzincan","Erzurum","Hakkari","Kars","Malatya","Muş","Tunceli","Van","Ardahan","Igdir") ~ "Dogu Anadolu",
+    TRUE ~ "Diger" # Diğer bölgelere dahil olan iller için bir kategori belirleyin
+  ))
+
+ggplot(new_tidy_data %>% filter(yil == 2022), aes(gocNedeni, gocSayisi, color = bolge)) +
+  geom_point() +
+  labs(title = "2022 Yılına Göre Göç Nedenleri ve Bölgelere Göre Dağılımı",
+       x = "Goc Nedeni",
+       y = "Goc Sayısı",
+       color = "Bolge") +
+  
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.10),
+        axis.text.x = element_text(angle = 45, hjust = 1))  # X eksenindeki etiketleri 45 derece döndür
+```
+
+```{r}
+new_tidy_data <- new_tidy_data %>%
+  mutate(bolge = case_when(
+    il %in% c("Istanbul", "Bursa", "Kocaeli", "Tekirdag","Balikesir","Canakkale","Bilecik","Edirne","Kirklareli","Sakarya","Yalova") ~ "Marmara",
+    il %in% c("Izmir", "Aydin", "Manisa","Afyonkarahisar","Denizli","Kutahya","Manisa","Mugla","Usak") ~ "Ege",
+    il %in% c("Ankara", "Konya", "Eskisehir","Cankiri","Corum","Kayseri","Kirsehir
+","Konya","Nevsehir","Nigde","Sivas","Yozgat","Aksaray","Karaman","Kirikkale") ~ "Ic Anadolu",
+    il %in% c("Artvin", "Giresun", "Ordu","Rize","Sinop","Tokat","Trabzon","Zonguldak","Amasya","Bolu","Gumushane","Kastamonu","Samsun","Sinop","Bayburt
+","Bartin","Karabuk","Duzce") ~ "Karadeniz",
+    il %in% c("Adana", "Antalya","Burdur","Hatay","Isparta","Kahramanmaras","Osmaniye") ~ "Akdeniz",
+    il %in% c("Adiyaman","Diyarbakir","Gaziantep","Mardin","Siirt","Sanliurfa","Batman","Sirnak","Kilis") ~ "Guneydogu Anadolu",
+    il %in% c("Agri","Bingol","Bitlis","Elazig","Erzincan","Erzurum","Hakkari","Kars","Malatya","Muş","Tunceli","Van","Ardahan","Igdir") ~ "Dogu Anadolu",
+    TRUE ~ "Diger" # Diğer bölgelere dahil olan iller için bir kategori belirleyin
+  ))
+ggplot(new_tidy_data %>% filter(yil == 2022), aes(gocNedeni, gocSayisi, color = bolge)) +
+  geom_jitter(width = 0.1, height = 0.1,alpha = 0.7) +  # Jittering ile daha fazla aralık
+  labs(title = "2022 Yılına Göre Göç Nedenleri ve Bölgelere Göre Dağılımı",
+       x = "Goc Nedeni",
+       y = "Goc Sayısı",
+       color = "Bolge") +
+  scale_y_continuous(limits = c(2, max(90000)), breaks = seq(0, max(new_tidy_data$gocSayisi), by = 20000)) +  # Y ekseni aralığını ve etiketlerini ayarla
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.10),
+        axis.text.x = element_text(angle = 45, hjust = 1))  # X eksenindeki etiketleri 45 derece döndür
+```
+
+```{r}
+new_tidy_data <- new_tidy_data %>%
+  mutate(bolge = case_when(
+    il %in% c("Istanbul", "Bursa", "Kocaeli", "Tekirdag","Balikesir","Canakkale","Bilecik","Edirne","Kirklareli","Sakarya","Yalova") ~ "Marmara",
+    il %in% c("Izmir", "Aydin", "Manisa","Afyonkarahisar","Denizli","Kutahya","Manisa","Mugla","Usak") ~ "Ege",
+    il %in% c("Ankara", "Konya", "Eskisehir","Cankiri","Corum","Kayseri","Kirsehir
+","Konya","Nevsehir","Nigde","Sivas","Yozgat","Aksaray","Karaman","Kirikkale") ~ "Ic Anadolu",
+    il %in% c("Artvin", "Giresun", "Ordu","Rize","Sinop","Tokat","Trabzon","Zonguldak","Amasya","Bolu","Gumushane","Kastamonu","Samsun","Sinop","Bayburt
+","Bartin","Karabuk","Duzce") ~ "Karadeniz",
+    il %in% c("Adana", "Antalya","Burdur","Hatay","Isparta","Kahramanmaras","Osmaniye") ~ "Akdeniz",
+    il %in% c("Adiyaman","Diyarbakir","Gaziantep","Mardin","Siirt","Sanliurfa","Batman","Sirnak","Kilis") ~ "Guneydogu Anadolu",
+    il %in% c("Agri","Bingol","Bitlis","Elazig","Erzincan","Erzurum","Hakkari","Kars","Malatya","Muş","Tunceli","Van","Ardahan","Igdir") ~ "Dogu Anadolu",
+    TRUE ~ "Diger" # Diğer bölgelere dahil olan iller için bir kategori belirleyin
+  ))
+ggplot(new_tidy_data %>% filter(yil == 2022), aes(x = gocNedeni, y = gocSayisi, fill = bolge)) +
+  geom_boxplot() +
+  labs(title = "2022 Yılına Göre Göç Nedenleri ve Bölgelere Göre Dağılımı",
+       x = "gocNedeni",
+       y = "Goc Sayısı",
+       fill = "Bolge") +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5),
+        axis.text.x = element_text(angle = 45, hjust = 1))
+```
 
 # Analiz
 
