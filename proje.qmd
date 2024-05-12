@@ -44,7 +44,7 @@ library(gridExtra)
 ```
 
 ```{r}
-
+##exceldosyasını okuma
 alinan_goc <- read_excel("goc_etme_nedenine_illerin_aldigi_goc.xlsx")
 ```
 
@@ -52,16 +52,22 @@ alinan_goc <- read_excel("goc_etme_nedenine_illerin_aldigi_goc.xlsx")
 head(alinan_goc)
 ```
 
+-   **Göç Nedenleri Arasındaki Korelasyonu Hesaplama ve Görselleştirme**
+
 ```{r}
+##cor() fonksiyonu kullanılarak alinan_goc veri setindeki belirli sütunlar arasındaki korelasyonlar hesaplanır.
 # Korelasyon matrisini hesapla
+##cor() fonksiyonu, alinan_goc veri setindeki 3. sütundan 11. sütuna kadar olan sütunlardaki değişkenler arasındaki korelasyonları hesaplar. use = "complete.obs" argümanı, eksik değerleri içeren gözlemleri hesaplama işleminden çıkarır.
 correlation_matrix <- cor(alinan_goc[, c(3:11)], use = "complete.obs")
-
-# Korelasyon matrisini eritmek
 melted_corr_matrix <- melt(correlation_matrix)
-
-# Korelasyon matrisini görselleştir
+##Daha sonra, melt() fonksiyonu kullanılarak korelasyon matrisi eritilir
+##melted_corr_matrix <- melt(correlation_matrix) ggplot2 paketi kullanılarak korelasyon matrisi görselleştirilir. 
+##geom_tile() fonksiyonu ile korelasyon matrisi, renkli kareler olarak gösterilir. geom_text() fonksiyonu ile her karenin içine korelasyon değerleri yazdırılır. 
+##labs() fonksiyonu ile x ve y eksenlerine etiketler eklenir. guides() fonksiyonu ile renk gradyanı için bir renk skalası eklenebilir. Son olarak, theme() fonksiyonları ile grafik stili ayarlanır.
+# Ve Korelasyon matrisini görselleştirilir
 ggplot(melted_corr_matrix, aes(Var1, Var2, fill = value)) +
   geom_tile() + 
+   geom_text(aes(label = sprintf("%.2f", value)), color = "black", size = 3) +
   labs(x = " ", y = " ") + 
   guides(color = guide_legend(title = "Değer")) + 
   scale_fill_gradient2(low = "yellow", high = "red", mid = "white", midpoint = 0.7) +
@@ -69,7 +75,15 @@ ggplot(melted_corr_matrix, aes(Var1, Var2, fill = value)) +
   theme(axis.text.x = element_text(angle = 100, hjust = 1))
 ```
 
+-   **Göç Nedenleri ve Göç Sayıları Sütunları Oluşturmak**
+
 ```{r}
+##alinan_goc veri çerçevesindeki veriyi daha "düzenli" bir formata dönüştürür ve new_tidy_data adında yeni bir veri seti oluşturur. Buradaki amaç, veriyi daha analiz edilebilir hale getirmek ve veri işleme sürecini kolaylaştırmaktır
+##pivot_longer() fonksiyonu kullanılarak, veri çerçevesindeki sütunlar uzun formata dönüştürülür. Yani, her bir göç nedeni bir sütun yerine, il ve yil sütunları sabit kalacak şekilde, diğer sütunlar göç nedeni ve göç sayısı olacak şekilde yeniden yapılandırılır
+##cols = -c(il, yil): il ve yil sütunları dışındaki tüm sütunlar işleme alınır names_to = "gocNedeni": Sütun adları, "gocNedeni" adında yeni bir sütuna dönüştürülür.
+##mutate() fonksiyonu kullanılarak, "gocNedeni" sütunu karakter veri tipine dönüştürülür
+##head() fonksiyonu kullanılarak, yeni oluşturulan new_tidy_data veri çerçevesinin ilk altı satırı ekrana yazdırılır
+
 new_tidy_data <- alinan_goc %>%
   pivot_longer(cols = -c(il, yil), names_to = "gocNedeni", values_to = "gocSayisi") %>%
   mutate(gocNedeni = as.character(gocNedeni))
