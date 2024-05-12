@@ -11,19 +11,41 @@ number-sections: true
 
 # Proje Genel Bakış ve Kapsamı
 
-xxxxxx
+Türkiye'de 2018-2022 yılları arasında gerçekleşen göç istatistiklerini inceliyoruz.
 
 # Veri
 
-xxxxxx
-
 ## Veri Kaynağı
 
-xxxxxx
+<https://data.tuik.gov.tr/Bulten/Index?p=Ic-Goc-Istatistikleri-2022-49727>
 
 ## Veri Hakkında Genel Bilgiler
 
-xxxxxx
+**Veri setimizdeki değişkenler**
+
+il:Göç yapılan iller
+
+yil:Hangi yıl göç yapıldığı
+
+tayin:Göç nedenlerinden biri
+
+isBulma:Göç nedenlerinden biri
+
+egitim:Göç nedenlerinden biri
+
+medeniDurum:Göç nedenlerinden biri
+
+yasamKosullari:Göç nedenlerinden biri
+
+Hane:Göç nedenlerinden biri
+
+aile_yanina_donme:Göç nedenlerinden biri
+
+saglik:Göç nedenlerinden biri
+
+evAlma:Göç nedenlerinden biri
+
+emeklilik:Göç nedenlerinden biri
 
 ## Tercih Sebebi
 
@@ -49,6 +71,7 @@ alinan_goc <- read_excel("goc_etme_nedenine_illerin_aldigi_goc.xlsx")
 ```
 
 ```{r}
+##veri setinin ilk bir kaç satırını gösterme
 head(alinan_goc)
 ```
 
@@ -75,7 +98,7 @@ ggplot(melted_corr_matrix, aes(Var1, Var2, fill = value)) +
   theme(axis.text.x = element_text(angle = 100, hjust = 1))
 ```
 
--   **Göç Nedenleri ve Göç Sayıları Sütunları Oluşturmak**
+-   **Göç Nedeni ve Göç Sayısı Sütunları Oluşturmak**
 
 ```{r}
 ##alinan_goc veri çerçevesindeki veriyi daha "düzenli" bir formata dönüştürür ve new_tidy_data adında yeni bir veri seti oluşturur. Buradaki amaç, veriyi daha analiz edilebilir hale getirmek ve veri işleme sürecini kolaylaştırmaktır
@@ -90,58 +113,91 @@ new_tidy_data <- alinan_goc %>%
 head(new_tidy_data)
 ```
 
+-   **Veri setimizde eksik değerler var mı?**
+
+-   **Veri setimizin yapısı nasıl?**
+
 ```{r}
+##veri setindeki sütun adlarını döndürür
+colnames(new_tidy_data)
+
+```
+
+```{r}
+##new_tidy_data veri setindeki her sütundaki eksik değerlerin sayısını hesaplama
 colSums(is.na(new_tidy_data))
 ```
 
 ```{r}
+##new_tidy_data veri setinde herhangi bir eksik değer olup olmadığını kontrol eder.
+##any(): Bu fonksiyon, bir vektör veya matrisin herhangi bir elemanının belirtilen koşulu sağlayıp sağlamadığını kontrol eder. 
 any(is.na(new_tidy_data))
 ```
 
 ```{r}
-colnames(new_tidy_data)
-```
-
-```{r}
+##data setinin yapısını özetleme
 str(new_tidy_data)
 ```
 
 ```{r}
-colSums(is.na(new_tidy_data))
-```
-
-```{r}
+##new_tidy_data veri setindeki tekrarlanan satırların sayısını hesaplar.
 sum(duplicated(new_tidy_data))
 ```
 
+Veri setimizdeki Göç Sayılarının bulunduğu sütunun özet istatistikleri görülmektedir.
+
+2018-2022 yılları arasındaki minimum göç sayısı 2'dir.
+
+2018-2022 yılları arasındaki maximum göç sayısı 152.756'dır.
+
+2018-2022 yılları arasında yapılan ortalama göç sayısı 2979,1'dir
+
 ```{r}
+##new_tidy_data veri setindeki "gocSayisi" adlı sütunun özet istatistikleri hesaplanır
 summary(new_tidy_data$gocSayisi)
 ```
 
+Minimum göç sayısının 2 olduğunu aşağıdaki tabloda görüyoruz.
+
+2018-2022 yılları arasında minimum göç 2022 yılında emeklilik nedeniyle Hakkari'ye yapılmıştır
+
 ```{r}
+##new_tidy_data veri setindeki verileri gocSayisi sütununa göre sıralama ve ilk altı satırını ekrana yazdırma
 new_tidy_data %>% arrange(gocSayisi) %>% head()
 ```
 
+Maximum göç sayısının 152.756 olduğunu aşağıdaki tabloda görüyoruz
+
+2018-2022 yılları arasında maximum göç 2019 yılında yaşam koşulları nedeniyle İstanbul'a yapılmıştır
+
 ```{r}
+##new_tidy_data veri setindeki verileri gocSayisi sütununa göre azalan sıraya göre sıralama ve ilk altı satırını ekrana yazdırma
 new_tidy_data %>% arrange(desc(gocSayisi)) %>% head()
 ```
 
 ```{r}
+## new_tidy_data veri setindeki veriler arasından gocSayisi sütunundaki en yüksek 10 değerigösterme
 new_tidy_data %>% top_n(10, gocSayisi)
 ```
 
+-   **Veri Setindeki Toplam Göç Sayısı**
+
 ```{r}
+##new_tidy_data veri setindeki toplam göç sayısını hesaplamak için bir fonksiyon tanımlar.
 toplam_goc_sayisi <- function(new_tidy_data, il, yil) {
   toplam <- sum(new_tidy_data$gocSayisi[new_tidy_data$il == il & new_tidy_data$yil == yil])
   return(toplam)
 }
-
+##belirtilen il ve yıl için new_tidy_data veri çerçevesindeki göç sayılarını filtreler ve toplama 
 # Örneğin, Adana'daki 2022 yılındaki toplam göç sayısını bulmak için:
 print(paste("Adana'da 2022 yılındaki toplam goc sayısı:", toplam_goc_sayisi(new_tidy_data, "Adana", 2022)))
-print(paste("İstanbul'da 2022 yılındaki toplam goc sayısı:", toplam_goc_sayisi(new_tidy_data, "Istanbul", 2022)))
+print(paste("İstanbul'da 2022 yılındaki toplam goc sayısı:", toplam_goc_sayisi(new_tidy_data, "Istanbul", 2019)))
 ```
 
+**Yıllara Göre En Yüksek Göç Sayısı ve Göç Nedeni**
+
 ```{r}
+##new_tidy_data veri setinde 2022 yılında en yüksek göç sayısı ve göç nedenini yazdırma
 max_goc_2022 <- new_tidy_data %>% 
   filter(yil == 2022) %>%
   select(gocSayisi, gocNedeni) %>%
@@ -158,6 +214,8 @@ min_goc_2022 <- new_tidy_data %>%
 
 print(min_goc_2022)
 ```
+
+**Veri Görselleştirme**
 
 ```{r}
 new_tidy_data <- new_tidy_data %>%
@@ -184,6 +242,32 @@ ggplot(new_tidy_data %>% filter(yil == 2022), aes(gocNedeni, gocSayisi, color = 
   theme_minimal() +
   theme(plot.title = element_text(hjust = 0.10),
         axis.text.x = element_text(angle = 45, hjust = 1))  # X eksenindeki etiketleri 45 derece döndür
+```
+
+```{r}
+new_tidy_data <- new_tidy_data %>%
+  mutate(bolge = case_when(
+    il %in% c("Istanbul", "Bursa", "Kocaeli", "Tekirdag","Balikesir","Canakkale","Bilecik","Edirne","Kirklareli","Sakarya","Yalova") ~ "Marmara",
+    il %in% c("Izmir", "Aydin", "Manisa","Afyonkarahisar","Denizli","Kutahya","Manisa","Mugla","Usak") ~ "Ege",
+    il %in% c("Ankara", "Konya", "Eskisehir","Cankiri","Corum","Kayseri","Kirsehir
+","Konya","Nevsehir","Nigde","Sivas","Yozgat","Aksaray","Karaman","Kirikkale") ~ "Ic Anadolu",
+    il %in% c("Artvin", "Giresun", "Ordu","Rize","Sinop","Tokat","Trabzon","Zonguldak","Amasya","Bolu","Gumushane","Kastamonu","Samsun","Sinop","Bayburt
+","Bartin","Karabuk","Duzce") ~ "Karadeniz",
+    il %in% c("Adana", "Antalya","Burdur","Hatay","Isparta","Kahramanmaras","Osmaniye") ~ "Akdeniz",
+    il %in% c("Adiyaman","Diyarbakir","Gaziantep","Mardin","Siirt","Sanliurfa","Batman","Sirnak","Kilis") ~ "Guneydogu Anadolu",
+    il %in% c("Agri","Bingol","Bitlis","Elazig","Erzincan","Erzurum","Hakkari","Kars","Malatya","Muş","Tunceli","Van","Ardahan","Igdir") ~ "Dogu Anadolu",
+    TRUE ~ "Diger" # Diğer bölgelere dahil olan iller için bir kategori belirleyin
+  ))
+ggplot(new_tidy_data %>% filter(yil == 2022), aes(x = gocNedeni, y = gocSayisi, fill = bolge)) +
+  geom_boxplot() +
+  labs(title = "2022 Yılına Göre Göç Nedenleri ve Bölgelere Göre Dağılımı",
+       x = "gocNedeni",
+       y = "Goc Sayısı",
+       fill = "Bolge") +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5),
+        axis.text.x = element_text(angle = 45, hjust = 1))+
+ scale_y_continuous(trans = 'log10', labels = function(x) format(x, scientific = FALSE))  # Y eksenini logaritmik ölçekleme yaparak ayarla
 ```
 
 ```{r}
