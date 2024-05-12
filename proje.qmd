@@ -245,7 +245,6 @@ ggplot(new_tidy_data %>% filter(yil == 2022), aes(gocNedeni, gocSayisi, color = 
 ```
 
 ```{r}
-##boxplot data görsel
 new_tidy_data <- new_tidy_data %>%
   mutate(bolge = case_when(
     il %in% c("Istanbul", "Bursa", "Kocaeli", "Tekirdag","Balikesir","Canakkale","Bilecik","Edirne","Kirklareli","Sakarya","Yalova") ~ "Marmara",
@@ -257,11 +256,11 @@ new_tidy_data <- new_tidy_data %>%
     il %in% c("Adana", "Antalya","Burdur","Hatay","Isparta","Kahramanmaras","Osmaniye") ~ "Akdeniz",
     il %in% c("Adiyaman","Diyarbakir","Gaziantep","Mardin","Siirt","Sanliurfa","Batman","Sirnak","Kilis") ~ "Guneydogu Anadolu",
     il %in% c("Agri","Bingol","Bitlis","Elazig","Erzincan","Erzurum","Hakkari","Kars","Malatya","Muş","Tunceli","Van","Ardahan","Igdir") ~ "Dogu Anadolu",
-    TRUE ~ "Diger" # Diğer bölgelere dahil olan iller için bir kategori belirleyin
+   #TRUE ~ "Diger" # Diğer bölgelere dahil olan iller için bir kategori belirleyin
   ))
-ggplot(new_tidy_data %>% filter(yil == 2022), aes(x = gocNedeni, y = gocSayisi, fill = bolge)) +
+ggplot(new_tidy_data %>% filter(yil == 2022 , bolge != "Diger"), aes(x = gocNedeni, y = gocSayisi, fill = bolge)) +
   geom_boxplot() +
-  labs(title = "2022 Yılına Gore Goc Nedenleri ve Bolgelere Gore Dagılımı",
+  labs(title = "2022 Yılına Gore Goc Nedenleri ve Bolgelere Gore Dağılımı",
        x = "gocNedeni",
        y = "Goc Sayısı",
        fill = "Bolge") +
