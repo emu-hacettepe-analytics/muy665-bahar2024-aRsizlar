@@ -7,13 +7,11 @@ number-sections: true
 
 *Projemizle ilgili güncellemelerden haberdar olmak için bu alanı takip edin.*
 
-(Aşağıdaki başlıklar örnek olarak verilmiştir; lütfen gerektiği şekilde düzenlemekten çekinmeyin.)
-
 # Proje Genel Bakış ve Kapsamı
 
 Türkiye'de 2018-2022 yılları arasında gerçekleşen göç istatistiklerini inceliyoruz.
 
-# Veri
+## Veri
 
 ## Veri Kaynağı
 
@@ -49,12 +47,24 @@ emeklilik:Göç nedenlerinden biri
 
 ## Tercih Sebebi
 
-xxxxxx
+Bu veri setini seçmemizde bir kaç neden etkili olmuştur.
+
+1.  **Analiz Amaçları**: Göç istatistikleri, birçok farklı alanda önemli bilgiler sağlayabilir. Örneğin, ekonomik kalkınma, işgücü hareketleri, eğitim, sağlık hizmetleri talebi gibi konuları analiz etmek için göç verileri kullanılabilir.
+
+2.  **Zaman Aralığı**: Seçtiğimiz zaman aralığı (2018-2022), son beş yılda Türkiye'deki göç eğilimlerini incelememizi sağlamaktadır.Bu dönemdeki göç eğilimleri, ekonomik ya da sosyal değişikliklerin etkilerini değerlendirmemize yardımcı olabilir.
+
+3.  **Kapsam**: Veri setimizin kapsamı Türkiye genelindeki farklı illeri içermesi nedeniyle farklı bölgeler arasındaki göç sayılarını inceleme fırsatını da bize sunmaktadır.Bu, bölgesel kalkınma eğilimlerini ve farklı illerdeki yaşam koşullarının etkilerini anlamamıza yardımcı olmaktadır.
+
+4.  **Değişkenlerin Çeşitliliği**: Seçtiğimiz değişkenler, göç nedenlerini çeşitli açılardan analiz etmemize olanak tanır. Örneğin, iş bulma, eğitim imkanları, aile birleşimi gibi farklı faktörlerin göç kararları üzerindeki etkilerini değerlendirebiliriz
+
+5.  **Toplumsal İhtiyaçlar**: Göç istatistikleri, toplumun belirli ihtiyaçlarını anlamak için kullanılabilir. Örneğin, sağlık hizmetlerine erişim, yaşam koşulları, ev alma gibi göç nedenlerinin toplumsal etkileri değerlendirilebilir.
 
 ## Ön İşleme
 
-```{r}
-
+```{r, message=FALSE, results='asis'}
+#| warning: false
+#| code-summary: "Show the code"
+#| code-fold: true
 library(readxl)
 library(ggplot2)
 library(tidyverse)
@@ -63,6 +73,10 @@ library(knitr)
 library(ggrepel)
 library(reshape2)
 library(gridExtra)
+```
+
+```{r}
+Sys.setlocale("LC_CTYPE", "turkish")
 ```
 
 ```{r}
@@ -76,7 +90,6 @@ head(alinan_goc)
 ```
 
 ```{r}
-Sys.setlocale("LC_CTYPE", "turkish")
 # Adana ili verisini seçme
 adana_verisi <- subset(alinan_goc, il == "Adana")
 
@@ -88,7 +101,7 @@ ggplot(data = adana_verisi, aes(x = yil, y = tayin)) +
 ```
 
 ```{r}
-Sys.setlocale("LC_CTYPE", "turkish")
+
 # İstanbul ili verisini seçme
 istanbul_verisi <- subset(alinan_goc, il == "Istanbul")
 
@@ -100,6 +113,8 @@ ggplot(data = istanbul_verisi, aes(x = yil, y = saglik)) +
 ```
 
 -   **Göç Nedenleri Arasındaki Korelasyonu Hesaplama ve Görselleştirme**
+
+    Korelasyon matrisi görselleştirmesi (heatmap), veri setindeki değişkenler arasındaki ilişkileri görsel olarak anlamak için güçlü bir araçtır.Örneğin, pozitif korelasyonlar, bir değişkenin artışıyla diğer değişkenin de arttığını gösterir. Bu, iki değişken arasında bir ilişki olduğunu ve bir değişkenin diğerini etkileyebileceğini gösterir.
 
 ```{r}
 ##cor() fonksiyonu kullanılarak alinan_goc veri setindeki belirli sütunlar arasındaki korelasyonlar hesaplanır.
@@ -200,7 +215,7 @@ new_tidy_data %>% arrange(desc(gocSayisi)) %>% head()
 ```
 
 ```{r}
-Sys.setlocale("LC_CTYPE", "turkish")
+
 # İstanbul ili verisini seçme
 istanbul_verisi2 <- subset(alinan_goc, il == "Istanbul")
 
@@ -283,7 +298,6 @@ ggplot(new_tidy_data %>% filter(yil == 2022), aes(gocNedeni, gocSayisi, color = 
 ```
 
 ```{r}
-Sys.setlocale("LC_CTYPE", "turkish")
 ##boxplot data görselleştirme
 new_tidy_data <- new_tidy_data %>%
   mutate(bolge = case_when(
@@ -303,7 +317,7 @@ ggplot(new_tidy_data %>% filter(yil == 2022 , bolge != "Diger"), aes(x = gocNede
   labs(title = "2022 Yılına Göre Göç Nedenleri ve Bölgelere Göre Dağılımı",
        x = "Göç Nedeni",
        y = "Göç Sayısı",
-       fill = "Bolge") +
+       fill = "Bölge") +
   theme_minimal() +
   theme(plot.title = element_text(hjust = 0.5),
         axis.text.x = element_text(angle = 45, hjust = 1))+
@@ -311,15 +325,119 @@ ggplot(new_tidy_data %>% filter(yil == 2022 , bolge != "Diger"), aes(x = gocNede
 ```
 
 ```{r}
-Sys.setlocale("LC_CTYPE", "turkish")
-library(dplyr)
-library(ggplot2)
+##boxplot data görselleştirme
+new_tidy_data <- new_tidy_data %>%
+  mutate(bolge = case_when(
+    il %in% c("Istanbul", "Bursa", "Kocaeli", "Tekirdag","Balikesir","Canakkale","Bilecik","Edirne","Kirklareli","Sakarya","Yalova") ~ "Marmara",
+    il %in% c("Izmir", "Aydin", "Manisa","Afyonkarahisar","Denizli","Kutahya","Manisa","Mugla","Usak") ~ "Ege",
+    il %in% c("Ankara", "Konya", "Eskisehir","Cankiri","Corum","Kayseri","Kirsehir
+","Konya","Nevsehir","Nigde","Sivas","Yozgat","Aksaray","Karaman","Kirikkale") ~ "Ic Anadolu",
+    il %in% c("Artvin", "Giresun", "Ordu","Rize","Sinop","Tokat","Trabzon","Zonguldak","Amasya","Bolu","Gumushane","Kastamonu","Samsun","Sinop","Bayburt
+","Bartin","Karabuk","Duzce") ~ "Karadeniz",
+    il %in% c("Adana", "Antalya","Burdur","Hatay","Isparta","Kahramanmaras","Osmaniye") ~ "Akdeniz",
+    il %in% c("Adiyaman","Diyarbakir","Gaziantep","Mardin","Siirt","Sanliurfa","Batman","Sirnak","Kilis") ~ "Guneydogu Anadolu",
+    il %in% c("Agri","Bingol","Bitlis","Elazig","Erzincan","Erzurum","Hakkari","Kars","Malatya","Muş","Tunceli","Van","Ardahan","Igdir") ~ "Dogu Anadolu",
+   #TRUE ~ "Diger" # Diğer bölgelere dahil olan iller için bir kategori belirleyin
+  ))
+ggplot(new_tidy_data %>% filter(yil == 2021 , bolge != "Diger"), aes(x = gocNedeni, y = gocSayisi, fill = bolge)) +
+  geom_boxplot() +
+  labs(title = "2021 Yılına Göre Göç Nedenleri ve Bölgelere Göre Dağılımı",
+       x = "Göç Nedeni",
+       y = "Göç Sayısı",
+       fill = "Bölge") +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5),
+        axis.text.x = element_text(angle = 45, hjust = 1))+
+ scale_y_continuous(trans = 'log10', labels = function(x) format(x, scientific = FALSE))  # Y eksenini logaritmik ölçekleme yaparak ayarla
+```
 
+```{r}
+##boxplot data görselleştirme
+new_tidy_data <- new_tidy_data %>%
+  mutate(bolge = case_when(
+    il %in% c("Istanbul", "Bursa", "Kocaeli", "Tekirdag","Balikesir","Canakkale","Bilecik","Edirne","Kirklareli","Sakarya","Yalova") ~ "Marmara",
+    il %in% c("Izmir", "Aydin", "Manisa","Afyonkarahisar","Denizli","Kutahya","Manisa","Mugla","Usak") ~ "Ege",
+    il %in% c("Ankara", "Konya", "Eskisehir","Cankiri","Corum","Kayseri","Kirsehir
+","Konya","Nevsehir","Nigde","Sivas","Yozgat","Aksaray","Karaman","Kirikkale") ~ "Ic Anadolu",
+    il %in% c("Artvin", "Giresun", "Ordu","Rize","Sinop","Tokat","Trabzon","Zonguldak","Amasya","Bolu","Gumushane","Kastamonu","Samsun","Sinop","Bayburt
+","Bartin","Karabuk","Duzce") ~ "Karadeniz",
+    il %in% c("Adana", "Antalya","Burdur","Hatay","Isparta","Kahramanmaras","Osmaniye") ~ "Akdeniz",
+    il %in% c("Adiyaman","Diyarbakir","Gaziantep","Mardin","Siirt","Sanliurfa","Batman","Sirnak","Kilis") ~ "Guneydogu Anadolu",
+    il %in% c("Agri","Bingol","Bitlis","Elazig","Erzincan","Erzurum","Hakkari","Kars","Malatya","Muş","Tunceli","Van","Ardahan","Igdir") ~ "Dogu Anadolu",
+   #TRUE ~ "Diger" # Diğer bölgelere dahil olan iller için bir kategori belirleyin
+  ))
+ggplot(new_tidy_data %>% filter(yil == 2020 , bolge != "Diger"), aes(x = gocNedeni, y = gocSayisi, fill = bolge)) +
+  geom_boxplot() +
+  labs(title = "2020 Yılına Göre Göç Nedenleri ve Bölgelere Göre Dağılımı",
+       x = "Göç Nedeni",
+       y = "Göç Sayısı",
+       fill = "Bölge") +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5),
+        axis.text.x = element_text(angle = 45, hjust = 1))+
+ scale_y_continuous(trans = 'log10', labels = function(x) format(x, scientific = FALSE))  # Y eksenini logaritmik ölçekleme yaparak ayarla
+```
+
+```{r}
+##boxplot data görselleştirme
+new_tidy_data <- new_tidy_data %>%
+  mutate(bolge = case_when(
+    il %in% c("Istanbul", "Bursa", "Kocaeli", "Tekirdag","Balikesir","Canakkale","Bilecik","Edirne","Kirklareli","Sakarya","Yalova") ~ "Marmara",
+    il %in% c("Izmir", "Aydin", "Manisa","Afyonkarahisar","Denizli","Kutahya","Manisa","Mugla","Usak") ~ "Ege",
+    il %in% c("Ankara", "Konya", "Eskisehir","Cankiri","Corum","Kayseri","Kirsehir
+","Konya","Nevsehir","Nigde","Sivas","Yozgat","Aksaray","Karaman","Kirikkale") ~ "Ic Anadolu",
+    il %in% c("Artvin", "Giresun", "Ordu","Rize","Sinop","Tokat","Trabzon","Zonguldak","Amasya","Bolu","Gumushane","Kastamonu","Samsun","Sinop","Bayburt
+","Bartin","Karabuk","Duzce") ~ "Karadeniz",
+    il %in% c("Adana", "Antalya","Burdur","Hatay","Isparta","Kahramanmaras","Osmaniye") ~ "Akdeniz",
+    il %in% c("Adiyaman","Diyarbakir","Gaziantep","Mardin","Siirt","Sanliurfa","Batman","Sirnak","Kilis") ~ "Guneydogu Anadolu",
+    il %in% c("Agri","Bingol","Bitlis","Elazig","Erzincan","Erzurum","Hakkari","Kars","Malatya","Muş","Tunceli","Van","Ardahan","Igdir") ~ "Dogu Anadolu",
+   #TRUE ~ "Diger" # Diğer bölgelere dahil olan iller için bir kategori belirleyin
+  ))
+ggplot(new_tidy_data %>% filter(yil == 2019 , bolge != "Diger"), aes(x = gocNedeni, y = gocSayisi, fill = bolge)) +
+  geom_boxplot() +
+  labs(title = "2019 Yılına Göre Göç Nedenleri ve Bölgelere Göre Dağılımı",
+       x = "Göç Nedeni",
+       y = "Göç Sayısı",
+       fill = "Bölge") +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5),
+        axis.text.x = element_text(angle = 45, hjust = 1))+
+ scale_y_continuous(trans = 'log10', labels = function(x) format(x, scientific = FALSE))  # Y eksenini logaritmik ölçekleme yaparak ayarla
+```
+
+```{r}
+##boxplot data görselleştirme
+new_tidy_data <- new_tidy_data %>%
+  mutate(bolge = case_when(
+    il %in% c("Istanbul", "Bursa", "Kocaeli", "Tekirdag","Balikesir","Canakkale","Bilecik","Edirne","Kirklareli","Sakarya","Yalova") ~ "Marmara",
+    il %in% c("Izmir", "Aydin", "Manisa","Afyonkarahisar","Denizli","Kutahya","Manisa","Mugla","Usak") ~ "Ege",
+    il %in% c("Ankara", "Konya", "Eskisehir","Cankiri","Corum","Kayseri","Kirsehir
+","Konya","Nevsehir","Nigde","Sivas","Yozgat","Aksaray","Karaman","Kirikkale") ~ "Ic Anadolu",
+    il %in% c("Artvin", "Giresun", "Ordu","Rize","Sinop","Tokat","Trabzon","Zonguldak","Amasya","Bolu","Gumushane","Kastamonu","Samsun","Sinop","Bayburt
+","Bartin","Karabuk","Duzce") ~ "Karadeniz",
+    il %in% c("Adana", "Antalya","Burdur","Hatay","Isparta","Kahramanmaras","Osmaniye") ~ "Akdeniz",
+    il %in% c("Adiyaman","Diyarbakir","Gaziantep","Mardin","Siirt","Sanliurfa","Batman","Sirnak","Kilis") ~ "Guneydogu Anadolu",
+    il %in% c("Agri","Bingol","Bitlis","Elazig","Erzincan","Erzurum","Hakkari","Kars","Malatya","Muş","Tunceli","Van","Ardahan","Igdir") ~ "Dogu Anadolu",
+   #TRUE ~ "Diger" # Diğer bölgelere dahil olan iller için bir kategori belirleyin
+  ))
+ggplot(new_tidy_data %>% filter(yil == 2018 , bolge != "Diger"), aes(x = gocNedeni, y = gocSayisi, fill = bolge)) +
+  geom_boxplot() +
+  labs(title = "2018 Yılına Göre Göç Nedenleri ve Bölgelere Göre Dağılımı",
+       x = "Göç Nedeni",
+       y = "Göç Sayısı",
+       fill = "Bölge") +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5),
+        axis.text.x = element_text(angle = 45, hjust = 1))+
+ scale_y_continuous(trans = 'log10', labels = function(x) format(x, scientific = FALSE))  # Y eksenini logaritmik ölçekleme yaparak ayarla
+```
+
+```{r}
 # Veri setindeki göç nedenlerini yıllara göre topla
+##group_by() fonksiyonu kullanılarak new_tidy_data veri setindeki "yil" ve "gocNedeni" sütunlarına göre gruplanır. Daha sonra summarise() fonksiyonu ile her yıl ve göç nedeni kombinasyonu için toplam göç sayısı hesaplanır.
 summarized_data <- new_tidy_data %>%
   group_by(yil, gocNedeni) %>%
   summarise(total_gocSayisi = sum(gocSayisi))
-
 # Bar plot oluştur
 ggplot(summarized_data, aes(x = factor(yil), y = total_gocSayisi, fill = gocNedeni)) +
   geom_bar(stat = "identity", position = "dodge") +
@@ -327,6 +445,25 @@ ggplot(summarized_data, aes(x = factor(yil), y = total_gocSayisi, fill = gocNede
        x = "Yıl",
        y = "Toplam Göç Sayısı",
        fill = "Göç Nedeni") +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5),
+        axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_y_continuous(labels = scales::number_format())
+```
+
+```{r}
+summarized_data2 <- new_tidy_data %>%
+  filter(!is.na(bolge)) %>%  # NA olmayan bölge değerlerini filtrele
+  group_by(bolge, yil) %>%
+  summarise(total_gocSayisi = sum(gocSayisi))
+
+# Bar plot oluştur
+ggplot(summarized_data2, aes(x = factor(yil), y = total_gocSayisi, fill = bolge)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(title = "Bölge ve Yıllara Göre Göç Sayısı",
+       x = "Yıl",
+       y = "Toplam Göç Sayısı",
+       fill = "Bölge") +
   theme_minimal() +
   theme(plot.title = element_text(hjust = 0.5),
         axis.text.x = element_text(angle = 45, hjust = 1)) +
