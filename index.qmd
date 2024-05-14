@@ -27,14 +27,28 @@ Lütfen faaliyetlerimizi görmek için bizi takipte kalın.
 
 ## Proje Adı
 
-MUY665-İş Analitiği iyileştirme çalışmaları-abcdefffghhhhhhhhhh (örnek)
+Göç İzleri: Türkiye'nin Bölgelerine Göre Göç Nedenleri 2018-2022
 
 ## Proje Konusu
 
-Örnek: Bu projede MUY665-İş Analitiği ders içeriğinin analitik yaklaşımlarla iyileştirilmesini hedefledik. Bu doğrultuda tüm üniversitelerdeki benzer derslerin verisini toplayarak bir veri seti oluşturduk Analiz için ........ yöntemleri kullanarak, ....... çalışmaları yaptık Sonuç olarak, MUY660-İş Analitiği dersinin dünyadaki tüm derslerden daha iyi olduğunu ve bu dersi aldığımız için çok mutlu olduğumuzu tespit ettik.
+Türkiye'de 2018-2022 yılları arasında gerçekleşen göç istatistiklerini inceliyoruz.
 
 ## Veri Seti Hakkında Özet Bilgi
 
+İç göç istatistikleri, Türkiye'nin demografik yapısını, ekonomik büyümesini, kentsel gelişimini ve sosyal dengelerini anlamak için önemli ipuçları sağlar. Bu veriler, hükümetlerin politika oluşturmasında, şehir planlamasında ve kaynak tahsisinde yol gösterici olabilir.\
+\
+Türkiye'de 2018-2022 yılları arasında iller arası göç eden nüfus oranı, %3,27 oldu. Diğer bir ifadeyle Türkiye'de 2022 yılında 2 milyon 791 bin 156 kişi iller arasında göç etti.
+
 ## Sonuçlar
 
-Burada key takeways verilmelidir. En az 3 en fazla 5 madde ile çarpıcı sonuçlar sunulmalıdır.
+Bölgesel Göç Eğilimleri:
+
+Marmara bölgesi, özellikle İstanbul merkezli olmak üzere, çoğu göç nedeni için en yüksek göç sayılarına sahip. Bu, bölgenin ekonomik, eğitim ve yaşam kalitesi açısından Türkiye'nin en çekici bölgesi olduğunu gösteriyor. Ege ve İç Anadolu bölgeleri de yüksek göç alımı gösteriyor. Ege bölgesi, özellikle yaşam kalitesi ve iklim koşulları nedeniyle, İç Anadolu ise merkezi konumu ve büyüyen sanayi kapasitesi ile dikkat çekiyor.
+
+Göç Nedenleri:
+
+Eğitim ve iş bulma, göç sayılarının en yüksek olduğu başlıca nedenler arasında yer alıyor. Bu, genellikle genç nüfusun daha iyi eğitim ve iş olanakları için büyük şehirlere taşınmasını yansıtıyor. Sağlık hizmetlerine erişim ve yaşam koşullarının iyileştirilmesi de önemli göç nedenleri arasında.
+
+Pandemi Etkisi:
+
+2020 yılına ait verilerde, COVID-19 pandemisinin göç sayılarında genel bir düşüşe neden olduğu görülüyor. Bu, pandeminin getirdiği seyahat kısıtlamaları ve ekonomik belirsizliklerin doğrudan etkisi olarak değerlendirilebilir.
