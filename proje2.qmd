@@ -1,0 +1,217 @@
+---
+title: "Göç İzleri"
+number-sections: true
+---
+
+**Proje sayfamıza hoş geldiniz.**
+
+*Projemizle ilgili güncellemelerden haberdar olmak için bu alanı takip edin.*
+
+# Proje Genel Bakış ve Kapsamı
+
+Türkiye'de 2018-2022 yılları arasında gerçekleşen göç istatistiklerini inceliyoruz.
+
+## Veri
+
+## Veri Kaynağı
+
+<https://data.tuik.gov.tr/Bulten/Index?p=Ic-Goc-Istatistikleri-2022-49727>
+
+## Veri Hakkında Genel Bilgiler
+
+**Veri setimizdeki değişkenler**
+
+il:Göç yapılan iller
+
+yil:Hangi yıl göç yapıldığı
+
+tayin:Göç nedenlerinden biri
+
+isBulma:Göç nedenlerinden biri
+
+egitim:Göç nedenlerinden biri
+
+medeniDurum:Göç nedenlerinden biri
+
+yasamKosullari:Göç nedenlerinden biri
+
+Hane:Göç nedenlerinden biri
+
+aile_yanina_donme:Göç nedenlerinden biri
+
+saglik:Göç nedenlerinden biri
+
+evAlma:Göç nedenlerinden biri
+
+emeklilik:Göç nedenlerinden biri
+
+## Tercih Sebebi
+
+Bu veri setini seçmemizde bir kaç neden etkili olmuştur.
+
+1.  **Analiz Amaçları**: Göç istatistikleri, birçok farklı alanda önemli bilgiler sağlayabilir. Örneğin, ekonomik kalkınma, işgücü hareketleri, eğitim, sağlık hizmetleri talebi gibi konuları analiz etmek için göç verileri kullanılabilir.
+
+2.  **Zaman Aralığı**: Seçtiğimiz zaman aralığı (2018-2022), son beş yılda Türkiye'deki göç eğilimlerini incelememizi sağlamaktadır.Bu dönemdeki göç eğilimleri, ekonomik ya da sosyal değişikliklerin etkilerini değerlendirmemize yardımcı olabilir.
+
+3.  **Kapsam**: Veri setimizin kapsamı Türkiye genelindeki farklı illeri içermesi nedeniyle farklı bölgeler arasındaki göç sayılarını inceleme fırsatını da bize sunmaktadır.Bu, bölgesel kalkınma eğilimlerini ve farklı illerdeki yaşam koşullarının etkilerini anlamamıza yardımcı olmaktadır.
+
+4.  **Değişkenlerin Çeşitliliği**: Seçtiğimiz değişkenler, göç nedenlerini çeşitli açılardan analiz etmemize olanak tanır. Örneğin, iş bulma, eğitim imkanları, aile birleşimi gibi farklı faktörlerin göç kararları üzerindeki etkilerini değerlendirebiliriz
+
+5.  **Toplumsal İhtiyaçlar**: Göç istatistikleri, toplumun belirli ihtiyaçlarını anlamak için kullanılabilir. Örneğin, sağlık hizmetlerine erişim, yaşam koşulları, ev alma gibi göç nedenlerinin toplumsal etkileri değerlendirilebilir.
+
+## Ön İşleme
+
+```{r, message=FALSE, results='asis'}
+#| warning: false
+#| code-summary: "Show the code"
+#| code-fold: true
+library(readxl)
+library(ggplot2)
+library(tidyverse)
+library(dplyr)
+library(knitr)
+library(ggrepel)
+library(gridExtra)
+
+Sys.setlocale("LC_CTYPE", "turkish")
+```
+
+```{r}
+Sys.setlocale("LC_CTYPE", "turkish")
+# ggplot2 kütüphanesini yükleyin
+library(ggplot2)
+
+# Veri setini oluşturun
+veri <- data.frame(
+  Yıl = c(2018, 2019, 2020, 2021, 2022),
+  Toplam_Ic_Goc = c(3057606, 2806123, 2258726, 2777797, 2791156)
+)
+
+# Bar plot'u oluşturun
+ggplot(veri, aes(x = Yıl, y = Toplam_Ic_Goc)) +
+  geom_bar(stat = "identity", fill = "darkred", color = "black") +
+  theme_minimal() +
+  labs(title = "Yıllara Göre Göç Sayısı", x = "Yıl", y = "Toplam İç Göç")
+```
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+##cor() fonksiyonu kullanılarak alinan_goc veri setindeki belirli sütunlar arasındaki korelasyonlar hesaplanır.
+# Korelasyon matrisini hesapla
+##cor() fonksiyonu, alinan_goc veri setindeki 3. sütundan 11. sütuna kadar olan sütunlardaki değişkenler arasındaki korelasyonları hesaplar. use = "complete.obs" argümanı, eksik değerleri içeren gözlemleri hesaplama işleminden çıkarır.
+correlation_matrix <- cor(alinan_goc[, c(3:11)], use = "complete.obs")
+melted_corr_matrix <- melt(correlation_matrix)
+##Daha sonra, melt() fonksiyonu kullanılarak korelasyon matrisi eritilir
+##melted_corr_matrix <- melt(correlation_matrix) ggplot2 paketi kullanılarak korelasyon matrisi görselleştirilir. 
+##geom_tile() fonksiyonu ile korelasyon matrisi, renkli kareler olarak gösterilir. geom_text() fonksiyonu ile her karenin içine korelasyon değerleri yazdırılır. 
+##labs() fonksiyonu ile x ve y eksenlerine etiketler eklenir. guides() fonksiyonu ile renk gradyanı için bir renk skalası eklenebilir. Son olarak, theme() fonksiyonları ile grafik stili ayarlanır.
+# Ve Korelasyon matrisini görselleştirilir
+ggplot(melted_corr_matrix, aes(Var1, Var2, fill = value)) +
+  geom_tile() + 
+   geom_text(aes(label = sprintf("%.2f", value)), color = "black", size = 3) +
+  labs(x = " ", y = " ") + 
+  guides(color = guide_legend(title = "Değer")) + 
+  scale_fill_gradient2(low = "yellow", high = "red", mid = "white", midpoint = 0.7) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+```{r}
+Sys.setlocale("LC_CTYPE", "turkish")
+library(sf)
+library(ggplot2)
+library(dplyr)
+
+#### 2. Shapefile Dosyasının Yüklenmesi:
+
+# Shapefile dosyasının yolunu belirleme
+shapefile_path <- "C:/Users/goktu/Desktop/Migration/gadm36_TUR_shp/gadm41_TUR_1.shp"
+
+# Shapefile dosyasını yükleme
+turkiye_sf <- st_read(shapefile_path)
+
+#### 3. Verilerin Hazırlanması:
+
+# Verilerin yüklenmesi
+nufus_degisim_verisi <- data.frame(
+  yil = c(2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020),
+  il = c("Adana", "Adiyaman", "Afyonkarahisar", "Agri", "Amasya", "Ankara", "Antalya", "Artvin", "Aydin", "Balikesir", "Bilecik", "Bingol", "Bitlis", "Bolu", "Burdur", "Bursa", "Canakkale", "Cankiri", "Corum", "Denizli", "Diyarbakir", "Edirne", "Elazig", "Erzincan", "Erzurum", "Eskisehir", "Gaziantep", "Giresun", "Gumushane", "Hakkari", "Hatay", "Isparta", "Mersin", "Istanbul", "Izmir", "Kars", "Kastamonu", "Kayseri", "Kirklareli", "Kirsehir", "Kocaeli", "Konya", "Kutahya", "Malatya", "Manisa", "Kahramanmaras", "Mardin", "Mugla", "Mus", "Nevsehir", "Nigde", "Ordu", "Rize", "Sakarya", "Samsun", "Siirt", "Sinop", "Sivas", "Tekirdag", "Tokat", "Trabzon", "Tunceli", "Sanliurfa", "Usak", "Van", "Yozgat", "Zonguldak", "Aksaray", "Bayburt", "Karaman", "Kirikkale", "Batman", "Sirnak", "Bartin", "Ardahan", "Igdir", "Yalova", "Karabuk", "Kilis", "Osmaniye", "Duzce"),
+  nufus_degisim = c(1256, -773, -995, -9727, 894, 11997, 20710, -1443, 4459, 9154, -142, -1136, -2173, -1135, -2221, 23099, 2033, -2659, 621, 1164, -3891, -2012, -5637, -91, -9815, -157, 861, 286, -11965, -1194, 5895, -5026, 13083, -53022, 14772, -4742, -1151, 1733, 2256, -875, 22550, -4992, -3341, 869, 7170, 1360, 629, 13380, -4828, 351, -2239, 5492, -147, 6041, 7612, -3914, -778, -5395, 22296, -16906, -745, -520, -9474, -1672, -11493, -3495, -4350, -103, -3006, -230, -4424, 1005, -547, 144, -1130, 186, 4380, -4602, -1397, 2780, 1192)
+)
+
+#### 4. İllerin Geometrik Merkezlerinin Bulunması:
+
+# Shapefile ile veri çerçevesini birleştirme
+turkiye_veri <- turkiye_sf %>%
+  left_join(nufus_degisim_verisi, by = c("NAME_1" = "il"))
+
+# NA değerlerini kaldırma
+turkiye_veri <- na.omit(turkiye_veri)
+
+# Geometrik merkezlerin koordinatlarını çıkarma ve veri çerçevesine ekleme
+turkiye_centroids <- turkiye_veri %>%
+  st_centroid() %>%
+  st_as_sf()
+
+# Geometrik merkezlerin koordinatlarını çıkarma
+turkiye_centroids_coords <- st_coordinates(turkiye_centroids)
+turkiye_centroids_df <- as.data.frame(turkiye_centroids_coords)
+turkiye_centroids_df$nufus_degisim <- turkiye_veri$nufus_degisim
+
+#### 5. Haritanın Çizilmesi ve Noktaların Gösterilmesi:
+
+# Haritanın oluşturulması
+ggplot(data = turkiye_sf) +
+  geom_sf() +  # Türkiye haritasını çizin
+  geom_point(data = turkiye_centroids_df, 
+             aes(x = X, y = Y, size = abs(nufus_degisim), color = nufus_degisim > 0), 
+             alpha = 0.7) +  # Noktaları ekleyin
+  scale_color_manual(values = c("TRUE" = "red", "FALSE" = "blue"), labels = c("TRUE" = "Göç Alan", "FALSE" = "Göç Veren")) +
+  theme_minimal() +
+  labs(title = "Türkiye Haritası",
+       subtitle = "İllerin Nüfus Değişimleri (2020)",
+       x = "Enlem", 
+       y = "Boylam",
+       size = "Nüfus Değişimi",
+       color = "Durum")
+```
+
+```{r}
+Sys.setlocale("LC_CTYPE", "turkish")
+# Gerekli kütüphaneleri yükleyin
+library(ggplot2)
+library(dplyr)
+
+# Veri setini yükleyin
+migration_data <- migration_rate
+
+# 2020 yılına ait verileri filtreleyin ve en yüksek 5 değeri seçin
+top_5_migration_2020 <- migration_data %>%
+  filter(Yil == 2020) %>%
+  arrange(desc(`Nufus degisimi`)) %>%
+  head(5)
+
+print(top_5_migration_2020)
+
+
+```
+
+```{r}
+Sys.setlocale("LC_CTYPE", "turkish")
+# Gerekli kütüphaneleri yükleyin
+library(ggplot2)
+library(dplyr)
+
+# Veri setini yükleyin
+migration_data <- migration_rate
+
+# 2020 yılına ait verileri filtreleyin ve en yüksek 5 değeri seçin
+top_5_migration_2020 <- migration_data %>%
+  filter(Yil == 2020) %>%
+  arrange(`Nufus degisimi`) %>%
+  head(5)
+
+print(top_5_migration_2020)
+
+```
