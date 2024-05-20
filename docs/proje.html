@@ -280,96 +280,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Adana ili verisini seçme</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>adana_verisi <span class="ot">&lt;-</span> <span class="fu">subset</span>(alinan_goc, il <span class="sc">==</span> <span class="st">"Hakkari"</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Tayin sayılarını görselleştirme</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> adana_verisi, <span class="fu">aes</span>(<span class="at">x =</span> yil, <span class="at">y =</span> saglik)) <span class="sc">+</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Yıl"</span>, <span class="at">y =</span> <span class="st">"Sağlık Nedeni ile Yapılan Göç Sayısı"</span>) <span class="sc">+</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Yıllara Göre Kilis İline Sağlık Nedeni ile Yapılan Göç Sayısı"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="proje_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell">
-<details class="code-fold">
-<summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># İstanbul ili verisini seçme</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>istanbul_verisi <span class="ot">&lt;-</span> <span class="fu">subset</span>(alinan_goc, il <span class="sc">==</span> <span class="st">"Istanbul"</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># sağlık nedeni ile istanbula göç edenlerinin grafiğini çizme</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> istanbul_verisi, <span class="fu">aes</span>(<span class="at">x =</span> yil, <span class="at">y =</span> saglik)) <span class="sc">+</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Yıl"</span>, <span class="at">y =</span> <span class="st">"Sağlık Nedeni İle Yapılan Göç Sayısı"</span>) <span class="sc">+</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Yıllara Göre Istanbul İline Sağlık Nedeni İle Yapılan Göç Sayısı"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="proje_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<ul>
-<li><p><strong>Göç Nedenleri Arasındaki Korelasyonu Hesaplama ve Görselleştirme</strong></p>
-<p>Korelasyon matrisi görselleştirmesi (heatmap), veri setindeki değişkenler arasındaki ilişkileri görsel olarak anlamak için güçlü bir araçtır.Örneğin, pozitif korelasyonlar, bir değişkenin artışıyla diğer değişkenin de arttığını gösterir. Bu, iki değişken arasında bir ilişki olduğunu ve bir değişkenin diğerini etkileyebileceğini gösterir.</p></li>
-<li><p>Değişkenler arasında korelasyon büyüklükleri incelendiğinde göç nedeni olarak tayin’in, medeni durum ve Hane ile pozitif yönlü ve güçlü bir ilişkisi olduğu görülmektedir. Ek olarak iş bulma ile yaşam koşulları arasında benzer şekilde pozitif yönlü ve güçlü bir ilişkisi olduğu görülmektedir.</p></li>
-<li><p>Aile yanına dönme, göç nedenleri arasında en düşük oranda ilişkiye sahiptir.</p></li>
-</ul>
-<div class="cell">
-<details class="code-fold">
-<summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="do">##cor() fonksiyonu kullanılarak alinan_goc veri setindeki belirli sütunlar arasındaki korelasyonlar hesaplanır.</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Korelasyon matrisini hesapla</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="do">##cor() fonksiyonu, alinan_goc veri setindeki 3. sütundan 11. sütuna kadar olan sütunlardaki değişkenler arasındaki korelasyonları hesaplar. use = "complete.obs" argümanı, eksik değerleri içeren gözlemleri hesaplama işleminden çıkarır.</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>correlation_matrix <span class="ot">&lt;-</span> <span class="fu">cor</span>(alinan_goc[, <span class="fu">c</span>(<span class="dv">3</span><span class="sc">:</span><span class="dv">11</span>)], <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>melted_corr_matrix <span class="ot">&lt;-</span> <span class="fu">melt</span>(correlation_matrix)</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="do">##Daha sonra, melt() fonksiyonu kullanılarak korelasyon matrisi eritilir</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="do">##melted_corr_matrix &lt;- melt(correlation_matrix) ggplot2 paketi kullanılarak korelasyon matrisi görselleştirilir. </span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="do">##geom_tile() fonksiyonu ile korelasyon matrisi, renkli kareler olarak gösterilir. geom_text() fonksiyonu ile her karenin içine korelasyon değerleri yazdırılır. </span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="do">##labs() fonksiyonu ile x ve y eksenlerine etiketler eklenir. guides() fonksiyonu ile renk gradyanı için bir renk skalası eklenebilir. Son olarak, theme() fonksiyonları ile grafik stili ayarlanır.</span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Ve Korelasyon matrisini görselleştirilir</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(melted_corr_matrix, <span class="fu">aes</span>(Var1, Var2, <span class="at">fill =</span> value)) <span class="sc">+</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>() <span class="sc">+</span> </span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">sprintf</span>(<span class="st">"%.2f"</span>, value)), <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">" "</span>, <span class="at">y =</span> <span class="st">" "</span>) <span class="sc">+</span> </span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">color =</span> <span class="fu">guide_legend</span>(<span class="at">title =</span> <span class="st">"Değer"</span>)) <span class="sc">+</span> </span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient2</span>(<span class="at">low =</span> <span class="st">"yellow"</span>, <span class="at">high =</span> <span class="st">"red"</span>, <span class="at">mid =</span> <span class="st">"white"</span>, <span class="at">midpoint =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="proje_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<ul>
-<li><strong>Göç Nedeni ve Göç Sayısı Sütunları Oluşturmak</strong></li>
-</ul>
-<p>Aşağıdaki kod bloğunda göç nedenleri tek sütun içerisinde gruplanmıştır. Göç nedenlerinin il bazında nasıl gerçekleştiğini daha net görebilmek için bu gruplama işlemi yapılmıştır.</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="do">##alinan_goc veri çerçevesindeki veriyi daha "düzenli" bir formata dönüştürür ve new_tidy_data adında yeni bir veri seti oluşturur. Buradaki amaç, veriyi daha analiz edilebilir hale getirmek ve veri işleme sürecini kolaylaştırmaktır</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="do">##pivot_longer() fonksiyonu kullanılarak, veri çerçevesindeki sütunlar uzun formata dönüştürülür. Yani, her bir göç nedeni bir sütun yerine, il ve yil sütunları sabit kalacak şekilde, diğer sütunlar göç nedeni ve göç sayısı olacak şekilde yeniden yapılandırılır</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="do">##cols = -c(il, yil): il ve yil sütunları dışındaki tüm sütunlar işleme alınır names_to = "gocNedeni": Sütun adları, "gocNedeni" adında yeni bir sütuna dönüştürülür.</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="do">##mutate() fonksiyonu kullanılarak, "gocNedeni" sütunu karakter veri tipine dönüştürülür</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="do">##head() fonksiyonu kullanılarak, yeni oluşturulan new_tidy_data veri çerçevesinin ilk altı satırı ekrana yazdırılır</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>new_tidy_data <span class="ot">&lt;-</span> alinan_goc <span class="sc">%&gt;%</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span><span class="fu">c</span>(il, yil), <span class="at">names_to =</span> <span class="st">"gocNedeni"</span>, <span class="at">values_to =</span> <span class="st">"gocSayisi"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gocNedeni =</span> <span class="fu">as.character</span>(gocNedeni))</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(new_tidy_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="do">##alinan_goc veri çerçevesindeki veriyi daha "düzenli" bir formata dönüştürür ve new_tidy_data adında yeni bir veri seti oluşturur. Buradaki amaç, veriyi daha analiz edilebilir hale getirmek ve veri işleme sürecini kolaylaştırmaktır</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="do">##pivot_longer() fonksiyonu kullanılarak, veri çerçevesindeki sütunlar uzun formata dönüştürülür. Yani, her bir göç nedeni bir sütun yerine, il ve yil sütunları sabit kalacak şekilde, diğer sütunlar göç nedeni ve göç sayısı olacak şekilde yeniden yapılandırılır</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="do">##cols = -c(il, yil): il ve yil sütunları dışındaki tüm sütunlar işleme alınır names_to = "gocNedeni": Sütun adları, "gocNedeni" adında yeni bir sütuna dönüştürülür.</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="do">##mutate() fonksiyonu kullanılarak, "gocNedeni" sütunu karakter veri tipine dönüştürülür</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="do">##head() fonksiyonu kullanılarak, yeni oluşturulan new_tidy_data veri çerçevesinin ilk altı satırı ekrana yazdırılır</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>new_tidy_data <span class="ot">&lt;-</span> alinan_goc <span class="sc">%&gt;%</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span><span class="fu">c</span>(il, yil), <span class="at">names_to =</span> <span class="st">"gocNedeni"</span>, <span class="at">values_to =</span> <span class="st">"gocSayisi"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gocNedeni =</span> <span class="fu">as.character</span>(gocNedeni))</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(new_tidy_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 x 4
@@ -383,15 +303,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 6 Adana  2022 Hane               14153</code></pre>
 </div>
 </div>
-<ul>
-<li><p><strong>Veri setimizde eksik değerler var mı?</strong></p></li>
-<li><p><strong>Veri setimizin yapısı nasıl?</strong></p></li>
-</ul>
 <div class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="do">##veri setindeki sütun adlarını döndürür</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(new_tidy_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="do">##veri setindeki sütun adlarını döndürür</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(new_tidy_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "il"        "yil"       "gocNedeni" "gocSayisi"</code></pre>
@@ -400,8 +316,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="do">##new_tidy_data veri setindeki her sütundaki eksik değerlerin sayısını hesaplama</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(new_tidy_data))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="do">##new_tidy_data veri setindeki her sütundaki eksik değerlerin sayısını hesaplama</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(new_tidy_data))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>       il       yil gocNedeni gocSayisi 
@@ -411,19 +327,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="do">##new_tidy_data veri setinde herhangi bir eksik değer olup olmadığını kontrol eder.</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="do">##any(): Bu fonksiyon, bir vektör veya matrisin herhangi bir elemanının belirtilen koşulu sağlayıp sağlamadığını kontrol eder. </span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">any</span>(<span class="fu">is.na</span>(new_tidy_data))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] FALSE</code></pre>
-</div>
-</div>
-<div class="cell">
-<details class="code-fold">
-<summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="do">##data setinin yapısını özetleme</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(new_tidy_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="do">##data setinin yapısını özetleme</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(new_tidy_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>tibble [4,050 x 4] (S3: tbl_df/tbl/data.frame)
@@ -436,8 +341,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="do">##new_tidy_data veri setindeki tekrarlanan satırların sayısını hesaplar.</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">duplicated</span>(new_tidy_data))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="do">##new_tidy_data veri setindeki tekrarlanan satırların sayısını hesaplar.</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">duplicated</span>(new_tidy_data))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0</code></pre>
@@ -450,8 +355,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="do">##new_tidy_data veri setindeki "gocSayisi" adlı sütunun özet istatistikleri hesaplanır</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(new_tidy_data<span class="sc">$</span>gocSayisi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="do">##new_tidy_data veri setindeki "gocSayisi" adlı sütunun özet istatistikleri hesaplanır</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(new_tidy_data<span class="sc">$</span>gocSayisi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
@@ -463,8 +368,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="do">##new_tidy_data veri setindeki verileri gocSayisi sütununa göre sıralama ve ilk altı satırını ekrana yazdırma</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>new_tidy_data <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(gocSayisi) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="do">##new_tidy_data veri setindeki verileri gocSayisi sütununa göre sıralama ve ilk altı satırını ekrana yazdırma</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>new_tidy_data <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(gocSayisi) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 x 4
@@ -483,8 +388,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="do">##new_tidy_data veri setindeki verileri gocSayisi sütununa göre azalan sıraya göre sıralama ve ilk altı satırını ekrana yazdırma</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>new_tidy_data <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(gocSayisi)) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="do">##new_tidy_data veri setindeki verileri gocSayisi sütununa göre azalan sıraya göre sıralama ve ilk altı satırını ekrana yazdırma</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>new_tidy_data <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(gocSayisi)) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 x 4
@@ -501,29 +406,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># İstanbul ili verisini seçme</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>istanbul_verisi2 <span class="ot">&lt;-</span> <span class="fu">subset</span>(alinan_goc, il <span class="sc">==</span> <span class="st">"Istanbul"</span>)</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Tayin sayılarını görselleştirme</span></span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> istanbul_verisi2, <span class="fu">aes</span>(<span class="at">x =</span> yil, <span class="at">y =</span> yasamKosullari)) <span class="sc">+</span></span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Yıl"</span>, <span class="at">y =</span> <span class="st">"Yaşam Koşulları"</span>) <span class="sc">+</span></span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"İstanbul İline Yıllara Göre Yaşam Koşulları Nedeniyle Yapılan Göç Sayısı"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="proje_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Grafikte de 2019 yılında yaşam koşulları nedeniyle 150000’den daha fazla kişinin İstanbul’a göç ettiğini görüyoruz. 2020 yılından itibaren ise sayı düşmüştür. Bunun nedeni büyük ihtimalle pandemidir.</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="do">## new_tidy_data veri setindeki veriler arasından gocSayisi sütunundaki en yüksek 10 değerigösterme</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>new_tidy_data <span class="sc">%&gt;%</span> <span class="fu">top_n</span>(<span class="dv">10</span>, gocSayisi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="do">## new_tidy_data veri setindeki veriler arasından gocSayisi sütunundaki en yüksek 10 değerigösterme</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>new_tidy_data <span class="sc">%&gt;%</span> <span class="fu">top_n</span>(<span class="dv">10</span>, gocSayisi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 x 4
@@ -541,32 +425,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 10 Istanbul  2018 Hane               74627</code></pre>
 </div>
 </div>
-<ul>
-<li><strong>Veri Setindeki Toplam Göç Sayısını Yazdıran Fonksiyon</strong></li>
-</ul>
-<div class="cell">
-<details class="code-fold">
-<summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="do">##new_tidy_data veri setindeki toplam göç sayısını hesaplamak için bir fonksiyon tanımlar.</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>toplam_goc_sayisi <span class="ot">&lt;-</span> <span class="cf">function</span>(new_tidy_data, il, yil) {</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  toplam <span class="ot">&lt;-</span> <span class="fu">sum</span>(new_tidy_data<span class="sc">$</span>gocSayisi[new_tidy_data<span class="sc">$</span>il <span class="sc">==</span> il <span class="sc">&amp;</span> new_tidy_data<span class="sc">$</span>yil <span class="sc">==</span> yil])</span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(toplam)</span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="do">##belirtilen il ve yıl için new_tidy_data veri çerçevesindeki göç sayılarını filtreler ve toplama </span></span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Örneğin, Adana'daki 2022 yılındaki toplam göç sayısını bulmak için:</span></span>
-<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"Adana'da 2022 yılındaki toplam goc sayısı:"</span>, <span class="fu">toplam_goc_sayisi</span>(new_tidy_data, <span class="st">"Adana"</span>, <span class="dv">2022</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "Adana'da 2022 yılındaki toplam goc sayısı: 48123"</code></pre>
-</div>
-<details class="code-fold">
-<summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"İstanbul'da 2022 yılındaki toplam goc sayısı:"</span>, <span class="fu">toplam_goc_sayisi</span>(new_tidy_data, <span class="st">"Istanbul"</span>, <span class="dv">2019</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "İstanbul'da 2022 yılındaki toplam goc sayısı: 452868"</code></pre>
-</div>
-</div>
 </section>
 </section>
 <section id="analizler" class="level1" data-number="2">
@@ -574,72 +432,161 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>new_tidy_data <span class="ot">&lt;-</span> new_tidy_data <span class="sc">%&gt;%</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">bolge =</span> <span class="fu">case_when</span>(</span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>    il <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Istanbul"</span>, <span class="st">"Bursa"</span>, <span class="st">"Kocaeli"</span>, <span class="st">"Tekirdag"</span>,<span class="st">"Balikesir"</span>,<span class="st">"Canakkale"</span>,<span class="st">"Bilecik"</span>,<span class="st">"Edirne"</span>,<span class="st">"Kirklareli"</span>,<span class="st">"Sakarya"</span>,<span class="st">"Yalova"</span>) <span class="sc">~</span> <span class="st">"Marmara"</span>,</span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>    il <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Izmir"</span>, <span class="st">"Aydin"</span>, <span class="st">"Manisa"</span>,<span class="st">"Afyonkarahisar"</span>,<span class="st">"Denizli"</span>,<span class="st">"Kutahya"</span>,<span class="st">"Manisa"</span>,<span class="st">"Mugla"</span>,<span class="st">"Usak"</span>) <span class="sc">~</span> <span class="st">"Ege"</span>,</span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>    il <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Ankara"</span>, <span class="st">"Konya"</span>, <span class="st">"Eskisehir"</span>,<span class="st">"Cankiri"</span>,<span class="st">"Corum"</span>,<span class="st">"Kayseri"</span>,<span class="st">"Kirsehir</span></span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="st">"</span>,<span class="st">"Konya"</span>,<span class="st">"Nevsehir"</span>,<span class="st">"Nigde"</span>,<span class="st">"Sivas"</span>,<span class="st">"Yozgat"</span>,<span class="st">"Aksaray"</span>,<span class="st">"Karaman"</span>,<span class="st">"Kirikkale"</span>) <span class="sc">~</span> <span class="st">"Ic Anadolu"</span>,</span>
-<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>    il <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Artvin"</span>, <span class="st">"Giresun"</span>, <span class="st">"Ordu"</span>,<span class="st">"Rize"</span>,<span class="st">"Sinop"</span>,<span class="st">"Tokat"</span>,<span class="st">"Trabzon"</span>,<span class="st">"Zonguldak"</span>,<span class="st">"Amasya"</span>,<span class="st">"Bolu"</span>,<span class="st">"Gumushane"</span>,<span class="st">"Kastamonu"</span>,<span class="st">"Samsun"</span>,<span class="st">"Sinop"</span>,<span class="st">"Bayburt</span></span>
-<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="st">"</span>,<span class="st">"Bartin"</span>,<span class="st">"Karabuk"</span>,<span class="st">"Duzce"</span>) <span class="sc">~</span> <span class="st">"Karadeniz"</span>,</span>
-<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>    il <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Adana"</span>, <span class="st">"Antalya"</span>,<span class="st">"Burdur"</span>,<span class="st">"Hatay"</span>,<span class="st">"Isparta"</span>,<span class="st">"Kahramanmaras"</span>,<span class="st">"Osmaniye"</span>) <span class="sc">~</span> <span class="st">"Akdeniz"</span>,</span>
-<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>    il <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Adiyaman"</span>,<span class="st">"Diyarbakir"</span>,<span class="st">"Gaziantep"</span>,<span class="st">"Mardin"</span>,<span class="st">"Siirt"</span>,<span class="st">"Sanliurfa"</span>,<span class="st">"Batman"</span>,<span class="st">"Sirnak"</span>,<span class="st">"Kilis"</span>) <span class="sc">~</span> <span class="st">"Guneydogu Anadolu"</span>,</span>
-<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>    il <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Agri"</span>,<span class="st">"Bingol"</span>,<span class="st">"Bitlis"</span>,<span class="st">"Elazig"</span>,<span class="st">"Erzincan"</span>,<span class="st">"Erzurum"</span>,<span class="st">"Hakkari"</span>,<span class="st">"Kars"</span>,<span class="st">"Malatya"</span>,<span class="st">"Muş"</span>,<span class="st">"Tunceli"</span>,<span class="st">"Van"</span>,<span class="st">"Ardahan"</span>,<span class="st">"Igdir"</span>) <span class="sc">~</span> <span class="st">"Dogu Anadolu"</span>,</span>
-<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"Diger"</span> <span class="co"># Diğer bölgelere dahil olan iller için bir kategori belirleyin</span></span>
-<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>  ))</span>
-<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(new_tidy_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(yil <span class="sc">==</span> <span class="dv">2020</span> , bolge <span class="sc">!=</span> <span class="st">"Diger"</span>), <span class="fu">aes</span>(gocNedeni, gocSayisi, <span class="at">color =</span> bolge)) <span class="sc">+</span></span>
-<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"2020 Yılına Göre Göç Nedenleri ve Bölgelere Göre Dağılımı"</span>,</span>
-<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Goc Nedeni"</span>,</span>
-<span id="cb34-19"><a href="#cb34-19" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Goc Sayısı"</span>,</span>
-<span id="cb34-20"><a href="#cb34-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Bolge"</span>) <span class="sc">+</span></span>
-<span id="cb34-21"><a href="#cb34-21" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb34-22"><a href="#cb34-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb34-23"><a href="#cb34-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.10</span>),</span>
-<span id="cb34-24"><a href="#cb34-24" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>veri <span class="ot">&lt;-</span> <span class="fu">data.frame</span>( <span class="at">Yil =</span> <span class="fu">c</span>(<span class="dv">2018</span>,<span class="dv">2019</span>,<span class="dv">2020</span>,<span class="dv">2021</span>,<span class="dv">2022</span>),</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">Toplam_Ic_Goc =</span> <span class="fu">c</span>(<span class="dv">3057606</span>,<span class="dv">2806123</span>,<span class="dv">2258726</span>,<span class="dv">2777797</span>,<span class="dv">2791156</span>))</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(veri, <span class="fu">aes</span>( <span class="at">x =</span> Yil, <span class="at">y =</span> Toplam_Ic_Goc)) <span class="sc">+</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span> , <span class="at">fill =</span> <span class="st">"red"</span> , <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Yıllara Göre Göç Sayısı"</span> , <span class="at">x =</span> <span class="st">"Yıl"</span> , <span class="at">y =</span> <span class="st">"Toplam İç Göç"</span>) <span class="sc">+</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="proje_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="proje_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Bu grafikte bölgeler bazında alınan göçlerin sebepleri gösterilmiştir. Grafikte görüldüğü üzere aile yanına dönme, emeklilik ve sağlık nedenlerinin Türkiye’dki göç hareketliliğine etkisinin diğer nedenlere göre az olduğu gözlemlenmektedir. Öte yandan Hane ve yaşam koşulları sebebi ile göç hareketliliği diğer kategorilere nazaran daha fazladır. Bölge bazında Marmara ve İç Anadolu bölgeleri için uç değerler incelendiğinde büyük şehirlerin etkisinden kaynaklandığı gözlemlenmiştir.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="do">##boxplot data görselleştirme</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>new_tidy_data <span class="ot">&lt;-</span> new_tidy_data <span class="sc">%&gt;%</span></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">bolge =</span> <span class="fu">case_when</span>(</span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    il <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Istanbul"</span>, <span class="st">"Bursa"</span>, <span class="st">"Kocaeli"</span>, <span class="st">"Tekirdag"</span>,<span class="st">"Balikesir"</span>,<span class="st">"Canakkale"</span>,<span class="st">"Bilecik"</span>,<span class="st">"Edirne"</span>,<span class="st">"Kirklareli"</span>,<span class="st">"Sakarya"</span>,<span class="st">"Yalova"</span>) <span class="sc">~</span> <span class="st">"Marmara"</span>,</span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>    il <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Izmir"</span>, <span class="st">"Aydin"</span>, <span class="st">"Manisa"</span>,<span class="st">"Afyonkarahisar"</span>,<span class="st">"Denizli"</span>,<span class="st">"Kutahya"</span>,<span class="st">"Manisa"</span>,<span class="st">"Mugla"</span>,<span class="st">"Usak"</span>) <span class="sc">~</span> <span class="st">"Ege"</span>,</span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>    il <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Ankara"</span>, <span class="st">"Konya"</span>, <span class="st">"Eskisehir"</span>,<span class="st">"Cankiri"</span>,<span class="st">"Corum"</span>,<span class="st">"Kayseri"</span>,<span class="st">"Kirsehir</span></span>
-<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="st">"</span>,<span class="st">"Konya"</span>,<span class="st">"Nevsehir"</span>,<span class="st">"Nigde"</span>,<span class="st">"Sivas"</span>,<span class="st">"Yozgat"</span>,<span class="st">"Aksaray"</span>,<span class="st">"Karaman"</span>,<span class="st">"Kirikkale"</span>) <span class="sc">~</span> <span class="st">"Ic Anadolu"</span>,</span>
-<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>    il <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Artvin"</span>, <span class="st">"Giresun"</span>, <span class="st">"Ordu"</span>,<span class="st">"Rize"</span>,<span class="st">"Sinop"</span>,<span class="st">"Tokat"</span>,<span class="st">"Trabzon"</span>,<span class="st">"Zonguldak"</span>,<span class="st">"Amasya"</span>,<span class="st">"Bolu"</span>,<span class="st">"Gumushane"</span>,<span class="st">"Kastamonu"</span>,<span class="st">"Samsun"</span>,<span class="st">"Sinop"</span>,<span class="st">"Bayburt</span></span>
-<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a><span class="st">"</span>,<span class="st">"Bartin"</span>,<span class="st">"Karabuk"</span>,<span class="st">"Duzce"</span>) <span class="sc">~</span> <span class="st">"Karadeniz"</span>,</span>
-<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>    il <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Adana"</span>, <span class="st">"Antalya"</span>,<span class="st">"Burdur"</span>,<span class="st">"Hatay"</span>,<span class="st">"Isparta"</span>,<span class="st">"Kahramanmaras"</span>,<span class="st">"Osmaniye"</span>) <span class="sc">~</span> <span class="st">"Akdeniz"</span>,</span>
-<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>    il <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Adiyaman"</span>,<span class="st">"Diyarbakir"</span>,<span class="st">"Gaziantep"</span>,<span class="st">"Mardin"</span>,<span class="st">"Siirt"</span>,<span class="st">"Sanliurfa"</span>,<span class="st">"Batman"</span>,<span class="st">"Sirnak"</span>,<span class="st">"Kilis"</span>) <span class="sc">~</span> <span class="st">"Guneydogu Anadolu"</span>,</span>
-<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>    il <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Agri"</span>,<span class="st">"Bingol"</span>,<span class="st">"Bitlis"</span>,<span class="st">"Elazig"</span>,<span class="st">"Erzincan"</span>,<span class="st">"Erzurum"</span>,<span class="st">"Hakkari"</span>,<span class="st">"Kars"</span>,<span class="st">"Malatya"</span>,<span class="st">"Muş"</span>,<span class="st">"Tunceli"</span>,<span class="st">"Van"</span>,<span class="st">"Ardahan"</span>,<span class="st">"Igdir"</span>) <span class="sc">~</span> <span class="st">"Dogu Anadolu"</span>,</span>
-<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>   <span class="co">#TRUE ~ "Diger" # Diğer bölgelere dahil olan iller için bir kategori belirleyin</span></span>
-<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>  ))</span>
-<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(new_tidy_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(yil <span class="sc">==</span> <span class="dv">2020</span> , bolge <span class="sc">!=</span> <span class="st">"Diger"</span>), <span class="fu">aes</span>(<span class="at">x =</span> gocNedeni, <span class="at">y =</span> gocSayisi, <span class="at">fill =</span> bolge)) <span class="sc">+</span></span>
-<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"2020 Yılına Göre Göç Nedenleri ve Bölgelere Göre Dağılımı"</span>,</span>
-<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Göç Nedeni"</span>,</span>
-<span id="cb35-19"><a href="#cb35-19" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Göç Sayısı"</span>,</span>
-<span id="cb35-20"><a href="#cb35-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">"Bölge"</span>) <span class="sc">+</span></span>
-<span id="cb35-21"><a href="#cb35-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb35-22"><a href="#cb35-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>),</span>
-<span id="cb35-23"><a href="#cb35-23" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))<span class="sc">+</span></span>
-<span id="cb35-24"><a href="#cb35-24" aria-hidden="true" tabindex="-1"></a> <span class="fu">scale_y_continuous</span>(<span class="at">trans =</span> <span class="st">'log10'</span>, <span class="at">labels =</span> <span class="cf">function</span>(x) <span class="fu">format</span>(x, <span class="at">scientific =</span> <span class="cn">FALSE</span>))  <span class="co"># Y eksenini logaritmik ölçekleme yaparak ayarla</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="do">##alinan_goc veri çerçevesindeki veriyi daha "düzenli" bir formata dönüştürür ve new_tidy_data adında yeni bir veri seti oluşturur. Buradaki amaç, veriyi daha analiz edilebilir hale getirmek ve veri işleme sürecini kolaylaştırmaktır</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="do">##pivot_longer() fonksiyonu kullanılarak, veri çerçevesindeki sütunlar uzun formata dönüştürülür. Yani, her bir göç nedeni bir sütun yerine, il ve yil sütunları sabit kalacak şekilde, diğer sütunlar göç nedeni ve göç sayısı olacak şekilde yeniden yapılandırılır</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="do">##cols = -c(il, yil): il ve yil sütunları dışındaki tüm sütunlar işleme alınır names_to = "gocNedeni": Sütun adları, "gocNedeni" adında yeni bir sütuna dönüştürülür.</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="do">##mutate() fonksiyonu kullanılarak, "gocNedeni" sütunu karakter veri tipine dönüştürülür</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="do">##head() fonksiyonu kullanılarak, yeni oluşturulan new_tidy_data veri çerçevesinin ilk altı satırı ekrana yazdırılır</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>new_tidy_data <span class="ot">&lt;-</span> alinan_goc <span class="sc">%&gt;%</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span><span class="fu">c</span>(il, yil), <span class="at">names_to =</span> <span class="st">"gocNedeni"</span>, <span class="at">values_to =</span> <span class="st">"gocSayisi"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gocNedeni =</span> <span class="fu">as.character</span>(gocNedeni))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sys.setlocale("LC_CTYPE", "turkish")</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co"># library(sf)</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co"># library(ggplot2)</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co"># library(dplyr)</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="do">#### 2. Shapefile Dosyasının Yüklenmesi:</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Shapefile dosyasının yolunu belirleme</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="co"># shapefile_path &lt;- "C:/Users/goktu/Desktop/Migration/gadm36_TUR_shp/gadm41_TUR_1.shp"</span></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Shapefile dosyasını yükleme</span></span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a><span class="co"># turkiye_sf &lt;- st_read(shapefile_path)</span></span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a><span class="do">#### 3. Verilerin Hazırlanması:</span></span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Verilerin yüklenmesi</span></span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a><span class="co"># nufus_degisim_verisi &lt;- data.frame(</span></span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a><span class="co">#   yil = c(2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020),</span></span>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a><span class="co">#   il = c("Adana", "Adiyaman", "Afyonkarahisar", "Agri", "Amasya", "Ankara", "Antalya", "Artvin", "Aydin", "Balikesir", "Bilecik", "Bingol", "Bitlis", "Bolu", "Burdur", "Bursa", "Canakkale", "Cankiri", "Corum", "Denizli", "Diyarbakir", "Edirne", "Elazig", "Erzincan", "Erzurum", "Eskisehir", "Gaziantep", "Giresun", "Gumushane", "Hakkari", "Hatay", "Isparta", "Mersin", "Istanbul", "Izmir", "Kars", "Kastamonu", "Kayseri", "Kirklareli", "Kirsehir", "Kocaeli", "Konya", "Kutahya", "Malatya", "Manisa", "Kahramanmaras", "Mardin", "Mugla", "Mus", "Nevsehir", "Nigde", "Ordu", "Rize", "Sakarya", "Samsun", "Siirt", "Sinop", "Sivas", "Tekirdag", "Tokat", "Trabzon", "Tunceli", "Sanliurfa", "Usak", "Van", "Yozgat", "Zonguldak", "Aksaray", "Bayburt", "Karaman", "Kirikkale", "Batman", "Sirnak", "Bartin", "Ardahan", "Igdir", "Yalova", "Karabuk", "Kilis", "Osmaniye", "Duzce"),</span></span>
+<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a><span class="co">#   nufus_degisim = c(1256, -773, -995, -9727, 894, 11997, 20710, -1443, 4459, 9154, -142, -1136, -2173, -1135, -2221, 23099, 2033, -2659, 621, 1164, -3891, -2012, -5637, -91, -9815, -157, 861, 286, -11965, -1194, 5895, -5026, 13083, -53022, 14772, -4742, -1151, 1733, 2256, -875, 22550, -4992, -3341, 869, 7170, 1360, 629, 13380, -4828, 351, -2239, 5492, -147, 6041, 7612, -3914, -778, -5395, 22296, -16906, -745, -520, -9474, -1672, -11493, -3495, -4350, -103, -3006, -230, -4424, 1005, -547, 144, -1130, 186, 4380, -4602, -1397, 2780, 1192)</span></span>
+<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a><span class="co"># )</span></span>
+<span id="cb26-22"><a href="#cb26-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-23"><a href="#cb26-23" aria-hidden="true" tabindex="-1"></a><span class="do">#### 4. İllerin Geometrik Merkezlerinin Bulunması:</span></span>
+<span id="cb26-24"><a href="#cb26-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-25"><a href="#cb26-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Shapefile ile veri çerçevesini birleştirme</span></span>
+<span id="cb26-26"><a href="#cb26-26" aria-hidden="true" tabindex="-1"></a><span class="co"># turkiye_veri &lt;- turkiye_sf %&gt;%</span></span>
+<span id="cb26-27"><a href="#cb26-27" aria-hidden="true" tabindex="-1"></a><span class="co">#   left_join(nufus_degisim_verisi, by = c("NAME_1" = "il"))</span></span>
+<span id="cb26-28"><a href="#cb26-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-29"><a href="#cb26-29" aria-hidden="true" tabindex="-1"></a><span class="co"># NA değerlerini kaldırma</span></span>
+<span id="cb26-30"><a href="#cb26-30" aria-hidden="true" tabindex="-1"></a><span class="co"># turkiye_veri &lt;- na.omit(turkiye_veri)</span></span>
+<span id="cb26-31"><a href="#cb26-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-32"><a href="#cb26-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Geometrik merkezlerin koordinatlarını çıkarma ve veri çerçevesine ekleme</span></span>
+<span id="cb26-33"><a href="#cb26-33" aria-hidden="true" tabindex="-1"></a><span class="co"># turkiye_centroids &lt;- turkiye_veri %&gt;%</span></span>
+<span id="cb26-34"><a href="#cb26-34" aria-hidden="true" tabindex="-1"></a><span class="co">#   st_centroid() %&gt;%</span></span>
+<span id="cb26-35"><a href="#cb26-35" aria-hidden="true" tabindex="-1"></a><span class="co">#   st_as_sf()</span></span>
+<span id="cb26-36"><a href="#cb26-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-37"><a href="#cb26-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Geometrik merkezlerin koordinatlarını çıkarma</span></span>
+<span id="cb26-38"><a href="#cb26-38" aria-hidden="true" tabindex="-1"></a><span class="co"># turkiye_centroids_coords &lt;- st_coordinates(turkiye_centroids)</span></span>
+<span id="cb26-39"><a href="#cb26-39" aria-hidden="true" tabindex="-1"></a><span class="co"># turkiye_centroids_df &lt;- as.data.frame(turkiye_centroids_coords)</span></span>
+<span id="cb26-40"><a href="#cb26-40" aria-hidden="true" tabindex="-1"></a><span class="co"># turkiye_centroids_df$nufus_degisim &lt;- turkiye_veri$nufus_degisim</span></span>
+<span id="cb26-41"><a href="#cb26-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-42"><a href="#cb26-42" aria-hidden="true" tabindex="-1"></a><span class="do">#### 5. Haritanın Çizilmesi ve Noktaların Gösterilmesi:</span></span>
+<span id="cb26-43"><a href="#cb26-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-44"><a href="#cb26-44" aria-hidden="true" tabindex="-1"></a><span class="co"># Haritanın oluşturulması</span></span>
+<span id="cb26-45"><a href="#cb26-45" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot(data = turkiye_sf) +</span></span>
+<span id="cb26-46"><a href="#cb26-46" aria-hidden="true" tabindex="-1"></a><span class="co">#   geom_sf() +  # Türkiye haritasını çizin</span></span>
+<span id="cb26-47"><a href="#cb26-47" aria-hidden="true" tabindex="-1"></a><span class="co">#   geom_point(data = turkiye_centroids_df, </span></span>
+<span id="cb26-48"><a href="#cb26-48" aria-hidden="true" tabindex="-1"></a><span class="co">#              aes(x = X, y = Y, size = abs(nufus_degisim), color = nufus_degisim &gt; 0), </span></span>
+<span id="cb26-49"><a href="#cb26-49" aria-hidden="true" tabindex="-1"></a><span class="co">#              alpha = 0.7) +  # Noktaları ekleyin</span></span>
+<span id="cb26-50"><a href="#cb26-50" aria-hidden="true" tabindex="-1"></a><span class="co">#   scale_color_manual(values = c("TRUE" = "red", "FALSE" = "blue"), labels = c("TRUE" = "Göç Alan", "FALSE" = "Göç Veren")) +</span></span>
+<span id="cb26-51"><a href="#cb26-51" aria-hidden="true" tabindex="-1"></a><span class="co">#   theme_minimal() +</span></span>
+<span id="cb26-52"><a href="#cb26-52" aria-hidden="true" tabindex="-1"></a><span class="co">#   labs(title = "Türkiye Haritası",</span></span>
+<span id="cb26-53"><a href="#cb26-53" aria-hidden="true" tabindex="-1"></a><span class="co">#        subtitle = "İllerin Nüfus Değişimleri (2020)",</span></span>
+<span id="cb26-54"><a href="#cb26-54" aria-hidden="true" tabindex="-1"></a><span class="co">#        x = "Enlem", </span></span>
+<span id="cb26-55"><a href="#cb26-55" aria-hidden="true" tabindex="-1"></a><span class="co">#        y = "Boylam",</span></span>
+<span id="cb26-56"><a href="#cb26-56" aria-hidden="true" tabindex="-1"></a><span class="co">#        size = "Nüfus Değişimi",</span></span>
+<span id="cb26-57"><a href="#cb26-57" aria-hidden="true" tabindex="-1"></a><span class="co">#        color = "Durum")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p><img src="images/clipboard-4123355109.png" class="img-fluid"></p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Veri setindeki göç nedenlerini yıllara göre topla</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="do">##group_by() fonksiyonu kullanılarak new_tidy_data veri setindeki "yil" ve "gocNedeni" sütunlarına göre gruplanır. Daha sonra summarise() fonksiyonu ile her yıl ve göç nedeni kombinasyonu için toplam göç sayısı hesaplanır.</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>summarized_data <span class="ot">&lt;-</span> new_tidy_data <span class="sc">%&gt;%</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(yil, gocNedeni) <span class="sc">%&gt;%</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">total_gocSayisi =</span> <span class="fu">sum</span>(gocSayisi), <span class="at">.groups =</span> <span class="st">"drop"</span>)</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Bar plot oluştur</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(summarized_data, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(yil), <span class="at">y =</span> total_gocSayisi, <span class="at">fill =</span> gocNedeni)) <span class="sc">+</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Göç Nedenlerine Göre Yıllara Göre Dağılım"</span>,</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Yıl"</span>,</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Toplam Göç Sayısı"</span>,</span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">"Göç Nedeni"</span>) <span class="sc">+</span></span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>),</span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">number_format</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="proje_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="proje_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="do">##boxplot data görselleştirme</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>new_tidy_data <span class="ot">&lt;-</span> new_tidy_data <span class="sc">%&gt;%</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">bolge =</span> <span class="fu">case_when</span>(</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>    il <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Istanbul"</span>, <span class="st">"Bursa"</span>, <span class="st">"Kocaeli"</span>, <span class="st">"Tekirdag"</span>,<span class="st">"Balikesir"</span>,<span class="st">"Canakkale"</span>,<span class="st">"Bilecik"</span>,<span class="st">"Edirne"</span>,<span class="st">"Kirklareli"</span>,<span class="st">"Sakarya"</span>,<span class="st">"Yalova"</span>) <span class="sc">~</span> <span class="st">"Marmara"</span>,</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    il <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Izmir"</span>, <span class="st">"Aydin"</span>, <span class="st">"Manisa"</span>,<span class="st">"Afyonkarahisar"</span>,<span class="st">"Denizli"</span>,<span class="st">"Kutahya"</span>,<span class="st">"Manisa"</span>,<span class="st">"Mugla"</span>,<span class="st">"Usak"</span>) <span class="sc">~</span> <span class="st">"Ege"</span>,</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>    il <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Ankara"</span>, <span class="st">"Konya"</span>, <span class="st">"Eskisehir"</span>,<span class="st">"Cankiri"</span>,<span class="st">"Corum"</span>,<span class="st">"Kayseri"</span>,<span class="st">"Kirsehir</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="st">"</span>,<span class="st">"Konya"</span>,<span class="st">"Nevsehir"</span>,<span class="st">"Nigde"</span>,<span class="st">"Sivas"</span>,<span class="st">"Yozgat"</span>,<span class="st">"Aksaray"</span>,<span class="st">"Karaman"</span>,<span class="st">"Kirikkale"</span>) <span class="sc">~</span> <span class="st">"Ic Anadolu"</span>,</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>    il <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Artvin"</span>, <span class="st">"Giresun"</span>, <span class="st">"Ordu"</span>,<span class="st">"Rize"</span>,<span class="st">"Sinop"</span>,<span class="st">"Tokat"</span>,<span class="st">"Trabzon"</span>,<span class="st">"Zonguldak"</span>,<span class="st">"Amasya"</span>,<span class="st">"Bolu"</span>,<span class="st">"Gumushane"</span>,<span class="st">"Kastamonu"</span>,<span class="st">"Samsun"</span>,<span class="st">"Sinop"</span>,<span class="st">"Bayburt</span></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="st">"</span>,<span class="st">"Bartin"</span>,<span class="st">"Karabuk"</span>,<span class="st">"Duzce"</span>) <span class="sc">~</span> <span class="st">"Karadeniz"</span>,</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>    il <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Adana"</span>, <span class="st">"Antalya"</span>,<span class="st">"Burdur"</span>,<span class="st">"Hatay"</span>,<span class="st">"Isparta"</span>,<span class="st">"Kahramanmaras"</span>,<span class="st">"Osmaniye"</span>) <span class="sc">~</span> <span class="st">"Akdeniz"</span>,</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>    il <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Adiyaman"</span>,<span class="st">"Diyarbakir"</span>,<span class="st">"Gaziantep"</span>,<span class="st">"Mardin"</span>,<span class="st">"Siirt"</span>,<span class="st">"Sanliurfa"</span>,<span class="st">"Batman"</span>,<span class="st">"Sirnak"</span>,<span class="st">"Kilis"</span>) <span class="sc">~</span> <span class="st">"Guneydogu Anadolu"</span>,</span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>    il <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Agri"</span>,<span class="st">"Bingol"</span>,<span class="st">"Bitlis"</span>,<span class="st">"Elazig"</span>,<span class="st">"Erzincan"</span>,<span class="st">"Erzurum"</span>,<span class="st">"Hakkari"</span>,<span class="st">"Kars"</span>,<span class="st">"Malatya"</span>,<span class="st">"Muş"</span>,<span class="st">"Tunceli"</span>,<span class="st">"Van"</span>,<span class="st">"Ardahan"</span>,<span class="st">"Igdir"</span>) <span class="sc">~</span> <span class="st">"Dogu Anadolu"</span>,</span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>   <span class="co">#TRUE ~ "Diger" # Diğer bölgelere dahil olan iller için bir kategori belirleyin</span></span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(new_tidy_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(yil <span class="sc">==</span> <span class="dv">2020</span> , bolge <span class="sc">!=</span> <span class="st">"Diger"</span>), <span class="fu">aes</span>(<span class="at">x =</span> gocNedeni, <span class="at">y =</span> gocSayisi, <span class="at">fill =</span> bolge)) <span class="sc">+</span></span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"2020 Yılına Göre Göç Nedenleri ve Bölgelere Göre Dağılımı"</span>,</span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Göç Nedeni"</span>,</span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Göç Sayısı"</span>,</span>
+<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">"Bölge"</span>) <span class="sc">+</span></span>
+<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb28-22"><a href="#cb28-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>),</span>
+<span id="cb28-23"><a href="#cb28-23" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))<span class="sc">+</span></span>
+<span id="cb28-24"><a href="#cb28-24" aria-hidden="true" tabindex="-1"></a> <span class="fu">scale_y_continuous</span>(<span class="at">trans =</span> <span class="st">'log10'</span>, <span class="at">labels =</span> <span class="cf">function</span>(x) <span class="fu">format</span>(x, <span class="at">scientific =</span> <span class="cn">FALSE</span>))  <span class="co"># Y eksenini logaritmik ölçekleme yaparak ayarla</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="proje_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -654,30 +601,135 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="do">##boxplot data görselleştirme</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>new_tidy_data <span class="ot">&lt;-</span> new_tidy_data <span class="sc">%&gt;%</span></span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">bolge =</span> <span class="fu">case_when</span>(</span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>    il <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Istanbul"</span>, <span class="st">"Bursa"</span>, <span class="st">"Kocaeli"</span>, <span class="st">"Tekirdag"</span>,<span class="st">"Balikesir"</span>,<span class="st">"Canakkale"</span>,<span class="st">"Bilecik"</span>,<span class="st">"Edirne"</span>,<span class="st">"Kirklareli"</span>,<span class="st">"Sakarya"</span>,<span class="st">"Yalova"</span>) <span class="sc">~</span> <span class="st">"Marmara"</span>,</span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>    il <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Izmir"</span>, <span class="st">"Aydin"</span>, <span class="st">"Manisa"</span>,<span class="st">"Afyonkarahisar"</span>,<span class="st">"Denizli"</span>,<span class="st">"Kutahya"</span>,<span class="st">"Manisa"</span>,<span class="st">"Mugla"</span>,<span class="st">"Usak"</span>) <span class="sc">~</span> <span class="st">"Ege"</span>,</span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>    il <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Ankara"</span>, <span class="st">"Konya"</span>, <span class="st">"Eskisehir"</span>,<span class="st">"Cankiri"</span>,<span class="st">"Corum"</span>,<span class="st">"Kayseri"</span>,<span class="st">"Kirsehir</span></span>
-<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="st">"</span>,<span class="st">"Konya"</span>,<span class="st">"Nevsehir"</span>,<span class="st">"Nigde"</span>,<span class="st">"Sivas"</span>,<span class="st">"Yozgat"</span>,<span class="st">"Aksaray"</span>,<span class="st">"Karaman"</span>,<span class="st">"Kirikkale"</span>) <span class="sc">~</span> <span class="st">"Ic Anadolu"</span>,</span>
-<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>    il <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Artvin"</span>, <span class="st">"Giresun"</span>, <span class="st">"Ordu"</span>,<span class="st">"Rize"</span>,<span class="st">"Sinop"</span>,<span class="st">"Tokat"</span>,<span class="st">"Trabzon"</span>,<span class="st">"Zonguldak"</span>,<span class="st">"Amasya"</span>,<span class="st">"Bolu"</span>,<span class="st">"Gumushane"</span>,<span class="st">"Kastamonu"</span>,<span class="st">"Samsun"</span>,<span class="st">"Sinop"</span>,<span class="st">"Bayburt</span></span>
-<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a><span class="st">"</span>,<span class="st">"Bartin"</span>,<span class="st">"Karabuk"</span>,<span class="st">"Duzce"</span>) <span class="sc">~</span> <span class="st">"Karadeniz"</span>,</span>
-<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>    il <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Adana"</span>, <span class="st">"Antalya"</span>,<span class="st">"Burdur"</span>,<span class="st">"Hatay"</span>,<span class="st">"Isparta"</span>,<span class="st">"Kahramanmaras"</span>,<span class="st">"Osmaniye"</span>) <span class="sc">~</span> <span class="st">"Akdeniz"</span>,</span>
-<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>    il <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Adiyaman"</span>,<span class="st">"Diyarbakir"</span>,<span class="st">"Gaziantep"</span>,<span class="st">"Mardin"</span>,<span class="st">"Siirt"</span>,<span class="st">"Sanliurfa"</span>,<span class="st">"Batman"</span>,<span class="st">"Sirnak"</span>,<span class="st">"Kilis"</span>) <span class="sc">~</span> <span class="st">"Guneydogu Anadolu"</span>,</span>
-<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>    il <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Agri"</span>,<span class="st">"Bingol"</span>,<span class="st">"Bitlis"</span>,<span class="st">"Elazig"</span>,<span class="st">"Erzincan"</span>,<span class="st">"Erzurum"</span>,<span class="st">"Hakkari"</span>,<span class="st">"Kars"</span>,<span class="st">"Malatya"</span>,<span class="st">"Muş"</span>,<span class="st">"Tunceli"</span>,<span class="st">"Van"</span>,<span class="st">"Ardahan"</span>,<span class="st">"Igdir"</span>) <span class="sc">~</span> <span class="st">"Dogu Anadolu"</span>,</span>
-<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>   <span class="co">#TRUE ~ "Diger" # Diğer bölgelere dahil olan iller için bir kategori belirleyin</span></span>
-<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>  ))</span>
-<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(new_tidy_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(yil <span class="sc">==</span> <span class="dv">2019</span> , bolge <span class="sc">!=</span> <span class="st">"Diger"</span>), <span class="fu">aes</span>(<span class="at">x =</span> gocNedeni, <span class="at">y =</span> gocSayisi, <span class="at">fill =</span> bolge)) <span class="sc">+</span></span>
-<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"2019 Yılına Göre Göç Nedenleri ve Bölgelere Göre Dağılımı"</span>,</span>
-<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Göç Nedeni"</span>,</span>
-<span id="cb36-19"><a href="#cb36-19" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Göç Sayısı"</span>,</span>
-<span id="cb36-20"><a href="#cb36-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">"Bölge"</span>) <span class="sc">+</span></span>
-<span id="cb36-21"><a href="#cb36-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb36-22"><a href="#cb36-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>),</span>
-<span id="cb36-23"><a href="#cb36-23" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))<span class="sc">+</span></span>
-<span id="cb36-24"><a href="#cb36-24" aria-hidden="true" tabindex="-1"></a> <span class="fu">scale_y_continuous</span>(<span class="at">trans =</span> <span class="st">'log10'</span>, <span class="at">labels =</span> <span class="cf">function</span>(x) <span class="fu">format</span>(x, <span class="at">scientific =</span> <span class="cn">FALSE</span>))  <span class="co"># Y eksenini logaritmik ölçekleme yaparak ayarla</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="do">##cor() fonksiyonu kullanılarak alinan_goc veri setindeki belirli sütunlar arasındaki korelasyonlar hesaplanır.</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Korelasyon matrisini hesapla</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="do">##cor() fonksiyonu, alinan_goc veri setindeki 3. sütundan 11. sütuna kadar olan sütunlardaki değişkenler arasındaki korelasyonları hesaplar. use = "complete.obs" argümanı, eksik değerleri içeren gözlemleri hesaplama işleminden çıkarır.</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>correlation_matrix <span class="ot">&lt;-</span> <span class="fu">cor</span>(alinan_goc[, <span class="fu">c</span>(<span class="dv">3</span><span class="sc">:</span><span class="dv">11</span>)], <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>melted_corr_matrix <span class="ot">&lt;-</span> <span class="fu">melt</span>(correlation_matrix)</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="do">##Daha sonra, melt() fonksiyonu kullanılarak korelasyon matrisi eritilir</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="do">##melted_corr_matrix &lt;- melt(correlation_matrix) ggplot2 paketi kullanılarak korelasyon matrisi görselleştirilir. </span></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="do">##geom_tile() fonksiyonu ile korelasyon matrisi, renkli kareler olarak gösterilir. geom_text() fonksiyonu ile her karenin içine korelasyon değerleri yazdırılır. </span></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="do">##labs() fonksiyonu ile x ve y eksenlerine etiketler eklenir. guides() fonksiyonu ile renk gradyanı için bir renk skalası eklenebilir. Son olarak, theme() fonksiyonları ile grafik stili ayarlanır.</span></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Ve Korelasyon matrisini görselleştirilir</span></span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(melted_corr_matrix, <span class="fu">aes</span>(Var1, Var2, <span class="at">fill =</span> value)) <span class="sc">+</span></span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>() <span class="sc">+</span> </span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">sprintf</span>(<span class="st">"%.2f"</span>, value)), <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">" "</span>, <span class="at">y =</span> <span class="st">" "</span>) <span class="sc">+</span> </span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">color =</span> <span class="fu">guide_legend</span>(<span class="at">title =</span> <span class="st">"Değer"</span>)) <span class="sc">+</span> </span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient2</span>(<span class="at">low =</span> <span class="st">"yellow"</span>, <span class="at">high =</span> <span class="st">"red"</span>, <span class="at">mid =</span> <span class="st">"white"</span>, <span class="at">midpoint =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="proje_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li><p><strong>Göç Nedenleri Arasındaki Korelasyonu Hesaplama ve Görselleştirme</strong></p>
+<p>Korelasyon matrisi görselleştirmesi (heatmap), veri setindeki değişkenler arasındaki ilişkileri görsel olarak anlamak için güçlü bir araçtır.Örneğin, pozitif korelasyonlar, bir değişkenin artışıyla diğer değişkenin de arttığını gösterir. Bu, iki değişken arasında bir ilişki olduğunu ve bir değişkenin diğerini etkileyebileceğini gösterir.</p></li>
+<li><p>Değişkenler arasında korelasyon büyüklükleri incelendiğinde göç nedeni olarak tayin’in, medeni durum ve Hane ile pozitif yönlü ve güçlü bir ilişkisi olduğu görülmektedir. Ek olarak iş bulma ile yaşam koşulları arasında benzer şekilde pozitif yönlü ve güçlü bir ilişkisi olduğu görülmektedir.</p></li>
+<li><p>Aile yanına dönme, göç nedenleri arasında en düşük oranda ilişkiye sahiptir.</p></li>
+</ul>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gerekli kütüphaneleri yükleyin</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Veri setini yükleyin</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>migration_data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"migration_rate.xls"</span>)</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 2020 yılına ait verileri filtreleyin</span></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>data_2020 <span class="ot">&lt;-</span> migration_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Yil <span class="sc">==</span> <span class="dv">2020</span>)</span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Negatif ve pozitif nüfus değişimlerini ayırın</span></span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>data_2020 <span class="ot">&lt;-</span> data_2020 <span class="sc">%&gt;%</span></span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">Goc_Turu =</span> <span class="fu">ifelse</span>(<span class="st">`</span><span class="at">Nufus degisimi</span><span class="st">`</span> <span class="sc">&lt;</span> <span class="dv">0</span>, <span class="st">"Verilen Göç"</span>, <span class="st">"Alinan Göç"</span>),</span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">Renk =</span> <span class="fu">ifelse</span>(<span class="st">`</span><span class="at">Nufus degisimi</span><span class="st">`</span> <span class="sc">&lt;</span> <span class="dv">0</span>, <span class="st">"Mavi"</span>, <span class="st">"Kirmizi"</span>),</span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">Abs_Degisim =</span> <span class="fu">abs</span>(<span class="st">`</span><span class="at">Nufus degisimi</span><span class="st">`</span>)</span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Jitter plot oluşturun</span></span>
+<span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_2020, <span class="fu">aes</span>(<span class="at">x =</span> Goc_Turu, <span class="at">y =</span> Abs_Degisim, <span class="at">color =</span> Renk)) <span class="sc">+</span></span>
+<span id="cb30-22"><a href="#cb30-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.3</span>, <span class="at">size =</span> <span class="dv">3</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb30-23"><a href="#cb30-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Kirmizi"</span> <span class="ot">=</span> <span class="st">"red"</span>, <span class="st">"Mavi"</span> <span class="ot">=</span> <span class="st">"blue"</span>)) <span class="sc">+</span></span>
+<span id="cb30-24"><a href="#cb30-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb30-25"><a href="#cb30-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"2020 Yılında İllere Göre Göç Durumu"</span>,</span>
+<span id="cb30-26"><a href="#cb30-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">""</span>,</span>
+<span id="cb30-27"><a href="#cb30-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Nüfus Değişimi (Mutlak Değer)"</span></span>
+<span id="cb30-28"><a href="#cb30-28" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb30-29"><a href="#cb30-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="proje_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gerekli kütüphaneleri yükleyin</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Veri setini yükleyin</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>migration_data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"migration_rate.xls"</span>)</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 2020 yılına ait verileri filtreleyin ve en yüksek 5 değeri seçin</span></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>top_5_migration_2020 <span class="ot">&lt;-</span> migration_data <span class="sc">%&gt;%</span></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Yil <span class="sc">==</span> <span class="dv">2020</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(<span class="st">`</span><span class="at">Nufus degisimi</span><span class="st">`</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(top_5_migration_2020)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 x 3
+    Yil il       `Nufus degisimi`
+  &lt;dbl&gt; &lt;chr&gt;               &lt;dbl&gt;
+1  2020 Bursa               23099
+2  2020 Kocaeli             22550
+3  2020 Tekirdağ            22296
+4  2020 Antalya             20710
+5  2020 İzmir               14772</code></pre>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gerekli kütüphaneleri yükleyin</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Veri setini yükleyin</span></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>migration_data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"migration_rate.xls"</span>)</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 2020 yılına ait verileri filtreleyin ve en yüksek 5 değeri seçin</span></span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>top_10_migration_2020 <span class="ot">&lt;-</span> migration_data <span class="sc">%&gt;%</span></span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Yil <span class="sc">==</span> <span class="dv">2020</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(<span class="st">`</span><span class="at">Nufus degisimi</span><span class="st">`</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Bar plot'u oluşturun ve her barın değerini sağa hizalayarak yazdırın</span></span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(top_5_migration_2020, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(il, <span class="st">`</span><span class="at">Nufus degisimi</span><span class="st">`</span>), <span class="at">y =</span> <span class="st">`</span><span class="at">Nufus degisimi</span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> <span class="st">"darkred"</span>) <span class="sc">+</span></span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="st">`</span><span class="at">Nufus degisimi</span><span class="st">`</span>), <span class="at">hjust =</span> <span class="fl">1.25</span>, <span class="at">vjust =</span> <span class="fl">0.25</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span>  <span class="co"># Her barın en altına değerleri sağa hizalayarak yazdır</span></span>
+<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"2020 Yılında En Yüksek Göç Nufus degisimi Alan İller"</span>,</span>
+<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"il"</span>,</span>
+<span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Nufus degisimi"</span>) <span class="sc">+</span></span>
+<span id="cb33-21"><a href="#cb33-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb33-22"><a href="#cb33-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb33-23"><a href="#cb33-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -687,67 +739,66 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>grafik, 2019 yılına ait Türkiye’nin çeşitli bölgelerine göre göç nedenleri ve sayıları dağılımını kutu grafiği (box plot) formatında göstermektedir. Her kutu, o bölgedeki göç sayılarının medyanını, alt ve üst çeyreklerini (%25 ve %75’lik dilimlerini) ve aykırı değerleri temsil eder. Bu grafik, bölgesel göç hareketlerinin çeşitliliğini ve göç nedenlerine göre dağılımını anlamak için kullanışlıdır. İşte bazı anahtar gözlemler:</p>
-<p>Bölgesel Farklılıklar:</p>
-<p>Marmara Bölgesi: Bu bölge, özellikle iş bulma, eğitim ve yaşam koşulları gibi nedenlerle yüksek göç sayılarını gösteriyor. Marmara’nın ekonomik ve eğitim imkanları bu yüksek sayıları açıklayabilir. Ege ve İç Anadolu: Bu bölgeler de göç sayılarında yüksek değerlere sahip, özellikle eğitim ve sağlık gibi nedenlerle.</p>
-<p>Göç Nedenlerinin Analizi:</p>
-<p>Eğitim (Mor): Eğitim amacıyla yapılan göçler genellikle yüksek sayılarda olup, özellikle Marmara, Ege ve İç Anadolu bölgelerinde belirgin. Üniversitelerin ve diğer eğitim kurumlarının yoğun olduğu bölgeler bu eğilimi gösteriyor. İş Bulma (Yeşil): İş bulma amacıyla yapılan göçler, Marmara ve Ege gibi ekonomik olarak daha gelişmiş bölgelerde daha yüksek. Bu, iş imkanlarının bu bölgelerde daha fazla olduğunu gösteriyor.</p>
-<p>Aykırı Değerler ve Değişkenlik: Kutu grafiklerdeki aykırı değerler (noktalar), olağan dışı yüksek veya düşük göç sayılarını gösterir. Bu aykırı değerler, göç hareketlerindeki özel durumları veya beklenmedik olayları işaret edebilir. Göç sayılarının değişkenliği, bölgesel ekonomik veya sosyal faktörlerin etkisini yansıtabilir. Örneğin, bir bölgede bir yıl içinde açılan yeni bir fabrika, iş bulma nedeniyle göçleri artırabilir.</p>
-<p>Logaritmik Ölçek Kullanımı: Grafikte logaritmik ölçek kullanılması, çok düşükten çok yükseğe uzanan değerleri daha net göstermek amacıyla yapılmıştır. Bu ölçekleme, küçük ve büyük değerler arasındaki ilişkileri daha anlaşılır kılar. Bu tür bir kutu grafiği, göç dinamiklerini derinlemesine analiz etmek ve bölgesel farklılıkları daha iyi anlamak için kritik bilgiler sunar. Bölgeler arası ekonomik, eğitim, sağlık ve yaşam koşullarındaki farklılıklar, göç hareketlerini doğrudan etkileyen faktörler arasındadır.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Veri setindeki göç nedenlerini yıllara göre topla</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="do">##group_by() fonksiyonu kullanılarak new_tidy_data veri setindeki "yil" ve "gocNedeni" sütunlarına göre gruplanır. Daha sonra summarise() fonksiyonu ile her yıl ve göç nedeni kombinasyonu için toplam göç sayısı hesaplanır.</span></span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>summarized_data <span class="ot">&lt;-</span> new_tidy_data <span class="sc">%&gt;%</span></span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(yil, gocNedeni) <span class="sc">%&gt;%</span></span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">total_gocSayisi =</span> <span class="fu">sum</span>(gocSayisi), <span class="at">.groups =</span> <span class="st">"drop"</span>)</span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Bar plot oluştur</span></span>
-<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(summarized_data, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(yil), <span class="at">y =</span> total_gocSayisi, <span class="at">fill =</span> gocNedeni)) <span class="sc">+</span></span>
-<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
-<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Göç Nedenlerine Göre Yıllara Göre Dağılım"</span>,</span>
-<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Yıl"</span>,</span>
-<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Toplam Göç Sayısı"</span>,</span>
-<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">"Göç Nedeni"</span>) <span class="sc">+</span></span>
-<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>),</span>
-<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">number_format</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gerekli kütüphaneleri yükleyin</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Veri setini yükleyin</span></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>migration_data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"migration_rate.xls"</span>)</span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 2020 yılına ait verileri filtreleyin ve en düşük 5 değeri seçin</span></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>bottom_5_migration_2020 <span class="ot">&lt;-</span> migration_data <span class="sc">%&gt;%</span></span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Yil <span class="sc">==</span> <span class="dv">2020</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="st">`</span><span class="at">Nufus degisimi</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(bottom_5_migration_2020)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="proje_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 x 3
+    Yil il        `Nufus degisimi`
+  &lt;dbl&gt; &lt;chr&gt;                &lt;dbl&gt;
+1  2020 İstanbul            -53022
+2  2020 Tokat               -16906
+3  2020 Gümüşhane           -11965
+4  2020 Van                 -11493
+5  2020 Erzurum              -9815</code></pre>
 </div>
 </div>
-</div>
-<p>Bu grafik, 2018’den 2022’ye kadar çeşitli göç nedenlerine göre Türkiye içinde yapılan göç sayılarını gösteriyor. Renkler, farklı göç nedenlerini temsil ediyor. Grafikten yapılabilecek önemli gözlemler şunlardır:</p>
-<p>Göç Nedenleri:</p>
-<p>Aile Yanına Dönme (Pembe): Bu nedenle yapılan göçler, özellikle 2021 yılında belirgin bir artış gösteriyor. Bu, pandemi sonrasında ailelerin bir araya gelme isteğinin artmış olabileceğini düşündürebilir. Eğitim (Mor): Eğitim nedeniyle yapılan göçlerde 2020 yılında bir düşüş gözlemleniyor, bu da pandemi nedeniyle eğitimin çevrimiçi ortamlara taşınmasıyla ilişkilendirilebilir. 2021 ve 2022 yıllarında ise eğitimle ilişkili göçlerde tekrar bir artış göze çarpıyor.</p>
-<p>Pandemi Etkisi:</p>
-<p>2020 yılında hemen hemen tüm göç nedenlerinde bir düşüş gözlemleniyor. Pandeminin getirdiği kısıtlamalar ve belirsizlikler, göç hareketlerini önemli ölçüde azaltmış görünüyor. Özellikle sağlık (turkuaz) ve iş bulma (koyu yeşil) nedenli göçlerde bu düşüş belirgin.</p>
-<p>2021 ve 2022 Yılında Göç Artışı:</p>
-<p>2021 yılında, pandemi sonrası normalleşme süreçlerinin başlamasıyla birlikte tüm kategorilerde göç sayılarında bir artış gözleniyor. Bu artış, insanların ertelenmiş göç kararlarını uygulamaya koyduklarını gösteriyor. 2022 yılında, özellikle ev alma (mavi) ve yaşam koşulları (yeşil) ile ilgili göçlerde artış sürüyor. Bu, ekonomik ve sosyal stabiliteye duyulan güvenin artışını ve bireylerin yaşam standartlarını yükseltme çabalarını yansıtabilir. Grafikten çıkarılan bu gözlemler, Türkiye’deki göç trendlerinin sosyo-ekonomik faktörler, pandemi gibi küresel sağlık krizleri ve eğitim gibi temel ihtiyaçlar tarafından nasıl etkilendiğini açıkça gösteriyor.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>summarized_data2 <span class="ot">&lt;-</span> new_tidy_data <span class="sc">%&gt;%</span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(bolge)) <span class="sc">%&gt;%</span>  <span class="co"># NA olmayan bölge değerlerini filtrele</span></span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(bolge, yil) <span class="sc">%&gt;%</span></span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">total_gocSayisi =</span> <span class="fu">sum</span>(gocSayisi), <span class="at">.groups =</span> <span class="st">"drop"</span>)</span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Bar plot oluştur</span></span>
-<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(summarized_data2, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(yil), <span class="at">y =</span> total_gocSayisi, <span class="at">fill =</span> bolge)) <span class="sc">+</span></span>
-<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
-<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Bölge ve Yıllara Göre Göç Sayısı"</span>,</span>
-<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Yıl"</span>,</span>
-<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Toplam Göç Sayısı"</span>,</span>
-<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">"Bölge"</span>) <span class="sc">+</span></span>
-<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>),</span>
-<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">number_format</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gerekli kütüphaneleri yükleyin</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Veri setini yükleyin</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>migration_data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"migration_rate.xls"</span>)</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 2020 yılına ait verileri filtreleyin ve en düşük 5 değeri seçin</span></span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>top_5_migration_2020 <span class="ot">&lt;-</span> migration_data <span class="sc">%&gt;%</span></span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Yil <span class="sc">==</span> <span class="dv">2020</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="st">`</span><span class="at">Nufus degisimi</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Mutlak değerlerini alın ve yeni bir sütun ekleyin</span></span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>top_5_migration_2020 <span class="ot">&lt;-</span> top_5_migration_2020 <span class="sc">%&gt;%</span></span>
+<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">abs_nufus_degisim =</span> <span class="fu">abs</span>(<span class="st">`</span><span class="at">Nufus degisimi</span><span class="st">`</span>))</span>
+<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Bar plot'u oluşturun ve her barın değerini sağa hizalayarak yazdırın</span></span>
+<span id="cb36-19"><a href="#cb36-19" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(top_5_migration_2020, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(il, abs_nufus_degisim), <span class="at">y =</span> abs_nufus_degisim)) <span class="sc">+</span></span>
+<span id="cb36-20"><a href="#cb36-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> <span class="st">"darkblue"</span>) <span class="sc">+</span></span>
+<span id="cb36-21"><a href="#cb36-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> abs_nufus_degisim), <span class="at">hjust =</span> <span class="fl">1.25</span>, <span class="at">vjust =</span> <span class="fl">0.25</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span>  <span class="co"># Her barın en altına değerleri sağa hizalayarak yazdır</span></span>
+<span id="cb36-22"><a href="#cb36-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"2020 Yılında En Düşük Göç Nufus degisimi Alan İller (Mutlak Değer)"</span>,</span>
+<span id="cb36-23"><a href="#cb36-23" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"İl"</span>,</span>
+<span id="cb36-24"><a href="#cb36-24" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Nufus Değişimi (Mutlak Değer)"</span>) <span class="sc">+</span></span>
+<span id="cb36-25"><a href="#cb36-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb36-26"><a href="#cb36-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb36-27"><a href="#cb36-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -757,71 +808,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>Bu grafik, 2018’den 2022’ye kadar Türkiye’nin çeşitli bölgelerine yapılan göç sayılarını yıllara göre göstermektedir. Renkler farklı bölgeleri temsil ediyor. Grafikten yapılabilecek önemli gözlemler aşağıdaki gibidir:</p>
-<p>Marmara Bölgesine Yönelik Göçler:</p>
-<p>Marmara bölgesi, grafikte pembe rengiyle temsil edilmiş ve sürekli olarak en yüksek göç alımına sahip bölge olarak öne çıkıyor. Bu, Marmara Bölgesi’nin ekonomik ve sosyal imkanları ile büyük şehirleri barındırması nedeniyle Türkiye’nin en çekici bölgelerinden biri olduğunu gösteriyor. Pandemi Etkisi:</p>
-<p>2020 yılında, diğer yıllara kıyasla bütün bölgelerde göç sayısında gözle görülür bir düşüş var. Bu düşüş, COVID-19 pandemisinin yol açtığı seyahat kısıtlamaları ve ekonomik belirsizliklerle ilişkilendirilebilir. Bölgeler Arası Farklılıklar:</p>
-<p>Ege (mavi) ve İç Anadolu (yeşil) bölgeleri de görece yüksek göç alımı göstermiş, özellikle 2021 ve 2022 yıllarında. Bu iki bölge de ekonomik ve eğitim imkanları ile bilinir. Güneydoğu Anadolu (açık mavi) ve Doğu Anadolu (kırmızı) bölgeleri ise daha düşük göç sayılarına sahip. Bu, ekonomik aktivite ve yaşam koşullarının diğer bölgelere göre daha az çekici olmasından kaynaklanıyor olabilir.</p>
-<p>2019’da Artış ve Sonrasında Düşüş:</p>
-<p>2019 yılında, çoğu bölge için göç sayısında bir artış gözlemleniyor. Bu artış, belki de o dönemdeki ekonomik iyileşme veya politik faktörlerle ilgili olabilir. Ancak, 2020’de pandeminin etkisiyle bu sayılar düşüşe geçmiş. Bu grafik, Türkiye içindeki göç dinamiklerini bölgelere göre değişimini anlamak açısından önemli veriler sunmaktadır. Bölgelerin ekonomik, sosyal ve kültürel çekiciliğinin, göç hareketleri üzerindeki etkisini göstermesi bakımından kıymetlidir. Pandemi gibi global olayların bu dinamikleri nasıl etkileyebileceği konusunda da fikir verir.</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setlocale</span>(<span class="st">"LC_CTYPE"</span>, <span class="st">"turkish"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "Turkish_Türkiye.1254"</code></pre>
-</div>
-<details class="code-fold">
-<summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>new_tidy_data <span class="ot">&lt;-</span> new_tidy_data <span class="sc">%&gt;%</span></span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">bolge =</span> <span class="fu">case_when</span>(</span>
-<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>    il <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Istanbul"</span>, <span class="st">"Bursa"</span>, <span class="st">"Kocaeli"</span>, <span class="st">"Tekirdag"</span>,<span class="st">"Balikesir"</span>,<span class="st">"Canakkale"</span>,<span class="st">"Bilecik"</span>,<span class="st">"Edirne"</span>,<span class="st">"Kirklareli"</span>,<span class="st">"Sakarya"</span>,<span class="st">"Yalova"</span>) <span class="sc">~</span> <span class="st">"Marmara"</span>,</span>
-<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>    il <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Izmir"</span>, <span class="st">"Aydin"</span>, <span class="st">"Manisa"</span>,<span class="st">"Afyonkarahisar"</span>,<span class="st">"Denizli"</span>,<span class="st">"Kutahya"</span>,<span class="st">"Manisa"</span>,<span class="st">"Mugla"</span>,<span class="st">"Usak"</span>) <span class="sc">~</span> <span class="st">"Ege"</span>,</span>
-<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>    il <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Ankara"</span>, <span class="st">"Konya"</span>, <span class="st">"Eskisehir"</span>,<span class="st">"Cankiri"</span>,<span class="st">"Corum"</span>,<span class="st">"Kayseri"</span>,<span class="st">"Kirsehir</span></span>
-<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a><span class="st">"</span>,<span class="st">"Konya"</span>,<span class="st">"Nevsehir"</span>,<span class="st">"Nigde"</span>,<span class="st">"Sivas"</span>,<span class="st">"Yozgat"</span>,<span class="st">"Aksaray"</span>,<span class="st">"Karaman"</span>,<span class="st">"Kirikkale"</span>) <span class="sc">~</span> <span class="st">"Ic Anadolu"</span>,</span>
-<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>    il <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Artvin"</span>, <span class="st">"Giresun"</span>, <span class="st">"Ordu"</span>,<span class="st">"Rize"</span>,<span class="st">"Sinop"</span>,<span class="st">"Tokat"</span>,<span class="st">"Trabzon"</span>,<span class="st">"Zonguldak"</span>,<span class="st">"Amasya"</span>,<span class="st">"Bolu"</span>,<span class="st">"Gumushane"</span>,<span class="st">"Kastamonu"</span>,<span class="st">"Samsun"</span>,<span class="st">"Sinop"</span>,<span class="st">"Bayburt</span></span>
-<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a><span class="st">"</span>,<span class="st">"Bartin"</span>,<span class="st">"Karabuk"</span>,<span class="st">"Duzce"</span>) <span class="sc">~</span> <span class="st">"Karadeniz"</span>,</span>
-<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a>    il <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Adana"</span>, <span class="st">"Antalya"</span>,<span class="st">"Burdur"</span>,<span class="st">"Hatay"</span>,<span class="st">"Isparta"</span>,<span class="st">"Kahramanmaras"</span>,<span class="st">"Osmaniye"</span>) <span class="sc">~</span> <span class="st">"Akdeniz"</span>,</span>
-<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a>    il <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Adiyaman"</span>,<span class="st">"Diyarbakir"</span>,<span class="st">"Gaziantep"</span>,<span class="st">"Mardin"</span>,<span class="st">"Siirt"</span>,<span class="st">"Sanliurfa"</span>,<span class="st">"Batman"</span>,<span class="st">"Sirnak"</span>,<span class="st">"Kilis"</span>) <span class="sc">~</span> <span class="st">"Guneydogu Anadolu"</span>,</span>
-<span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a>    il <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Agri"</span>,<span class="st">"Bingol"</span>,<span class="st">"Bitlis"</span>,<span class="st">"Elazig"</span>,<span class="st">"Erzincan"</span>,<span class="st">"Erzurum"</span>,<span class="st">"Hakkari"</span>,<span class="st">"Kars"</span>,<span class="st">"Malatya"</span>,<span class="st">"Muş"</span>,<span class="st">"Tunceli"</span>,<span class="st">"Van"</span>,<span class="st">"Ardahan"</span>,<span class="st">"Igdir"</span>) <span class="sc">~</span> <span class="st">"Dogu Anadolu"</span>,</span>
-<span id="cb41-15"><a href="#cb41-15" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"Diger"</span> <span class="co"># Diğer bölgelere dahil olan iller için "Diger" kategorisi</span></span>
-<span id="cb41-16"><a href="#cb41-16" aria-hidden="true" tabindex="-1"></a>  ))</span>
-<span id="cb41-17"><a href="#cb41-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-18"><a href="#cb41-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Veri setindeki göç nedenlerini yıllara göre topla</span></span>
-<span id="cb41-19"><a href="#cb41-19" aria-hidden="true" tabindex="-1"></a>summarized_data <span class="ot">&lt;-</span> new_tidy_data <span class="sc">%&gt;%</span></span>
-<span id="cb41-20"><a href="#cb41-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(bolge, gocNedeni) <span class="sc">%&gt;%</span></span>
-<span id="cb41-21"><a href="#cb41-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">total_gocSayisi =</span> <span class="fu">sum</span>(gocSayisi), <span class="at">.groups =</span> <span class="st">"drop"</span>)</span>
-<span id="cb41-22"><a href="#cb41-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-23"><a href="#cb41-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Bar plot oluştur</span></span>
-<span id="cb41-24"><a href="#cb41-24" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(summarized_data, <span class="fu">aes</span>(<span class="at">x =</span> bolge, <span class="at">y =</span> total_gocSayisi, <span class="at">fill =</span> gocNedeni)) <span class="sc">+</span></span>
-<span id="cb41-25"><a href="#cb41-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
-<span id="cb41-26"><a href="#cb41-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Göç Nedenlerine Göre Yıllara Göre Dağılım"</span>,</span>
-<span id="cb41-27"><a href="#cb41-27" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Yıl"</span>,</span>
-<span id="cb41-28"><a href="#cb41-28" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Toplam Göç Sayısı"</span>,</span>
-<span id="cb41-29"><a href="#cb41-29" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">"Göç Nedeni"</span>) <span class="sc">+</span></span>
-<span id="cb41-30"><a href="#cb41-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb41-31"><a href="#cb41-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>),</span>
-<span id="cb41-32"><a href="#cb41-32" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb41-33"><a href="#cb41-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">number_format</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="proje_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Bu grafik, Türkiye’nin farklı bölgelerine yapılan göç sayılarını ve bu göçlerin nedenlerini yıllara göre göstermektedir. Göç nedenleri renklerle ifade edilmiş ve bu renkler bölgesel dağılımı da içeriyor. Grafikten çıkarılabilecek önemli noktalar aşağıda sıralanmıştır:</p>
-<p>Bölgesel Farklılıklar:</p>
-<p>Marmara Bölgesi: Marmara bölgesi, grafikte özellikle iş bulma (koyu yeşil), eğitim (mor), ve aile yanına dönme (pembe) nedenleriyle en yüksek göç alımını gösteriyor. Bu, Marmara’nın ekonomik ve sosyal olarak Türkiye’nin en cazip bölgesi olmasından kaynaklanıyor olabilir. Ege ve İç Anadolu: Ege ve İç Anadolu bölgeleri de yüksek göç alımı gösteriyor, özellikle ev alma (mavi) ve sağlık (turkuaz) nedenleriyle. Göç Nedenleri:</p>
-<p>Eğitim ve İş Bulma: Eğitim ve iş bulma, genel olarak tüm bölgelerde önemli göç nedenleri arasında yer alıyor. Bu, genç nüfusun eğitim ve iş imkanları için daha büyük şehir veya bölgelere taşınma eğilimini gösteriyor. Sağlık: Sağlık nedeniyle yapılan göçler, özellikle İç Anadolu ve Ege bölgelerinde dikkat çekiyor, bu bölgelerin sağlık hizmetlerine erişim açısından önemli merkezler olabileceğini düşündürüyor.</p>
-<p>Zaman İçindeki Trendler:</p>
-<p>Pandemi Etkisi: Grafikten kesin yıllar anlaşılmamakla birlikte, eğer 2020 yılındaki genel düşüş varsa, bu COVID-19 pandemisinin etkisini yansıtıyor olabilir. Pandemi, göç hareketlerini azaltmış ve çeşitli nedenlerle göç edecek kişilerin kararlarını ertelemelerine neden olmuş olabilir. Son Yıllardaki Artış: Grafikte son yıllarda genel bir artış trendi görülüyor ki bu da pandemi sonrası normalleşme sürecinin etkisiyle insanların daha önce erteledikleri göç kararlarını hayata geçirdiklerini gösteriyor. Bu grafik, Türkiye’deki göç trendlerini ve bu trendlerin bölgesel ekonomik ve sosyal faktörlerle nasıl ilişkili olduğunu anlamak için önemli veriler sunmaktadır.</p>
 
 
 </section>

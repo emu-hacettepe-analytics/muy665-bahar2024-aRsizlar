@@ -97,67 +97,6 @@ alinan_goc <- read_excel("goc_etme_nedenine_illerin_aldigi_goc.xlsx")
 head(alinan_goc)
 ```
 
-```{r}
-#| code-fold: true
-#| code-summary: "Show the code"
-# Adana ili verisini seçme
-adana_verisi <- subset(alinan_goc, il == "Hakkari")
-
-# Tayin sayılarını görselleştirme
-ggplot(data = adana_verisi, aes(x = yil, y = saglik)) +
-   geom_bar(stat = "identity") +
-  labs(x = "Yıl", y = "Sağlık Nedeni ile Yapılan Göç Sayısı") +
-  ggtitle("Yıllara Göre Kilis İline Sağlık Nedeni ile Yapılan Göç Sayısı")
-```
-
-```{r}
-#| code-fold: true
-#| code-summary: "Show the code"
-# İstanbul ili verisini seçme
-istanbul_verisi <- subset(alinan_goc, il == "Istanbul")
-
-# sağlık nedeni ile istanbula göç edenlerinin grafiğini çizme
-ggplot(data = istanbul_verisi, aes(x = yil, y = saglik)) +
-   geom_bar(stat = "identity") +
-  labs(x = "Yıl", y = "Sağlık Nedeni İle Yapılan Göç Sayısı") +
-  ggtitle("Yıllara Göre Istanbul İline Sağlık Nedeni İle Yapılan Göç Sayısı")
-```
-
--   **Göç Nedenleri Arasındaki Korelasyonu Hesaplama ve Görselleştirme**
-
-    Korelasyon matrisi görselleştirmesi (heatmap), veri setindeki değişkenler arasındaki ilişkileri görsel olarak anlamak için güçlü bir araçtır.Örneğin, pozitif korelasyonlar, bir değişkenin artışıyla diğer değişkenin de arttığını gösterir. Bu, iki değişken arasında bir ilişki olduğunu ve bir değişkenin diğerini etkileyebileceğini gösterir.
-
--   Değişkenler arasında korelasyon büyüklükleri incelendiğinde göç nedeni olarak tayin'in, medeni durum ve Hane ile pozitif yönlü ve güçlü bir ilişkisi olduğu görülmektedir. Ek olarak iş bulma ile yaşam koşulları arasında benzer şekilde pozitif yönlü ve güçlü bir ilişkisi olduğu görülmektedir.
-
--   Aile yanına dönme, göç nedenleri arasında en düşük oranda ilişkiye sahiptir.
-
-```{r}
-#| code-fold: true
-#| code-summary: "Show the code"
-##cor() fonksiyonu kullanılarak alinan_goc veri setindeki belirli sütunlar arasındaki korelasyonlar hesaplanır.
-# Korelasyon matrisini hesapla
-##cor() fonksiyonu, alinan_goc veri setindeki 3. sütundan 11. sütuna kadar olan sütunlardaki değişkenler arasındaki korelasyonları hesaplar. use = "complete.obs" argümanı, eksik değerleri içeren gözlemleri hesaplama işleminden çıkarır.
-correlation_matrix <- cor(alinan_goc[, c(3:11)], use = "complete.obs")
-melted_corr_matrix <- melt(correlation_matrix)
-##Daha sonra, melt() fonksiyonu kullanılarak korelasyon matrisi eritilir
-##melted_corr_matrix <- melt(correlation_matrix) ggplot2 paketi kullanılarak korelasyon matrisi görselleştirilir. 
-##geom_tile() fonksiyonu ile korelasyon matrisi, renkli kareler olarak gösterilir. geom_text() fonksiyonu ile her karenin içine korelasyon değerleri yazdırılır. 
-##labs() fonksiyonu ile x ve y eksenlerine etiketler eklenir. guides() fonksiyonu ile renk gradyanı için bir renk skalası eklenebilir. Son olarak, theme() fonksiyonları ile grafik stili ayarlanır.
-# Ve Korelasyon matrisini görselleştirilir
-ggplot(melted_corr_matrix, aes(Var1, Var2, fill = value)) +
-  geom_tile() + 
-   geom_text(aes(label = sprintf("%.2f", value)), color = "black", size = 3) +
-  labs(x = " ", y = " ") + 
-  guides(color = guide_legend(title = "Değer")) + 
-  scale_fill_gradient2(low = "yellow", high = "red", mid = "white", midpoint = 0.7) +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
-
-```
-
--   **Göç Nedeni ve Göç Sayısı Sütunları Oluşturmak**
-
-Aşağıdaki kod bloğunda göç nedenleri tek sütun içerisinde gruplanmıştır. Göç nedenlerinin il bazında nasıl gerçekleştiğini daha net görebilmek için bu gruplama işlemi yapılmıştır.
 
 ```{r}
 #| code-fold: true
@@ -174,10 +113,6 @@ new_tidy_data <- alinan_goc %>%
 head(new_tidy_data)
 ```
 
--   **Veri setimizde eksik değerler var mı?**
-
--   **Veri setimizin yapısı nasıl?**
-
 ```{r}
 #| code-fold: true
 #| code-summary: "Show the code"
@@ -193,13 +128,6 @@ colnames(new_tidy_data)
 colSums(is.na(new_tidy_data))
 ```
 
-```{r}
-#| code-fold: true
-#| code-summary: "Show the code"
-##new_tidy_data veri setinde herhangi bir eksik değer olup olmadığını kontrol eder.
-##any(): Bu fonksiyon, bir vektör veya matrisin herhangi bir elemanının belirtilen koşulu sağlayıp sağlamadığını kontrol eder. 
-any(is.na(new_tidy_data))
-```
 
 ```{r}
 #| code-fold: true
@@ -252,20 +180,7 @@ Maximum göç sayısının 152.756 olduğunu aşağıdaki tabloda görüyoruz.
 new_tidy_data %>% arrange(desc(gocSayisi)) %>% head()
 ```
 
-```{r}
-#| code-fold: true
-#| code-summary: "Show the code"
-# İstanbul ili verisini seçme
-istanbul_verisi2 <- subset(alinan_goc, il == "Istanbul")
 
-# Tayin sayılarını görselleştirme
-ggplot(data = istanbul_verisi2, aes(x = yil, y = yasamKosullari)) +
-  geom_bar(stat = "identity") +
-  labs(x = "Yıl", y = "Yaşam Koşulları") +
-  ggtitle("İstanbul İline Yıllara Göre Yaşam Koşulları Nedeniyle Yapılan Göç Sayısı")
-```
-
-Grafikte de 2019 yılında yaşam koşulları nedeniyle 150000'den daha fazla kişinin İstanbul'a göç ettiğini görüyoruz. 2020 yılından itibaren ise sayı düşmüştür. Bunun nedeni büyük ihtimalle pandemidir.
 
 ```{r}
 #| code-fold: true
@@ -274,54 +189,123 @@ Grafikte de 2019 yılında yaşam koşulları nedeniyle 150000'den daha fazla ki
 new_tidy_data %>% top_n(10, gocSayisi)
 ```
 
--   **Veri Setindeki Toplam Göç Sayısını Yazdıran Fonksiyon**
 
-```{r}
-#| code-fold: true
-#| code-summary: "Show the code"
-##new_tidy_data veri setindeki toplam göç sayısını hesaplamak için bir fonksiyon tanımlar.
-toplam_goc_sayisi <- function(new_tidy_data, il, yil) {
-  toplam <- sum(new_tidy_data$gocSayisi[new_tidy_data$il == il & new_tidy_data$yil == yil])
-  return(toplam)
-}
-##belirtilen il ve yıl için new_tidy_data veri çerçevesindeki göç sayılarını filtreler ve toplama 
-# Örneğin, Adana'daki 2022 yılındaki toplam göç sayısını bulmak için:
-print(paste("Adana'da 2022 yılındaki toplam goc sayısı:", toplam_goc_sayisi(new_tidy_data, "Adana", 2022)))
-print(paste("İstanbul'da 2022 yılındaki toplam goc sayısı:", toplam_goc_sayisi(new_tidy_data, "Istanbul", 2019)))
-```
 
 # Analizler
 
 ```{r}
 #| code-fold: true
 #| code-summary: "Show the code"
-new_tidy_data <- new_tidy_data %>%
-  mutate(bolge = case_when(
-    il %in% c("Istanbul", "Bursa", "Kocaeli", "Tekirdag","Balikesir","Canakkale","Bilecik","Edirne","Kirklareli","Sakarya","Yalova") ~ "Marmara",
-    il %in% c("Izmir", "Aydin", "Manisa","Afyonkarahisar","Denizli","Kutahya","Manisa","Mugla","Usak") ~ "Ege",
-    il %in% c("Ankara", "Konya", "Eskisehir","Cankiri","Corum","Kayseri","Kirsehir
-","Konya","Nevsehir","Nigde","Sivas","Yozgat","Aksaray","Karaman","Kirikkale") ~ "Ic Anadolu",
-    il %in% c("Artvin", "Giresun", "Ordu","Rize","Sinop","Tokat","Trabzon","Zonguldak","Amasya","Bolu","Gumushane","Kastamonu","Samsun","Sinop","Bayburt
-","Bartin","Karabuk","Duzce") ~ "Karadeniz",
-    il %in% c("Adana", "Antalya","Burdur","Hatay","Isparta","Kahramanmaras","Osmaniye") ~ "Akdeniz",
-    il %in% c("Adiyaman","Diyarbakir","Gaziantep","Mardin","Siirt","Sanliurfa","Batman","Sirnak","Kilis") ~ "Guneydogu Anadolu",
-    il %in% c("Agri","Bingol","Bitlis","Elazig","Erzincan","Erzurum","Hakkari","Kars","Malatya","Muş","Tunceli","Van","Ardahan","Igdir") ~ "Dogu Anadolu",
-    TRUE ~ "Diger" # Diğer bölgelere dahil olan iller için bir kategori belirleyin
-  ))
+library(ggplot2)
 
-ggplot(new_tidy_data %>% filter(yil == 2020 , bolge != "Diger"), aes(gocNedeni, gocSayisi, color = bolge)) +
-  geom_point() +
-  labs(title = "2020 Yılına Göre Göç Nedenleri ve Bölgelere Göre Dağılımı",
-       x = "Goc Nedeni",
-       y = "Goc Sayısı",
-       color = "Bolge") +
-  
-  theme_minimal() +
-  theme(plot.title = element_text(hjust = 0.10),
-        axis.text.x = element_text(angle = 45, hjust = 1)) 
+veri <- data.frame( Yil = c(2018,2019,2020,2021,2022),
+                    Toplam_Ic_Goc = c(3057606,2806123,2258726,2777797,2791156))
+
+ggplot(veri, aes( x = Yil, y = Toplam_Ic_Goc)) +
+  geom_bar(stat = "identity" , fill = "red" , color = "black") +
+  labs(title = "Yıllara Göre Göç Sayısı" , x = "Yıl" , y = "Toplam İç Göç") +
+  scale_y_continuous(labels = scales::comma)
 ```
 
-Bu grafikte bölgeler bazında alınan göçlerin sebepleri gösterilmiştir. Grafikte görüldüğü üzere aile yanına dönme, emeklilik ve sağlık nedenlerinin Türkiye'dki göç hareketliliğine etkisinin diğer nedenlere göre az olduğu gözlemlenmektedir. Öte yandan Hane ve yaşam koşulları sebebi ile göç hareketliliği diğer kategorilere nazaran daha fazladır. Bölge bazında Marmara ve İç Anadolu bölgeleri için uç değerler incelendiğinde büyük şehirlerin etkisinden kaynaklandığı gözlemlenmiştir.
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+##alinan_goc veri çerçevesindeki veriyi daha "düzenli" bir formata dönüştürür ve new_tidy_data adında yeni bir veri seti oluşturur. Buradaki amaç, veriyi daha analiz edilebilir hale getirmek ve veri işleme sürecini kolaylaştırmaktır
+##pivot_longer() fonksiyonu kullanılarak, veri çerçevesindeki sütunlar uzun formata dönüştürülür. Yani, her bir göç nedeni bir sütun yerine, il ve yil sütunları sabit kalacak şekilde, diğer sütunlar göç nedeni ve göç sayısı olacak şekilde yeniden yapılandırılır
+##cols = -c(il, yil): il ve yil sütunları dışındaki tüm sütunlar işleme alınır names_to = "gocNedeni": Sütun adları, "gocNedeni" adında yeni bir sütuna dönüştürülür.
+##mutate() fonksiyonu kullanılarak, "gocNedeni" sütunu karakter veri tipine dönüştürülür
+##head() fonksiyonu kullanılarak, yeni oluşturulan new_tidy_data veri çerçevesinin ilk altı satırı ekrana yazdırılır
+
+new_tidy_data <- alinan_goc %>%
+  pivot_longer(cols = -c(il, yil), names_to = "gocNedeni", values_to = "gocSayisi") %>%
+  mutate(gocNedeni = as.character(gocNedeni))
+
+```
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+# Sys.setlocale("LC_CTYPE", "turkish")
+# library(sf)
+# library(ggplot2)
+# library(dplyr)
+
+#### 2. Shapefile Dosyasının Yüklenmesi:
+
+# Shapefile dosyasının yolunu belirleme
+# shapefile_path <- "C:/Users/goktu/Desktop/Migration/gadm36_TUR_shp/gadm41_TUR_1.shp"
+
+# Shapefile dosyasını yükleme
+# turkiye_sf <- st_read(shapefile_path)
+
+#### 3. Verilerin Hazırlanması:
+
+# Verilerin yüklenmesi
+# nufus_degisim_verisi <- data.frame(
+#   yil = c(2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020),
+#   il = c("Adana", "Adiyaman", "Afyonkarahisar", "Agri", "Amasya", "Ankara", "Antalya", "Artvin", "Aydin", "Balikesir", "Bilecik", "Bingol", "Bitlis", "Bolu", "Burdur", "Bursa", "Canakkale", "Cankiri", "Corum", "Denizli", "Diyarbakir", "Edirne", "Elazig", "Erzincan", "Erzurum", "Eskisehir", "Gaziantep", "Giresun", "Gumushane", "Hakkari", "Hatay", "Isparta", "Mersin", "Istanbul", "Izmir", "Kars", "Kastamonu", "Kayseri", "Kirklareli", "Kirsehir", "Kocaeli", "Konya", "Kutahya", "Malatya", "Manisa", "Kahramanmaras", "Mardin", "Mugla", "Mus", "Nevsehir", "Nigde", "Ordu", "Rize", "Sakarya", "Samsun", "Siirt", "Sinop", "Sivas", "Tekirdag", "Tokat", "Trabzon", "Tunceli", "Sanliurfa", "Usak", "Van", "Yozgat", "Zonguldak", "Aksaray", "Bayburt", "Karaman", "Kirikkale", "Batman", "Sirnak", "Bartin", "Ardahan", "Igdir", "Yalova", "Karabuk", "Kilis", "Osmaniye", "Duzce"),
+#   nufus_degisim = c(1256, -773, -995, -9727, 894, 11997, 20710, -1443, 4459, 9154, -142, -1136, -2173, -1135, -2221, 23099, 2033, -2659, 621, 1164, -3891, -2012, -5637, -91, -9815, -157, 861, 286, -11965, -1194, 5895, -5026, 13083, -53022, 14772, -4742, -1151, 1733, 2256, -875, 22550, -4992, -3341, 869, 7170, 1360, 629, 13380, -4828, 351, -2239, 5492, -147, 6041, 7612, -3914, -778, -5395, 22296, -16906, -745, -520, -9474, -1672, -11493, -3495, -4350, -103, -3006, -230, -4424, 1005, -547, 144, -1130, 186, 4380, -4602, -1397, 2780, 1192)
+# )
+
+#### 4. İllerin Geometrik Merkezlerinin Bulunması:
+
+# Shapefile ile veri çerçevesini birleştirme
+# turkiye_veri <- turkiye_sf %>%
+#   left_join(nufus_degisim_verisi, by = c("NAME_1" = "il"))
+
+# NA değerlerini kaldırma
+# turkiye_veri <- na.omit(turkiye_veri)
+
+# Geometrik merkezlerin koordinatlarını çıkarma ve veri çerçevesine ekleme
+# turkiye_centroids <- turkiye_veri %>%
+#   st_centroid() %>%
+#   st_as_sf()
+
+# Geometrik merkezlerin koordinatlarını çıkarma
+# turkiye_centroids_coords <- st_coordinates(turkiye_centroids)
+# turkiye_centroids_df <- as.data.frame(turkiye_centroids_coords)
+# turkiye_centroids_df$nufus_degisim <- turkiye_veri$nufus_degisim
+
+#### 5. Haritanın Çizilmesi ve Noktaların Gösterilmesi:
+
+# Haritanın oluşturulması
+# ggplot(data = turkiye_sf) +
+#   geom_sf() +  # Türkiye haritasını çizin
+#   geom_point(data = turkiye_centroids_df, 
+#              aes(x = X, y = Y, size = abs(nufus_degisim), color = nufus_degisim > 0), 
+#              alpha = 0.7) +  # Noktaları ekleyin
+#   scale_color_manual(values = c("TRUE" = "red", "FALSE" = "blue"), labels = c("TRUE" = "Göç Alan", "FALSE" = "Göç Veren")) +
+#   theme_minimal() +
+#   labs(title = "Türkiye Haritası",
+#        subtitle = "İllerin Nüfus Değişimleri (2020)",
+#        x = "Enlem", 
+#        y = "Boylam",
+#        size = "Nüfus Değişimi",
+#        color = "Durum")
+```
+
+![](images/clipboard-4123355109.png)
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+# Veri setindeki göç nedenlerini yıllara göre topla
+##group_by() fonksiyonu kullanılarak new_tidy_data veri setindeki "yil" ve "gocNedeni" sütunlarına göre gruplanır. Daha sonra summarise() fonksiyonu ile her yıl ve göç nedeni kombinasyonu için toplam göç sayısı hesaplanır.
+summarized_data <- new_tidy_data %>%
+  group_by(yil, gocNedeni) %>%
+  summarise(total_gocSayisi = sum(gocSayisi), .groups = "drop")
+# Bar plot oluştur
+ggplot(summarized_data, aes(x = factor(yil), y = total_gocSayisi, fill = gocNedeni)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(title = "Göç Nedenlerine Göre Yıllara Göre Dağılım",
+       x = "Yıl",
+       y = "Toplam Göç Sayısı",
+       fill = "Göç Nedeni") +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5),
+        axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_y_continuous(labels = scales::number_format())
+```
 
 ```{r}
 #| code-fold: true
@@ -366,166 +350,174 @@ Aykırı Değerler: Grafikteki aykırı değerler (kutuların üst ve altında y
 
 Logaritmik Ölçek: Grafikte logaritmik ölçek kullanılması, göç sayılarının geniş aralıklarını daha iyi göstermek için yapılmış. Bu sayede düşük ve yüksek değerler arasındaki farklar daha kolay fark edilebilir.
 
+
+
+
 ```{r}
 #| code-fold: true
 #| code-summary: "Show the code"
-##boxplot data görselleştirme
-new_tidy_data <- new_tidy_data %>%
-  mutate(bolge = case_when(
-    il %in% c("Istanbul", "Bursa", "Kocaeli", "Tekirdag","Balikesir","Canakkale","Bilecik","Edirne","Kirklareli","Sakarya","Yalova") ~ "Marmara",
-    il %in% c("Izmir", "Aydin", "Manisa","Afyonkarahisar","Denizli","Kutahya","Manisa","Mugla","Usak") ~ "Ege",
-    il %in% c("Ankara", "Konya", "Eskisehir","Cankiri","Corum","Kayseri","Kirsehir
-","Konya","Nevsehir","Nigde","Sivas","Yozgat","Aksaray","Karaman","Kirikkale") ~ "Ic Anadolu",
-    il %in% c("Artvin", "Giresun", "Ordu","Rize","Sinop","Tokat","Trabzon","Zonguldak","Amasya","Bolu","Gumushane","Kastamonu","Samsun","Sinop","Bayburt
-","Bartin","Karabuk","Duzce") ~ "Karadeniz",
-    il %in% c("Adana", "Antalya","Burdur","Hatay","Isparta","Kahramanmaras","Osmaniye") ~ "Akdeniz",
-    il %in% c("Adiyaman","Diyarbakir","Gaziantep","Mardin","Siirt","Sanliurfa","Batman","Sirnak","Kilis") ~ "Guneydogu Anadolu",
-    il %in% c("Agri","Bingol","Bitlis","Elazig","Erzincan","Erzurum","Hakkari","Kars","Malatya","Muş","Tunceli","Van","Ardahan","Igdir") ~ "Dogu Anadolu",
-   #TRUE ~ "Diger" # Diğer bölgelere dahil olan iller için bir kategori belirleyin
-  ))
-ggplot(new_tidy_data %>% filter(yil == 2019 , bolge != "Diger"), aes(x = gocNedeni, y = gocSayisi, fill = bolge)) +
-  geom_boxplot() +
-  labs(title = "2019 Yılına Göre Göç Nedenleri ve Bölgelere Göre Dağılımı",
-       x = "Göç Nedeni",
-       y = "Göç Sayısı",
-       fill = "Bölge") +
+##cor() fonksiyonu kullanılarak alinan_goc veri setindeki belirli sütunlar arasındaki korelasyonlar hesaplanır.
+# Korelasyon matrisini hesapla
+##cor() fonksiyonu, alinan_goc veri setindeki 3. sütundan 11. sütuna kadar olan sütunlardaki değişkenler arasındaki korelasyonları hesaplar. use = "complete.obs" argümanı, eksik değerleri içeren gözlemleri hesaplama işleminden çıkarır.
+correlation_matrix <- cor(alinan_goc[, c(3:11)], use = "complete.obs")
+melted_corr_matrix <- melt(correlation_matrix)
+##Daha sonra, melt() fonksiyonu kullanılarak korelasyon matrisi eritilir
+##melted_corr_matrix <- melt(correlation_matrix) ggplot2 paketi kullanılarak korelasyon matrisi görselleştirilir. 
+##geom_tile() fonksiyonu ile korelasyon matrisi, renkli kareler olarak gösterilir. geom_text() fonksiyonu ile her karenin içine korelasyon değerleri yazdırılır. 
+##labs() fonksiyonu ile x ve y eksenlerine etiketler eklenir. guides() fonksiyonu ile renk gradyanı için bir renk skalası eklenebilir. Son olarak, theme() fonksiyonları ile grafik stili ayarlanır.
+# Ve Korelasyon matrisini görselleştirilir
+ggplot(melted_corr_matrix, aes(Var1, Var2, fill = value)) +
+  geom_tile() + 
+   geom_text(aes(label = sprintf("%.2f", value)), color = "black", size = 3) +
+  labs(x = " ", y = " ") + 
+  guides(color = guide_legend(title = "Değer")) + 
+  scale_fill_gradient2(low = "yellow", high = "red", mid = "white", midpoint = 0.7) +
   theme_minimal() +
-  theme(plot.title = element_text(hjust = 0.5),
-        axis.text.x = element_text(angle = 45, hjust = 1))+
- scale_y_continuous(trans = 'log10', labels = function(x) format(x, scientific = FALSE))  # Y eksenini logaritmik ölçekleme yaparak ayarla
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
+-   **Göç Nedenleri Arasındaki Korelasyonu Hesaplama ve Görselleştirme**
 
-grafik, 2019 yılına ait Türkiye'nin çeşitli bölgelerine göre göç nedenleri ve sayıları dağılımını kutu grafiği (box plot) formatında göstermektedir. Her kutu, o bölgedeki göç sayılarının medyanını, alt ve üst çeyreklerini (%25 ve %75'lik dilimlerini) ve aykırı değerleri temsil eder. Bu grafik, bölgesel göç hareketlerinin çeşitliliğini ve göç nedenlerine göre dağılımını anlamak için kullanışlıdır. İşte bazı anahtar gözlemler:
+    Korelasyon matrisi görselleştirmesi (heatmap), veri setindeki değişkenler arasındaki ilişkileri görsel olarak anlamak için güçlü bir araçtır.Örneğin, pozitif korelasyonlar, bir değişkenin artışıyla diğer değişkenin de arttığını gösterir. Bu, iki değişken arasında bir ilişki olduğunu ve bir değişkenin diğerini etkileyebileceğini gösterir.
 
-Bölgesel Farklılıklar:
+-   Değişkenler arasında korelasyon büyüklükleri incelendiğinde göç nedeni olarak tayin'in, medeni durum ve Hane ile pozitif yönlü ve güçlü bir ilişkisi olduğu görülmektedir. Ek olarak iş bulma ile yaşam koşulları arasında benzer şekilde pozitif yönlü ve güçlü bir ilişkisi olduğu görülmektedir.
 
-Marmara Bölgesi: Bu bölge, özellikle iş bulma, eğitim ve yaşam koşulları gibi nedenlerle yüksek göç sayılarını gösteriyor. Marmara'nın ekonomik ve eğitim imkanları bu yüksek sayıları açıklayabilir. Ege ve İç Anadolu: Bu bölgeler de göç sayılarında yüksek değerlere sahip, özellikle eğitim ve sağlık gibi nedenlerle.
-
-Göç Nedenlerinin Analizi:
-
-Eğitim (Mor): Eğitim amacıyla yapılan göçler genellikle yüksek sayılarda olup, özellikle Marmara, Ege ve İç Anadolu bölgelerinde belirgin. Üniversitelerin ve diğer eğitim kurumlarının yoğun olduğu bölgeler bu eğilimi gösteriyor. İş Bulma (Yeşil): İş bulma amacıyla yapılan göçler, Marmara ve Ege gibi ekonomik olarak daha gelişmiş bölgelerde daha yüksek. Bu, iş imkanlarının bu bölgelerde daha fazla olduğunu gösteriyor.
-
-Aykırı Değerler ve Değişkenlik: Kutu grafiklerdeki aykırı değerler (noktalar), olağan dışı yüksek veya düşük göç sayılarını gösterir. Bu aykırı değerler, göç hareketlerindeki özel durumları veya beklenmedik olayları işaret edebilir. Göç sayılarının değişkenliği, bölgesel ekonomik veya sosyal faktörlerin etkisini yansıtabilir. Örneğin, bir bölgede bir yıl içinde açılan yeni bir fabrika, iş bulma nedeniyle göçleri artırabilir.
-
-Logaritmik Ölçek Kullanımı: Grafikte logaritmik ölçek kullanılması, çok düşükten çok yükseğe uzanan değerleri daha net göstermek amacıyla yapılmıştır. Bu ölçekleme, küçük ve büyük değerler arasındaki ilişkileri daha anlaşılır kılar. Bu tür bir kutu grafiği, göç dinamiklerini derinlemesine analiz etmek ve bölgesel farklılıkları daha iyi anlamak için kritik bilgiler sunar. Bölgeler arası ekonomik, eğitim, sağlık ve yaşam koşullarındaki farklılıklar, göç hareketlerini doğrudan etkileyen faktörler arasındadır.
+-   Aile yanına dönme, göç nedenleri arasında en düşük oranda ilişkiye sahiptir.
 
 ```{r}
 #| code-fold: true
 #| code-summary: "Show the code"
-# Veri setindeki göç nedenlerini yıllara göre topla
-##group_by() fonksiyonu kullanılarak new_tidy_data veri setindeki "yil" ve "gocNedeni" sütunlarına göre gruplanır. Daha sonra summarise() fonksiyonu ile her yıl ve göç nedeni kombinasyonu için toplam göç sayısı hesaplanır.
-summarized_data <- new_tidy_data %>%
-  group_by(yil, gocNedeni) %>%
-  summarise(total_gocSayisi = sum(gocSayisi), .groups = "drop")
-# Bar plot oluştur
-ggplot(summarized_data, aes(x = factor(yil), y = total_gocSayisi, fill = gocNedeni)) +
-  geom_bar(stat = "identity", position = "dodge") +
-  labs(title = "Göç Nedenlerine Göre Yıllara Göre Dağılım",
-       x = "Yıl",
-       y = "Toplam Göç Sayısı",
-       fill = "Göç Nedeni") +
-  theme_minimal() +
-  theme(plot.title = element_text(hjust = 0.5),
-        axis.text.x = element_text(angle = 45, hjust = 1)) +
-  scale_y_continuous(labels = scales::number_format())
-```
-
-Bu grafik, 2018'den 2022'ye kadar çeşitli göç nedenlerine göre Türkiye içinde yapılan göç sayılarını gösteriyor. Renkler, farklı göç nedenlerini temsil ediyor. Grafikten yapılabilecek önemli gözlemler şunlardır:
-
-Göç Nedenleri:
-
-Aile Yanına Dönme (Pembe): Bu nedenle yapılan göçler, özellikle 2021 yılında belirgin bir artış gösteriyor. Bu, pandemi sonrasında ailelerin bir araya gelme isteğinin artmış olabileceğini düşündürebilir. Eğitim (Mor): Eğitim nedeniyle yapılan göçlerde 2020 yılında bir düşüş gözlemleniyor, bu da pandemi nedeniyle eğitimin çevrimiçi ortamlara taşınmasıyla ilişkilendirilebilir. 2021 ve 2022 yıllarında ise eğitimle ilişkili göçlerde tekrar bir artış göze çarpıyor.
-
-Pandemi Etkisi:
-
-2020 yılında hemen hemen tüm göç nedenlerinde bir düşüş gözlemleniyor. Pandeminin getirdiği kısıtlamalar ve belirsizlikler, göç hareketlerini önemli ölçüde azaltmış görünüyor. Özellikle sağlık (turkuaz) ve iş bulma (koyu yeşil) nedenli göçlerde bu düşüş belirgin.
-
-2021 ve 2022 Yılında Göç Artışı:
-
-2021 yılında, pandemi sonrası normalleşme süreçlerinin başlamasıyla birlikte tüm kategorilerde göç sayılarında bir artış gözleniyor. Bu artış, insanların ertelenmiş göç kararlarını uygulamaya koyduklarını gösteriyor. 2022 yılında, özellikle ev alma (mavi) ve yaşam koşulları (yeşil) ile ilgili göçlerde artış sürüyor. Bu, ekonomik ve sosyal stabiliteye duyulan güvenin artışını ve bireylerin yaşam standartlarını yükseltme çabalarını yansıtabilir. Grafikten çıkarılan bu gözlemler, Türkiye'deki göç trendlerinin sosyo-ekonomik faktörler, pandemi gibi küresel sağlık krizleri ve eğitim gibi temel ihtiyaçlar tarafından nasıl etkilendiğini açıkça gösteriyor.
-
-```{r}
-#| code-fold: true
-#| code-summary: "Show the code"
-summarized_data2 <- new_tidy_data %>%
-  filter(!is.na(bolge)) %>%  # NA olmayan bölge değerlerini filtrele
-  group_by(bolge, yil) %>%
-  summarise(total_gocSayisi = sum(gocSayisi), .groups = "drop")
-
-# Bar plot oluştur
-ggplot(summarized_data2, aes(x = factor(yil), y = total_gocSayisi, fill = bolge)) +
-  geom_bar(stat = "identity", position = "dodge") +
-  labs(title = "Bölge ve Yıllara Göre Göç Sayısı",
-       x = "Yıl",
-       y = "Toplam Göç Sayısı",
-       fill = "Bölge") +
-  theme_minimal() +
-  theme(plot.title = element_text(hjust = 0.5),
-        axis.text.x = element_text(angle = 45, hjust = 1)) +
-  scale_y_continuous(labels = scales::number_format())
-```
-
-Bu grafik, 2018'den 2022'ye kadar Türkiye'nin çeşitli bölgelerine yapılan göç sayılarını yıllara göre göstermektedir. Renkler farklı bölgeleri temsil ediyor. Grafikten yapılabilecek önemli gözlemler aşağıdaki gibidir:
-
-Marmara Bölgesine Yönelik Göçler:
-
-Marmara bölgesi, grafikte pembe rengiyle temsil edilmiş ve sürekli olarak en yüksek göç alımına sahip bölge olarak öne çıkıyor. Bu, Marmara Bölgesi'nin ekonomik ve sosyal imkanları ile büyük şehirleri barındırması nedeniyle Türkiye'nin en çekici bölgelerinden biri olduğunu gösteriyor. Pandemi Etkisi:
-
-2020 yılında, diğer yıllara kıyasla bütün bölgelerde göç sayısında gözle görülür bir düşüş var. Bu düşüş, COVID-19 pandemisinin yol açtığı seyahat kısıtlamaları ve ekonomik belirsizliklerle ilişkilendirilebilir. Bölgeler Arası Farklılıklar:
-
-Ege (mavi) ve İç Anadolu (yeşil) bölgeleri de görece yüksek göç alımı göstermiş, özellikle 2021 ve 2022 yıllarında. Bu iki bölge de ekonomik ve eğitim imkanları ile bilinir. Güneydoğu Anadolu (açık mavi) ve Doğu Anadolu (kırmızı) bölgeleri ise daha düşük göç sayılarına sahip. Bu, ekonomik aktivite ve yaşam koşullarının diğer bölgelere göre daha az çekici olmasından kaynaklanıyor olabilir.
-
-2019'da Artış ve Sonrasında Düşüş:
-
-2019 yılında, çoğu bölge için göç sayısında bir artış gözlemleniyor. Bu artış, belki de o dönemdeki ekonomik iyileşme veya politik faktörlerle ilgili olabilir. Ancak, 2020'de pandeminin etkisiyle bu sayılar düşüşe geçmiş. Bu grafik, Türkiye içindeki göç dinamiklerini bölgelere göre değişimini anlamak açısından önemli veriler sunmaktadır. Bölgelerin ekonomik, sosyal ve kültürel çekiciliğinin, göç hareketleri üzerindeki etkisini göstermesi bakımından kıymetlidir. Pandemi gibi global olayların bu dinamikleri nasıl etkileyebileceği konusunda da fikir verir.
-
-```{r}
-#| code-fold: true
-#| code-summary: "Show the code"
-Sys.setlocale("LC_CTYPE", "turkish")
-library(dplyr)
+# Gerekli kütüphaneleri yükleyin
+library(readxl)
 library(ggplot2)
+library(dplyr)
 
-new_tidy_data <- new_tidy_data %>%
-  mutate(bolge = case_when(
-    il %in% c("Istanbul", "Bursa", "Kocaeli", "Tekirdag","Balikesir","Canakkale","Bilecik","Edirne","Kirklareli","Sakarya","Yalova") ~ "Marmara",
-    il %in% c("Izmir", "Aydin", "Manisa","Afyonkarahisar","Denizli","Kutahya","Manisa","Mugla","Usak") ~ "Ege",
-    il %in% c("Ankara", "Konya", "Eskisehir","Cankiri","Corum","Kayseri","Kirsehir
-","Konya","Nevsehir","Nigde","Sivas","Yozgat","Aksaray","Karaman","Kirikkale") ~ "Ic Anadolu",
-    il %in% c("Artvin", "Giresun", "Ordu","Rize","Sinop","Tokat","Trabzon","Zonguldak","Amasya","Bolu","Gumushane","Kastamonu","Samsun","Sinop","Bayburt
-","Bartin","Karabuk","Duzce") ~ "Karadeniz",
-    il %in% c("Adana", "Antalya","Burdur","Hatay","Isparta","Kahramanmaras","Osmaniye") ~ "Akdeniz",
-    il %in% c("Adiyaman","Diyarbakir","Gaziantep","Mardin","Siirt","Sanliurfa","Batman","Sirnak","Kilis") ~ "Guneydogu Anadolu",
-    il %in% c("Agri","Bingol","Bitlis","Elazig","Erzincan","Erzurum","Hakkari","Kars","Malatya","Muş","Tunceli","Van","Ardahan","Igdir") ~ "Dogu Anadolu",
-    TRUE ~ "Diger" # Diğer bölgelere dahil olan iller için "Diger" kategorisi
-  ))
+# Veri setini yükleyin
+migration_data <- read_excel("migration_rate.xls")
 
-# Veri setindeki göç nedenlerini yıllara göre topla
-summarized_data <- new_tidy_data %>%
-  group_by(bolge, gocNedeni) %>%
-  summarise(total_gocSayisi = sum(gocSayisi), .groups = "drop")
+# 2020 yılına ait verileri filtreleyin
+data_2020 <- migration_data %>% filter(Yil == 2020)
 
-# Bar plot oluştur
-ggplot(summarized_data, aes(x = bolge, y = total_gocSayisi, fill = gocNedeni)) +
-  geom_bar(stat = "identity", position = "dodge") +
-  labs(title = "Göç Nedenlerine Göre Yıllara Göre Dağılım",
-       x = "Yıl",
-       y = "Toplam Göç Sayısı",
-       fill = "Göç Nedeni") +
-  theme_minimal() +
-  theme(plot.title = element_text(hjust = 0.5),
-        axis.text.x = element_text(angle = 45, hjust = 1)) +
-  scale_y_continuous(labels = scales::number_format())
+# Negatif ve pozitif nüfus değişimlerini ayırın
+data_2020 <- data_2020 %>%
+  mutate(
+    Goc_Turu = ifelse(`Nufus degisimi` < 0, "Verilen Göç", "Alinan Göç"),
+    Renk = ifelse(`Nufus degisimi` < 0, "Mavi", "Kirmizi"),
+    Abs_Degisim = abs(`Nufus degisimi`)
+  )
+
+# Jitter plot oluşturun
+ggplot(data_2020, aes(x = Goc_Turu, y = Abs_Degisim, color = Renk)) +
+  geom_jitter(width = 0.3, size = 3, alpha = 0.5) +
+  scale_color_manual(values = c("Kirmizi" = "red", "Mavi" = "blue")) +
+  labs(
+    title = "2020 Yılında İllere Göre Göç Durumu",
+    x = "",
+    y = "Nüfus Değişimi (Mutlak Değer)"
+  ) +
+  theme_minimal()
 ```
 
-Bu grafik, Türkiye'nin farklı bölgelerine yapılan göç sayılarını ve bu göçlerin nedenlerini yıllara göre göstermektedir. Göç nedenleri renklerle ifade edilmiş ve bu renkler bölgesel dağılımı da içeriyor. Grafikten çıkarılabilecek önemli noktalar aşağıda sıralanmıştır:
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+# Gerekli kütüphaneleri yükleyin
+library(ggplot2)
+library(dplyr)
 
-Bölgesel Farklılıklar:
+# Veri setini yükleyin
+migration_data <- read_excel("migration_rate.xls")
 
-Marmara Bölgesi: Marmara bölgesi, grafikte özellikle iş bulma (koyu yeşil), eğitim (mor), ve aile yanına dönme (pembe) nedenleriyle en yüksek göç alımını gösteriyor. Bu, Marmara'nın ekonomik ve sosyal olarak Türkiye'nin en cazip bölgesi olmasından kaynaklanıyor olabilir. Ege ve İç Anadolu: Ege ve İç Anadolu bölgeleri de yüksek göç alımı gösteriyor, özellikle ev alma (mavi) ve sağlık (turkuaz) nedenleriyle. Göç Nedenleri:
+# 2020 yılına ait verileri filtreleyin ve en yüksek 5 değeri seçin
+top_5_migration_2020 <- migration_data %>%
+  filter(Yil == 2020) %>%
+  arrange(desc(`Nufus degisimi`)) %>%
+  head(5)
 
-Eğitim ve İş Bulma: Eğitim ve iş bulma, genel olarak tüm bölgelerde önemli göç nedenleri arasında yer alıyor. Bu, genç nüfusun eğitim ve iş imkanları için daha büyük şehir veya bölgelere taşınma eğilimini gösteriyor. Sağlık: Sağlık nedeniyle yapılan göçler, özellikle İç Anadolu ve Ege bölgelerinde dikkat çekiyor, bu bölgelerin sağlık hizmetlerine erişim açısından önemli merkezler olabileceğini düşündürüyor.
+print(top_5_migration_2020)
 
-Zaman İçindeki Trendler:
 
-Pandemi Etkisi: Grafikten kesin yıllar anlaşılmamakla birlikte, eğer 2020 yılındaki genel düşüş varsa, bu COVID-19 pandemisinin etkisini yansıtıyor olabilir. Pandemi, göç hareketlerini azaltmış ve çeşitli nedenlerle göç edecek kişilerin kararlarını ertelemelerine neden olmuş olabilir. Son Yıllardaki Artış: Grafikte son yıllarda genel bir artış trendi görülüyor ki bu da pandemi sonrası normalleşme sürecinin etkisiyle insanların daha önce erteledikleri göç kararlarını hayata geçirdiklerini gösteriyor. Bu grafik, Türkiye'deki göç trendlerini ve bu trendlerin bölgesel ekonomik ve sosyal faktörlerle nasıl ilişkili olduğunu anlamak için önemli veriler sunmaktadır.
+```
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+# Gerekli kütüphaneleri yükleyin
+library(ggplot2)
+library(dplyr)
+
+# Veri setini yükleyin
+migration_data <- read_excel("migration_rate.xls")
+
+# 2020 yılına ait verileri filtreleyin ve en yüksek 5 değeri seçin
+top_10_migration_2020 <- migration_data %>%
+  filter(Yil == 2020) %>%
+  arrange(desc(`Nufus degisimi`)) %>%
+  head(5)
+
+# Bar plot'u oluşturun ve her barın değerini sağa hizalayarak yazdırın
+ggplot(top_5_migration_2020, aes(x = reorder(il, `Nufus degisimi`), y = `Nufus degisimi`)) +
+  geom_bar(stat = "identity", fill = "darkred") +
+  geom_text(aes(label = `Nufus degisimi`), hjust = 1.25, vjust = 0.25, size = 4, color = "white") +  # Her barın en altına değerleri sağa hizalayarak yazdır
+  labs(title = "2020 Yılında En Yüksek Göç Nufus degisimi Alan İller",
+       x = "il",
+       y = "Nufus degisimi") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  coord_flip()
+
+
+```
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+# Gerekli kütüphaneleri yükleyin
+library(readxl)
+library(ggplot2)
+library(dplyr)
+
+# Veri setini yükleyin
+migration_data <- read_excel("migration_rate.xls")
+
+# 2020 yılına ait verileri filtreleyin ve en düşük 5 değeri seçin
+bottom_5_migration_2020 <- migration_data %>%
+  filter(Yil == 2020) %>%
+  arrange(`Nufus degisimi`) %>%
+  head(5)
+
+print(bottom_5_migration_2020)
+
+```
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+# Gerekli kütüphaneleri yükleyin
+library(ggplot2)
+library(dplyr)
+
+# Veri setini yükleyin
+migration_data <- read_excel("migration_rate.xls")
+
+# 2020 yılına ait verileri filtreleyin ve en düşük 5 değeri seçin
+top_5_migration_2020 <- migration_data %>%
+  filter(Yil == 2020) %>%
+  arrange(`Nufus degisimi`) %>%
+  head(5)
+
+# Mutlak değerlerini alın ve yeni bir sütun ekleyin
+top_5_migration_2020 <- top_5_migration_2020 %>%
+  mutate(abs_nufus_degisim = abs(`Nufus degisimi`))
+
+# Bar plot'u oluşturun ve her barın değerini sağa hizalayarak yazdırın
+ggplot(top_5_migration_2020, aes(x = reorder(il, abs_nufus_degisim), y = abs_nufus_degisim)) +
+  geom_bar(stat = "identity", fill = "darkblue") +
+  geom_text(aes(label = abs_nufus_degisim), hjust = 1.25, vjust = 0.25, size = 4, color = "white") +  # Her barın en altına değerleri sağa hizalayarak yazdır
+  labs(title = "2020 Yılında En Düşük Göç Nufus degisimi Alan İller (Mutlak Değer)",
+       x = "İl",
+       y = "Nufus Değişimi (Mutlak Değer)") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  coord_flip()
+
+```
