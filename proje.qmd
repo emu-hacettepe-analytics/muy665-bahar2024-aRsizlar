@@ -97,7 +97,6 @@ alinan_goc <- read_excel("goc_etme_nedenine_illerin_aldigi_goc.xlsx")
 head(alinan_goc)
 ```
 
-
 ```{r}
 #| code-fold: true
 #| code-summary: "Show the code"
@@ -127,7 +126,6 @@ colnames(new_tidy_data)
 ##new_tidy_data veri setindeki her sütundaki eksik değerlerin sayısını hesaplama
 colSums(is.na(new_tidy_data))
 ```
-
 
 ```{r}
 #| code-fold: true
@@ -180,16 +178,12 @@ Maximum göç sayısının 152.756 olduğunu aşağıdaki tabloda görüyoruz.
 new_tidy_data %>% arrange(desc(gocSayisi)) %>% head()
 ```
 
-
-
 ```{r}
 #| code-fold: true
 #| code-summary: "Show the code"
 ## new_tidy_data veri setindeki veriler arasından gocSayisi sütunundaki en yüksek 10 değerigösterme
 new_tidy_data %>% top_n(10, gocSayisi)
 ```
-
-
 
 # Analizler
 
@@ -221,70 +215,6 @@ new_tidy_data <- alinan_goc %>%
   mutate(gocNedeni = as.character(gocNedeni))
 
 ```
-
-```{r}
-#| code-fold: true
-#| code-summary: "Show the code"
-# Sys.setlocale("LC_CTYPE", "turkish")
-# library(sf)
-# library(ggplot2)
-# library(dplyr)
-
-#### 2. Shapefile Dosyasının Yüklenmesi:
-
-# Shapefile dosyasının yolunu belirleme
-# shapefile_path <- "C:/Users/goktu/Desktop/Migration/gadm36_TUR_shp/gadm41_TUR_1.shp"
-
-# Shapefile dosyasını yükleme
-# turkiye_sf <- st_read(shapefile_path)
-
-#### 3. Verilerin Hazırlanması:
-
-# Verilerin yüklenmesi
-# nufus_degisim_verisi <- data.frame(
-#   yil = c(2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020),
-#   il = c("Adana", "Adiyaman", "Afyonkarahisar", "Agri", "Amasya", "Ankara", "Antalya", "Artvin", "Aydin", "Balikesir", "Bilecik", "Bingol", "Bitlis", "Bolu", "Burdur", "Bursa", "Canakkale", "Cankiri", "Corum", "Denizli", "Diyarbakir", "Edirne", "Elazig", "Erzincan", "Erzurum", "Eskisehir", "Gaziantep", "Giresun", "Gumushane", "Hakkari", "Hatay", "Isparta", "Mersin", "Istanbul", "Izmir", "Kars", "Kastamonu", "Kayseri", "Kirklareli", "Kirsehir", "Kocaeli", "Konya", "Kutahya", "Malatya", "Manisa", "Kahramanmaras", "Mardin", "Mugla", "Mus", "Nevsehir", "Nigde", "Ordu", "Rize", "Sakarya", "Samsun", "Siirt", "Sinop", "Sivas", "Tekirdag", "Tokat", "Trabzon", "Tunceli", "Sanliurfa", "Usak", "Van", "Yozgat", "Zonguldak", "Aksaray", "Bayburt", "Karaman", "Kirikkale", "Batman", "Sirnak", "Bartin", "Ardahan", "Igdir", "Yalova", "Karabuk", "Kilis", "Osmaniye", "Duzce"),
-#   nufus_degisim = c(1256, -773, -995, -9727, 894, 11997, 20710, -1443, 4459, 9154, -142, -1136, -2173, -1135, -2221, 23099, 2033, -2659, 621, 1164, -3891, -2012, -5637, -91, -9815, -157, 861, 286, -11965, -1194, 5895, -5026, 13083, -53022, 14772, -4742, -1151, 1733, 2256, -875, 22550, -4992, -3341, 869, 7170, 1360, 629, 13380, -4828, 351, -2239, 5492, -147, 6041, 7612, -3914, -778, -5395, 22296, -16906, -745, -520, -9474, -1672, -11493, -3495, -4350, -103, -3006, -230, -4424, 1005, -547, 144, -1130, 186, 4380, -4602, -1397, 2780, 1192)
-# )
-
-#### 4. İllerin Geometrik Merkezlerinin Bulunması:
-
-# Shapefile ile veri çerçevesini birleştirme
-# turkiye_veri <- turkiye_sf %>%
-#   left_join(nufus_degisim_verisi, by = c("NAME_1" = "il"))
-
-# NA değerlerini kaldırma
-# turkiye_veri <- na.omit(turkiye_veri)
-
-# Geometrik merkezlerin koordinatlarını çıkarma ve veri çerçevesine ekleme
-# turkiye_centroids <- turkiye_veri %>%
-#   st_centroid() %>%
-#   st_as_sf()
-
-# Geometrik merkezlerin koordinatlarını çıkarma
-# turkiye_centroids_coords <- st_coordinates(turkiye_centroids)
-# turkiye_centroids_df <- as.data.frame(turkiye_centroids_coords)
-# turkiye_centroids_df$nufus_degisim <- turkiye_veri$nufus_degisim
-
-#### 5. Haritanın Çizilmesi ve Noktaların Gösterilmesi:
-
-# Haritanın oluşturulması
-# ggplot(data = turkiye_sf) +
-#   geom_sf() +  # Türkiye haritasını çizin
-#   geom_point(data = turkiye_centroids_df, 
-#              aes(x = X, y = Y, size = abs(nufus_degisim), color = nufus_degisim > 0), 
-#              alpha = 0.7) +  # Noktaları ekleyin
-#   scale_color_manual(values = c("TRUE" = "red", "FALSE" = "blue"), labels = c("TRUE" = "Göç Alan", "FALSE" = "Göç Veren")) +
-#   theme_minimal() +
-#   labs(title = "Türkiye Haritası",
-#        subtitle = "İllerin Nüfus Değişimleri (2020)",
-#        x = "Enlem", 
-#        y = "Boylam",
-#        size = "Nüfus Değişimi",
-#        color = "Durum")
-```
-
-![](images/clipboard-4123355109.png)
 
 ```{r}
 #| code-fold: true
@@ -350,9 +280,6 @@ Aykırı Değerler: Grafikteki aykırı değerler (kutuların üst ve altında y
 
 Logaritmik Ölçek: Grafikte logaritmik ölçek kullanılması, göç sayılarının geniş aralıklarını daha iyi göstermek için yapılmış. Bu sayede düşük ve yüksek değerler arasındaki farklar daha kolay fark edilebilir.
 
-
-
-
 ```{r}
 #| code-fold: true
 #| code-summary: "Show the code"
@@ -375,6 +302,7 @@ ggplot(melted_corr_matrix, aes(Var1, Var2, fill = value)) +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
+
 -   **Göç Nedenleri Arasındaki Korelasyonu Hesaplama ve Görselleştirme**
 
     Korelasyon matrisi görselleştirmesi (heatmap), veri setindeki değişkenler arasındaki ilişkileri görsel olarak anlamak için güçlü bir araçtır.Örneğin, pozitif korelasyonlar, bir değişkenin artışıyla diğer değişkenin de arttığını gösterir. Bu, iki değişken arasında bir ilişki olduğunu ve bir değişkenin diğerini etkileyebileceğini gösterir.
@@ -416,6 +344,70 @@ ggplot(data_2020, aes(x = Goc_Turu, y = Abs_Degisim, color = Renk)) +
   ) +
   theme_minimal()
 ```
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+# Sys.setlocale("LC_CTYPE", "turkish")
+# library(sf)
+# library(ggplot2)
+# library(dplyr)
+
+#### 2. Shapefile Dosyasının Yüklenmesi:
+
+# Shapefile dosyasının yolunu belirleme
+# shapefile_path <- "C:/Users/goktu/Desktop/Migration/gadm36_TUR_shp/gadm41_TUR_1.shp"
+
+# Shapefile dosyasını yükleme
+# turkiye_sf <- st_read(shapefile_path)
+
+#### 3. Verilerin Hazırlanması:
+
+# Verilerin yüklenmesi
+# nufus_degisim_verisi <- data.frame(
+#   yil = c(2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020),
+#   il = c("Adana", "Adiyaman", "Afyonkarahisar", "Agri", "Amasya", "Ankara", "Antalya", "Artvin", "Aydin", "Balikesir", "Bilecik", "Bingol", "Bitlis", "Bolu", "Burdur", "Bursa", "Canakkale", "Cankiri", "Corum", "Denizli", "Diyarbakir", "Edirne", "Elazig", "Erzincan", "Erzurum", "Eskisehir", "Gaziantep", "Giresun", "Gumushane", "Hakkari", "Hatay", "Isparta", "Mersin", "Istanbul", "Izmir", "Kars", "Kastamonu", "Kayseri", "Kirklareli", "Kirsehir", "Kocaeli", "Konya", "Kutahya", "Malatya", "Manisa", "Kahramanmaras", "Mardin", "Mugla", "Mus", "Nevsehir", "Nigde", "Ordu", "Rize", "Sakarya", "Samsun", "Siirt", "Sinop", "Sivas", "Tekirdag", "Tokat", "Trabzon", "Tunceli", "Sanliurfa", "Usak", "Van", "Yozgat", "Zonguldak", "Aksaray", "Bayburt", "Karaman", "Kirikkale", "Batman", "Sirnak", "Bartin", "Ardahan", "Igdir", "Yalova", "Karabuk", "Kilis", "Osmaniye", "Duzce"),
+#   nufus_degisim = c(1256, -773, -995, -9727, 894, 11997, 20710, -1443, 4459, 9154, -142, -1136, -2173, -1135, -2221, 23099, 2033, -2659, 621, 1164, -3891, -2012, -5637, -91, -9815, -157, 861, 286, -11965, -1194, 5895, -5026, 13083, -53022, 14772, -4742, -1151, 1733, 2256, -875, 22550, -4992, -3341, 869, 7170, 1360, 629, 13380, -4828, 351, -2239, 5492, -147, 6041, 7612, -3914, -778, -5395, 22296, -16906, -745, -520, -9474, -1672, -11493, -3495, -4350, -103, -3006, -230, -4424, 1005, -547, 144, -1130, 186, 4380, -4602, -1397, 2780, 1192)
+# )
+
+#### 4. İllerin Geometrik Merkezlerinin Bulunması:
+
+# Shapefile ile veri çerçevesini birleştirme
+# turkiye_veri <- turkiye_sf %>%
+#   left_join(nufus_degisim_verisi, by = c("NAME_1" = "il"))
+
+# NA değerlerini kaldırma
+# turkiye_veri <- na.omit(turkiye_veri)
+
+# Geometrik merkezlerin koordinatlarını çıkarma ve veri çerçevesine ekleme
+# turkiye_centroids <- turkiye_veri %>%
+#   st_centroid() %>%
+#   st_as_sf()
+
+# Geometrik merkezlerin koordinatlarını çıkarma
+# turkiye_centroids_coords <- st_coordinates(turkiye_centroids)
+# turkiye_centroids_df <- as.data.frame(turkiye_centroids_coords)
+# turkiye_centroids_df$nufus_degisim <- turkiye_veri$nufus_degisim
+
+#### 5. Haritanın Çizilmesi ve Noktaların Gösterilmesi:
+
+# Haritanın oluşturulması
+# ggplot(data = turkiye_sf) +
+#   geom_sf() +  # Türkiye haritasını çizin
+#   geom_point(data = turkiye_centroids_df, 
+#              aes(x = X, y = Y, size = abs(nufus_degisim), color = nufus_degisim > 0), 
+#              alpha = 0.7) +  # Noktaları ekleyin
+#   scale_color_manual(values = c("TRUE" = "red", "FALSE" = "blue"), labels = c("TRUE" = "Göç Alan", "FALSE" = "Göç Veren")) +
+#   theme_minimal() +
+#   labs(title = "Türkiye Haritası",
+#        subtitle = "İllerin Nüfus Değişimleri (2020)",
+#        x = "Enlem", 
+#        y = "Boylam",
+#        size = "Nüfus Değişimi",
+#        color = "Durum")
+```
+
+![](images/clipboard-4123355109.png)
 
 ```{r}
 #| code-fold: true
@@ -519,5 +511,116 @@ ggplot(top_5_migration_2020, aes(x = reorder(il, abs_nufus_degisim), y = abs_nuf
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
   coord_flip()
+
+```
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+Sys.setlocale("LC_CTYPE", "turkish")
+library(ggplot2)
+library(dplyr)
+library(tidyr)  # tidyr paketini yükleyin
+# Veriler
+alinan_goc_sayilari <- c(33557, 37342, 21352, 22170, 88975, 65478, 2323, 2086, 8028, 1006)
+verilen_goc_sayilari <- c(28864, 20465, 20885, 18714, 90731, 94113, 23643, 3290, 22305, 3667)
+goc_nedenleri <- c("Tayin", "İş Bulma", "Eğitim", "Medeni Durum", "Yaşam Koşulları", "Hane", "Memlekete Dönme", "Sağlık", "Ev Alınması", "Emeklilik")
+
+# Data frame oluşturma
+istanbul_goc_nedenleri_2020 <- data.frame(
+  Goc_Nedeni = goc_nedenleri,
+  Alinan_Goc = alinan_goc_sayilari,
+  Verilen_Goc = verilen_goc_sayilari
+)
+
+print(istanbul_goc_nedenleri_2020)
+# Veriyi uzun formata dönüştürme
+istanbul_goc_nedenleri_2020_long <- istanbul_goc_nedenleri_2020 %>%
+  pivot_longer(cols = c("Alinan_Goc", "Verilen_Goc"), names_to = "Goc_Tipi", values_to = "Goc_Sayisi")
+
+# Bar plot oluşturma
+ggplot(istanbul_goc_nedenleri_2020_long, aes(x = Goc_Nedeni, y = Goc_Sayisi, fill = Goc_Tipi)) +
+  geom_bar(stat = "identity", position = "dodge", color = "black") +
+  scale_fill_manual(values = c("Alinan_Goc" = "red", "Verilen_Goc" = "blue"), labels = c("Alinan_Goc" = "Alınan Göç", "Verilen_Goc" = "Verilen Göç")) +
+  labs(title = "2020 Yılında İstanbul'a Alınan ve Verilen Göç Nedenleri",
+       x = "Göç Nedeni",
+       y = "Göç Sayısı",
+       fill = "Göç Tipi") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+```
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+Sys.setlocale("LC_CTYPE", "turkish")
+library(ggplot2)
+library(dplyr)
+library(tidyr)  # tidyr paketini yükleyin
+# Veriler
+alinan_goc_sayilari <- c(7627, 7615, 6258, 4340, 14828, 18449, 904, 443, 2507, 267)
+verilen_goc_sayilari <- c(5689, 4018, 4311, 3702, 11388, 12546, 2776, 467, 1761, 314)
+goc_nedenleri <- c("Tayin", "İş Bulma", "Eğitim", "Medeni Durum", "Yaşam Koşulları", "Hane", "Memlekete Dönme", "Sağlık", "Ev Alınması", "Emeklilik")
+
+# Data frame oluşturma
+Bursa_goc_nedenleri_2020 <- data.frame(
+  Goc_Nedeni = goc_nedenleri,
+  Alinan_Goc = alinan_goc_sayilari,
+  Verilen_Goc = verilen_goc_sayilari
+)
+
+print(Bursa_goc_nedenleri_2020)
+# Veriyi uzun formata dönüştürme
+Bursa_goc_nedenleri_2020_long <- Bursa_goc_nedenleri_2020 %>%
+  pivot_longer(cols = c("Alinan_Goc", "Verilen_Goc"), names_to = "Goc_Tipi", values_to = "Goc_Sayisi")
+
+# Bar plot oluşturma
+ggplot(Bursa_goc_nedenleri_2020_long, aes(x = Goc_Nedeni, y = Goc_Sayisi, fill = Goc_Tipi)) +
+  geom_bar(stat = "identity", position = "dodge", color = "black") +
+  scale_fill_manual(values = c("Alinan_Goc" = "red", "Verilen_Goc" = "blue"), labels = c("Alinan_Goc" = "Alınan Göç", "Verilen_Goc" = "Verilen Göç")) +
+  labs(title = "2020 Yılında Bursa için Alınan ve Verilen Göç Nedenleri",
+       x = "Göç Nedeni",
+       y = "Göç Sayısı",
+       fill = "Göç Tipi") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+```
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+Sys.setlocale("LC_CTYPE", "turkish")
+library(ggplot2)
+library(dplyr)
+library(tidyr)  # tidyr paketini yükleyin
+# Veriler
+alinan_goc_sayilari <- c(2155, 1224, 2597, 1104, 5315, 5578, 950, 255, 583, 211)
+verilen_goc_sayilari <- c(3271, 3388, 2897, 1578, 6280, 10526, 588, 243, 1753, 208)
+goc_nedenleri <- c("Tayin", "İş Bulma", "Eğitim", "Medeni Durum", "Yaşam Koşulları", "Hane", "Memlekete Dönme", "Sağlık", "Ev Alınması", "Emeklilik")
+
+# Data frame oluşturma
+Tokat_goc_nedenleri_2020 <- data.frame(
+  Goc_Nedeni = goc_nedenleri,
+  Alinan_Goc = alinan_goc_sayilari,
+  Verilen_Goc = verilen_goc_sayilari
+)
+
+print(Tokat_goc_nedenleri_2020)
+# Veriyi uzun formata dönüştürme
+Tokat_goc_nedenleri_2020_long <- Tokat_goc_nedenleri_2020 %>%
+  pivot_longer(cols = c("Alinan_Goc", "Verilen_Goc"), names_to = "Goc_Tipi", values_to = "Goc_Sayisi")
+
+# Bar plot oluşturma
+ggplot(Tokat_goc_nedenleri_2020_long, aes(x = Goc_Nedeni, y = Goc_Sayisi, fill = Goc_Tipi)) +
+  geom_bar(stat = "identity", position = "dodge", color = "black") +
+  scale_fill_manual(values = c("Alinan_Goc" = "red", "Verilen_Goc" = "blue"), labels = c("Alinan_Goc" = "Alınan Göç", "Verilen_Goc" = "Verilen Göç")) +
+  labs(title = "2020 Yılında Tokat için Alınan ve Verilen Göç Nedenleri",
+       x = "Göç Nedeni",
+       y = "Göç Sayısı",
+       fill = "Göç Tipi") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
 ```
