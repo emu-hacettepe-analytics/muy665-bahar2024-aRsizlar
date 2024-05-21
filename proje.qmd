@@ -3,15 +3,33 @@ title: "Göç İzleri"
 number-sections: true
 ---
 
+![](images/aRsızlar_Photo.jpg){fig-align="left"}
+
 **Proje sayfamıza hoş geldiniz.**
 
 *Projemizle ilgili güncellemelerden haberdar olmak için bu alanı takip edin.*
 
 # Proje Genel Bakış ve Kapsamı
 
-Türkiye'de 2018-2022 yılları arasında gerçekleşen göç istatistiklerini inceliyoruz.
+Türkiye’de 2018-2022 yilları arasında gerçekleşen genel göç durumunu inceliyoruz. Bu kapsamda, en çok ve en az göç alan illeri sıraladık. İlave veriler ile göçlerin nedenlerini araştırdık ve pandemi sebebiyle özellikle 2020 yılı verilerine odaklandık.
+
+<https://www.youtube.com/watch?v=wK4fPfljFJk>
 
 ## Veri
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+library(readxl)
+library(knitr)
+
+# Excel dosyasını oku
+alinan_goc <- read_excel("goc_etme_nedenine_illerin_aldigi_goc.xlsx")
+
+# İlk 15 satır ve tüm sütunları göster
+kable(head(alinan_goc, 15))
+
+```
 
 ## Veri Kaynağı
 
@@ -21,31 +39,27 @@ Türkiye'de 2018-2022 yılları arasında gerçekleşen göç istatistiklerini i
 
 **Veri setimizdeki değişkenler**
 
-il:Göç yapılan iller
+**Tayin:** Kişinin tayin olması veya yaptığı işin/çalıştığı işyerinin değişmesi (firma, şirket, kurum vb. değişikliği) nedeniyle taşınmasıdır.
 
-yil:Hangi yıl göç yapıldığı
+**İş bulma:** İşsiz olan kişinin iş bulması sonucunda işe başlamak için taşınmasıdır. İş aramak için yapılan taşınmalar da bu kapsamdadır.
 
-tayin:Göç nedenlerinden biri
+**Eğitim:** Kişinin eğitim (üniversite eğitimi/uzun süreli kurs vb.) almak ve eğitimin tamamlanması veya herhangi bir sebeple sona ermesi nedeniyle taşınmasıdır.
 
-isBulma:Göç nedenlerinden biri
+**Medeni durum:** Kişinin evlilik, boşanma veya eşinin ölmesi nedeniyle taşınmasıdır. Ayrıca, gayri resmi ayrılık ve birleşmeler de bu kapsamdadır.
 
-egitim:Göç nedenlerinden biri
+**Yaşam koşulları:** Daha büyük, yeni, nitelikli (asansör, park yeri, oyun alanı gibi özelliklere sahip) ve ulaşım imkânları daha iyi bir konutta oturmak için taşınmaktır. Ayrıca gürültü, hava kirliliği gibi çevresel koşullar sebebiyle ve daha iyi ve güvenli bir sosyal çevrede yaşamak için yapılan taşınmalar da bu kapsamdadır. Daha iyi bir yaşam için coğrafya ve iklim koşullarına bağlı taşınmalar da bu kategori altında değerlendirilmelidir.
 
-medeniDurum:Göç nedenlerinden biri
+**Hane:** Kişinin hanehalkı/aile üyelerinden herhangi birine bağımlı olarak taşınmasıdır.
 
-yasamKosullari:Göç nedenlerinden biri
+**Ev almak:** Kişinin ev alması nedeniyle taşınmasıdır. Kirada oturan kişilerin kendi evlerini almaları, ev sahibi olan kişilerin yeni bir ev almaları sonucu taşınmaları bu kapsamdadır.
 
-Hane:Göç nedenlerinden biri
+**Emeklilik:** Kişinin emeklilik sonrasında taşınmasıdır.
 
-aile_yanina_donme:Göç nedenlerinden biri
+**Aile yanına geri dönme:** Kişinin ailesinin bulunduğu yerleşim yerine veya doğum yeri/memlekete dönme sebebiyle taşınmasıdır. Aile fertlerinin birleşmesi bu maddeye dâhildir.
 
-saglik:Göç nedenlerinden biri
+**Sağlık:** Kişinin hastalık, yaşlılık, engellilik vb. nedenlerle daha iyi sağlık hizmeti veya bakım alabilmek için taşınmasıdır. Bakım için aile fertlerinin birbirlerinin yanına taşınması da bu kapsamda değerlendirilmektedir.
 
-evAlma:Göç nedenlerinden biri
-
-emeklilik:Göç nedenlerinden biri
-
-## Tercih Sebebi
+## Tercih Sebepleri
 
 Bu veri setini seçmemizde bir kaç neden etkili olmuştur.
 
@@ -216,6 +230,8 @@ new_tidy_data <- alinan_goc %>%
 
 ```
 
+Bu grafik, 2018 ile 2022 yılları arasındaki toplam Türkiye geneli iç göç sayısını göstermektedir. Grafikte göç sayısının 2018'den 2020'ye kadar azaldığı, ancak 2021 ve 2022 yıllarında tekrar artış gösterdiği gözlemlenebilir.2020 yılındaki düşüş pandeminin etkisiyle seyahat ve göç kısıtlamalarından kaynaklanıyor olabilir.
+
 ```{r}
 #| code-fold: true
 #| code-summary: "Show the code"
@@ -236,6 +252,8 @@ ggplot(summarized_data, aes(x = factor(yil), y = total_gocSayisi, fill = gocNede
         axis.text.x = element_text(angle = 45, hjust = 1)) +
   scale_y_continuous(labels = scales::number_format())
 ```
+
+Bu grafikte yıllara göre göç nedenleri ve göç sayıları verilmiştir. 5 yıl boyunca göç nedenlerine göre göç sayıları benzerlik gösterirken 2020 yılında eğitim sebebiyle göç sayısında ciddi bir düşüş gözlemlenmektedir. Kapanmaların artması ve eğitim sisteminin online düzene geçmesiyle beraber öğrenci hareketliliğinin azaldığını görebilmekteyiz.
 
 ```{r}
 #| code-fold: true
@@ -266,8 +284,6 @@ ggplot(new_tidy_data %>% filter(yil == 2020 , bolge != "Diger"), aes(x = gocNede
  scale_y_continuous(trans = 'log10', labels = function(x) format(x, scientific = FALSE))  # Y eksenini logaritmik ölçekleme yaparak ayarla
 ```
 
-grafik, 2020 yılına ait göç nedenleri ve Türkiye'nin bölgelerine göre dağılımını logaritmik ölçekte gösteren bir kutu grafiği (box plot) biçimindedir. Kutu grafikler, veri dağılımının merkezi eğilimini, yayılımını ve aykırı değerlerini göstermek için kullanılır. Her kutu, verinin medyanını, alt ve üst çeyreklerini (yani %25 ve %75'lik dilimlerini), ve aykırı değerleri temsil eder. Bu grafikten çıkarılabilecek başlıca gözlemler şunlardır:
-
 Bölgesel Farklılıklar:
 
 Marmara Bölgesi: Marmara, çoğu göç nedeninde yüksek medyan değerlere sahip, bu da bölgenin diğerlerine göre daha fazla göç aldığını gösteriyor. İş bulma, eğitim ve aile yanına dönme gibi nedenlerde özellikle belirgin. Doğu ve Güneydoğu Anadolu: Bu bölgeler, göç sayıları açısından genellikle daha düşük medyan değerlere sahip, bu da daha az göç aldıklarını veya bu bölgelerden göç veren kişi sayısının daha fazla olduğunu düşündürebilir.
@@ -275,10 +291,6 @@ Marmara Bölgesi: Marmara, çoğu göç nedeninde yüksek medyan değerlere sahi
 Göç Nedenleri Arasındaki Farklar:
 
 İş Bulma ve Eğitim: Bu iki neden, çoğu bölgede yüksek göç sayıları ile öne çıkıyor. Bu, özellikle genç nüfusun ve iş arayanların daha iyi fırsatlar peşinde diğer bölgelere taşındığını gösteriyor. Sağlık: Sağlık nedeniyle yapılan göçler, bölgeden bölgeye farklılık gösteriyor, ancak bazı bölgelerde (örneğin Ege ve İç Anadolu) bu nedenle göç sayısı diğerlerinden daha yüksek.
-
-Aykırı Değerler: Grafikteki aykırı değerler (kutuların üst ve altında yer alan noktalar), olağandışı yüksek veya düşük göç sayılarını gösterir. Örneğin, bazı bölgelerde iş bulma ve eğitim nedeniyle göç sayılarındaki olağan dışı artışlar dikkat çekiyor.
-
-Logaritmik Ölçek: Grafikte logaritmik ölçek kullanılması, göç sayılarının geniş aralıklarını daha iyi göstermek için yapılmış. Bu sayede düşük ve yüksek değerler arasındaki farklar daha kolay fark edilebilir.
 
 ```{r}
 #| code-fold: true
@@ -409,6 +421,8 @@ ggplot(data_2020, aes(x = Goc_Turu, y = Abs_Degisim, color = Renk)) +
 
 ![](images/clipboard-4123355109.png)
 
+Bu grafikte 2020 yılında alınan ve verilen göç miktarları incelendiğinde il bazında gerçekleşen nüfus değişimi gösterilmiştir. 2020 yılı özelinde pandeminin etkisiyle insanların pandemiyi geçirmek için deniz kenarı ve daha az nüfuslu yerleri seçtiğini gözlemleyebiliyoruz. Dolayısıyla, Türkiye’nin doğu kesimlerinden batı ve akdeniz bölgelerine doğru bir göç dalgasının varlığından söz edilebilir.
+
 ```{r}
 #| code-fold: true
 #| code-summary: "Show the code"
@@ -441,7 +455,7 @@ library(dplyr)
 migration_data <- read_excel("migration_rate.xls")
 
 # 2020 yılına ait verileri filtreleyin ve en yüksek 5 değeri seçin
-top_10_migration_2020 <- migration_data %>%
+top_5_migration_2020 <- migration_data %>%
   filter(Yil == 2020) %>%
   arrange(desc(`Nufus degisimi`)) %>%
   head(5)
@@ -522,43 +536,6 @@ library(ggplot2)
 library(dplyr)
 library(tidyr)  # tidyr paketini yükleyin
 # Veriler
-alinan_goc_sayilari <- c(33557, 37342, 21352, 22170, 88975, 65478, 2323, 2086, 8028, 1006)
-verilen_goc_sayilari <- c(28864, 20465, 20885, 18714, 90731, 94113, 23643, 3290, 22305, 3667)
-goc_nedenleri <- c("Tayin", "İş Bulma", "Eğitim", "Medeni Durum", "Yaşam Koşulları", "Hane", "Memlekete Dönme", "Sağlık", "Ev Alınması", "Emeklilik")
-
-# Data frame oluşturma
-istanbul_goc_nedenleri_2020 <- data.frame(
-  Goc_Nedeni = goc_nedenleri,
-  Alinan_Goc = alinan_goc_sayilari,
-  Verilen_Goc = verilen_goc_sayilari
-)
-
-print(istanbul_goc_nedenleri_2020)
-# Veriyi uzun formata dönüştürme
-istanbul_goc_nedenleri_2020_long <- istanbul_goc_nedenleri_2020 %>%
-  pivot_longer(cols = c("Alinan_Goc", "Verilen_Goc"), names_to = "Goc_Tipi", values_to = "Goc_Sayisi")
-
-# Bar plot oluşturma
-ggplot(istanbul_goc_nedenleri_2020_long, aes(x = Goc_Nedeni, y = Goc_Sayisi, fill = Goc_Tipi)) +
-  geom_bar(stat = "identity", position = "dodge", color = "black") +
-  scale_fill_manual(values = c("Alinan_Goc" = "red", "Verilen_Goc" = "blue"), labels = c("Alinan_Goc" = "Alınan Göç", "Verilen_Goc" = "Verilen Göç")) +
-  labs(title = "2020 Yılında İstanbul'a Alınan ve Verilen Göç Nedenleri",
-       x = "Göç Nedeni",
-       y = "Göç Sayısı",
-       fill = "Göç Tipi") +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
-
-```
-
-```{r}
-#| code-fold: true
-#| code-summary: "Show the code"
-Sys.setlocale("LC_CTYPE", "turkish")
-library(ggplot2)
-library(dplyr)
-library(tidyr)  # tidyr paketini yükleyin
-# Veriler
 alinan_goc_sayilari <- c(7627, 7615, 6258, 4340, 14828, 18449, 904, 443, 2507, 267)
 verilen_goc_sayilari <- c(5689, 4018, 4311, 3702, 11388, 12546, 2776, 467, 1761, 314)
 goc_nedenleri <- c("Tayin", "İş Bulma", "Eğitim", "Medeni Durum", "Yaşam Koşulları", "Hane", "Memlekete Dönme", "Sağlık", "Ev Alınması", "Emeklilik")
@@ -580,6 +557,43 @@ ggplot(Bursa_goc_nedenleri_2020_long, aes(x = Goc_Nedeni, y = Goc_Sayisi, fill =
   geom_bar(stat = "identity", position = "dodge", color = "black") +
   scale_fill_manual(values = c("Alinan_Goc" = "red", "Verilen_Goc" = "blue"), labels = c("Alinan_Goc" = "Alınan Göç", "Verilen_Goc" = "Verilen Göç")) +
   labs(title = "2020 Yılında Bursa için Alınan ve Verilen Göç Nedenleri",
+       x = "Göç Nedeni",
+       y = "Göç Sayısı",
+       fill = "Göç Tipi") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+```
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+Sys.setlocale("LC_CTYPE", "turkish")
+library(ggplot2)
+library(dplyr)
+library(tidyr)  # tidyr paketini yükleyin
+# Veriler
+alinan_goc_sayilari <- c(33557, 37342, 21352, 22170, 88975, 65478, 2323, 2086, 8028, 1006)
+verilen_goc_sayilari <- c(28864, 20465, 20885, 18714, 90731, 94113, 23643, 3290, 22305, 3667)
+goc_nedenleri <- c("Tayin", "İş Bulma", "Eğitim", "Medeni Durum", "Yaşam Koşulları", "Hane", "Memlekete Dönme", "Sağlık", "Ev Alınması", "Emeklilik")
+
+# Data frame oluşturma
+istanbul_goc_nedenleri_2020 <- data.frame(
+  Goc_Nedeni = goc_nedenleri,
+  Alinan_Goc = alinan_goc_sayilari,
+  Verilen_Goc = verilen_goc_sayilari
+)
+
+print(istanbul_goc_nedenleri_2020)
+# Veriyi uzun formata dönüştürme
+istanbul_goc_nedenleri_2020_long <- istanbul_goc_nedenleri_2020 %>%
+  pivot_longer(cols = c("Alinan_Goc", "Verilen_Goc"), names_to = "Goc_Tipi", values_to = "Goc_Sayisi")
+
+# Bar plot oluşturma
+ggplot(istanbul_goc_nedenleri_2020_long, aes(x = Goc_Nedeni, y = Goc_Sayisi, fill = Goc_Tipi)) +
+  geom_bar(stat = "identity", position = "dodge", color = "black") +
+  scale_fill_manual(values = c("Alinan_Goc" = "red", "Verilen_Goc" = "blue"), labels = c("Alinan_Goc" = "Alınan Göç", "Verilen_Goc" = "Verilen Göç")) +
+  labs(title = "2020 Yılında İstanbul'a Alınan ve Verilen Göç Nedenleri",
        x = "Göç Nedeni",
        y = "Göç Sayısı",
        fill = "Göç Tipi") +

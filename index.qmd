@@ -9,7 +9,8 @@ Bu sayfada analitik çalışmalarımızı paylaşıyoruz.
 
 Lütfen faaliyetlerimizi görmek için bizi takipte kalın.
 
-## Takım Üyeleri
+
+## Takım Üyeleri 
 
 1.  [Mert Özbayer](/takim/mertozbayer.qmd "Mert Özbayer")
 
@@ -35,9 +36,7 @@ Türkiye'de 2018-2022 yılları arasında gerçekleşen göç istatistiklerini i
 
 ## Veri Seti Hakkında Özet Bilgi
 
-İç göç istatistikleri, Türkiye'nin demografik yapısını, ekonomik büyümesini, kentsel gelişimini ve sosyal dengelerini anlamak için önemli ipuçları sağlar. Bu veriler, hükümetlerin politika oluşturmasında, şehir planlamasında ve kaynak tahsisinde yol gösterici olabilir.\
-\
-Türkiye'de 2018-2022 yılları arasında iller arası göç eden nüfus oranı, %3,27 oldu. Diğer bir ifadeyle Türkiye'de 2022 yılında 2 milyon 791 bin 156 kişi iller arasında göç etti.
+İç göç istatistikleri, Türkiye'nin demografik yapısını, ekonomik büyümesini, kentsel gelişimini ve sosyal dengelerini anlamak için önemli ipuçları sağlar. Bu veriler, hükümetlerin politika oluşturmasında, şehir planlamasında ve kaynak tahsisinde yol gösterici olabilir.
 
 ## Sonuçlar
 
